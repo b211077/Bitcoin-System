@@ -31,6 +31,7 @@ public class CoinService {
 	
 	// 새로운 비트코인 저장
 	public static boolean addBtc(BtcDTO btc) throws SQLException{
+		System.out.println(1);
 		return BtcDAO.addBtc(btc);
 	}
 }
