@@ -58,10 +58,10 @@
 		<!-- Menu -->
 		<nav id="menu">
 			<ul class="links">
-				<li><a href="index.jsp">Home</a></li>
-				<li><a href="wallet.jsp">wallet insert</a></li>
-				<li><a href="wallet_forecast.jsp">forecast profit</a></li>
-				<li><a href="index.jsp?#one">coin graph</a></li>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="wallet.jsp">wallet</a></li>
+				<li><a href="generic.html">Generic</a></li>
+				<li><a href="elements.html">Elements</a></li>
 			</ul>
 			<ul class="actions vertical">
 				<li><a href="#" class="button special fit">Get Started</a></li>
@@ -97,7 +97,7 @@
 									</div>
 									<br>
 									
-									<input type="hidden" name="command" value="memberInsert" />
+									<input type="hidden" name="command" value="coinInfoInsert" />
 									
 									<ul class="actions" style="margin:0 auto !important; width:50%;">
 										<li><input type="submit" value="Áö°©¿¡ µî·Ï" class="special" /></li>
