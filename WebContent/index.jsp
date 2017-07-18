@@ -21,20 +21,23 @@
       <!-- Wrapper -->
          <div id="wrapper">
 
-            <!-- Header -->
-               <header id="header" class="alt">
-                  <a href="index.jsp" class="logo"><img src="images/coinsight.png" style="width:260px; height:60px;"></a>
-                  <nav>
-                     <c:if test="${empty sessionScope.member}">
-                        <p><a href="join.html">JOIN</a></p>
-                        <p><a href="login.html">LOGIN</a></p>
-                     </c:if>
-                     <c:if test="${not empty sessionScope.member}">
-                        <p><a href="coin?command=logout">logout</a></p>
-                     </c:if>
-                     <a href="#menu">Menu</a>
-                  </nav>
-               </header>
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<a href="index.jsp" class="logo"><img src="images/coinsight.png" style="width:260px; height:60px;"></a>
+						<nav>
+							<c:if test="${empty sessionScope.member}">
+								<p><a href="join.html">JOIN</a></p>
+								<p><a href="login.html">LOGIN</a></p>
+							</c:if>
+							<c:if test="${not empty sessionScope.member}">
+								<p>${sessionScope.member.id}(${sessionScope.member.name})</p>
+								<p><a href="coin?command=logout">logout</a></p>
+							</c:if>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
 
             <!-- Menu -->
                <nav id="menu">

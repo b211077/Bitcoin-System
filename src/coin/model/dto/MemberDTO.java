@@ -2,26 +2,18 @@ package coin.model.dto;
 
 public class MemberDTO {
 
-	String name;
 	String id;
+	String name;
 	String pw;
 	String email;
 	
 	public MemberDTO() {}
 	
-	public MemberDTO(String name, String id, String pw, String email) {
-		this.name = name;
+	public MemberDTO(String id, String name, String pw, String email) {
 		this.id = id;
+		this.name = name;
 		this.pw = pw;
 		this.email = email;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getId() {
@@ -30,6 +22,14 @@ public class MemberDTO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPw() {
@@ -51,10 +51,10 @@ public class MemberDTO {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("MemberDTO [name=");
-		builder.append(name);
-		builder.append(", id=");
+		builder.append("MemberDTO [id=");
 		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
 		builder.append(", pw=");
 		builder.append(pw);
 		builder.append(", email=");
@@ -62,5 +62,5 @@ public class MemberDTO {
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 }

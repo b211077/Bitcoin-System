@@ -27,29 +27,29 @@ public class MemberDAO {
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("addMember"));
-			pstmt.setString(1, member.getName());
-			pstmt.setString(2, member.getId());
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getName());
 			pstmt.setString(3, member.getPw());
 			pstmt.setString(4, member.getEmail());
 			int result = pstmt.executeUpdate();
 			
 			pstmt = con.prepareStatement(sql.getString("addWallet1"));
-			pstmt.setString(1, member.getName());
+			pstmt.setString(1, member.getId());
 			pstmt.executeUpdate();
 			pstmt = con.prepareStatement(sql.getString("addWallet2"));
-			pstmt.setString(1, member.getName());
+			pstmt.setString(1, member.getId());
 			pstmt.executeUpdate();
 			pstmt = con.prepareStatement(sql.getString("addWallet3"));
-			pstmt.setString(1, member.getName());
+			pstmt.setString(1, member.getId());
 			pstmt.executeUpdate();
 			pstmt = con.prepareStatement(sql.getString("addWallet4"));
-			pstmt.setString(1, member.getName());
+			pstmt.setString(1, member.getId());
 			pstmt.executeUpdate();
 			pstmt = con.prepareStatement(sql.getString("addWallet5"));
-			pstmt.setString(1, member.getName());
+			pstmt.setString(1, member.getId());
 			pstmt.executeUpdate();
 			pstmt = con.prepareStatement(sql.getString("addWallet6"));
-			pstmt.setString(1, member.getName());
+			pstmt.setString(1, member.getId());
 			pstmt.executeUpdate();
 			
 			if (result == 1) {
