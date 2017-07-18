@@ -42,9 +42,7 @@
             <!-- Menu -->
                <nav id="menu">
                   <ul class="links">
-                     <li><a href="index.jsp">Home</a></li>
-                     <li><a href="wallet.jsp">wallet</a></li>
-                     <li><a href="index.jsp?#one">Generic</a></li>
+                     <li><a href="index.html">Home</a></li>
                      <li><a href="elements.html">Elements</a></li>
                   </ul>
                   <ul class="actions vertical">
