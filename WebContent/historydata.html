@@ -2,16 +2,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>TEST</title>
+<title>폴로닉스 과거데이터 수집</title>
 </head>
 <body>
 
-테스트 <br><br>
+폴로닉스 과거데이터 수집 <br><br>
 
 	<form action="coin" method="post">
 		<input type="hidden" id="command" value="btcInsert" name="command">
 		<input type="hidden" id="hiddenData" name="hiddenData">
-		<input type="submit" value="제출">
+		<input type="submit" value="데이터 DB전송">
 	</form>
 
 	<script type="text/javascript" src="scripts/jquery-3.1.1.js"></script>
@@ -21,6 +21,7 @@
    	}
       function getHistoryData() {
          $.ajax({
+        	 // start, end Unix Timestamp GMT+9 기준 period : 4시간 주기 
             url : "https://poloniex.com/public?command=returnChartData&currencyPair=USDT_BTC&start=1498834800&end=1499436000&period=14400",
             method : "post",
             dataType : "html",
