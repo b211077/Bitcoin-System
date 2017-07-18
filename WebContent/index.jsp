@@ -1,8 +1,7 @@
-<!DOCTYPE HTML>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <html>
-
 	<head>
-	
 		<title>Forty by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -14,7 +13,7 @@
  		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<style type="text/css">
-		/*  * {font-family:'BM HANNA','배달의민족 한나 ' !important, sans-serif; } */
+		/*  * {font-family:'BM HANNA','����ǹ��� �ѳ� ' !important, sans-serif; } */
 	</style>
 	<body>
 
@@ -23,7 +22,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<a href="index.html" class="logo"><strong>이름이 없어요....</strong></a>
+						<a href="index.jsp" class="logo"><img src="images/coinsight.png" style="width:260px; height:60px;"></a>
 						<nav>
 							<p><a href="join.html">JOIN</a></p>
 							<p><a href="login.html">LOGIN</a></p>
@@ -48,16 +47,26 @@
 				<!-- Banner -->
 					<section id="banner" class="major" style="height:740px;">
 						<div class="inner">
-							<header class="major">
-								<h1>비트코인 시세 비교 서비스 입니다.</h1>
-							</header>
-							<div class="content">
-								<p>이름은 아직 없습니다.. 그냥 시세 비교 사이트...</p>
-								<ul class="actions">
-									<li><a href="#hihi" class="button next scrolly">시작하기</a></li>
-								</ul>
-							</div>
-						</div>
+				<header class="major">
+					<h1>
+						�ȳ��ϼ���, <strong>coINsight</strong>�Դϴ�.
+					</h1>
+				</header>
+				<div class="content">
+					<p>
+						coINsight�� ����ȭ�� �ü� �� ��ȸ ���񽺸� �����մϴ�.<br> 
+						coINsight�� coin(����)	+ sight(�þ�)�� ���� �Ļ��� �ܾ�μ�, <br> 
+						���Ҿ� co(�Բ�) + insight(������) �̶�� ���� ������ �ֽ��ϴ�.<br> 
+						coINsigh�� ����ȭ���� �پ��� ���� ��, �׸��� �ŷ��� �� �ü� �񱳸� �� ���� ���� �׷��� ��Ʈ�� �����մϴ�.<br> 
+						���� ����ڰ� ������ ����ȭ���� ���� �ü��� ���Ͽ� ���ͷ��� ����ϴ� ����� �߰��� �����մϴ�.<br> 
+						coINsight�� �Բ� ����ȭ�� �ŷ����� ���� �پ ���������� ���� ���� â���� �����غ�����. <br>
+					</p>
+
+					<ul class="actions">
+						<li><a href="#hihi" class="button next scrolly">�����ϱ�</a></li>
+					</ul>
+				</div>
+			</div>
 					</section>
 
 		<div id="hihi" style="height: 600px">
@@ -65,7 +74,7 @@
 
 			<div style="width:10%; margin:0 auto;">
 				<button style="width:100%; height:50px; background-color:white; color:navy;">
-				<i class="fa fa-refresh" style="font-size:24px"></i> 새로고침</button>
+				<i class="fa fa-refresh" style="font-size:24px"></i> ���ΰ�ħ</button>
 			</div>
 			
 			<div class="table-wrapper" style="width:46%; float:left; margin-left:40px;">
@@ -176,7 +185,7 @@
 			</div>
 		</div>
 		
-		<div style="width:16%; margin:0 auto; margin-bottom:20px;"><a href="#one" class="button next scrolly">코인 별 상세보기</a></div>
+		<div style="width:16%; margin:0 auto; margin-bottom:20px;"><a href="#one" class="button next scrolly">���� �� �󼼺���</a></div>
 		
 		<!-- Main -->
 		<div id="main">
@@ -190,7 +199,7 @@
 						<h3>
 							<a href="generic.html" class="link">ETH</a>
 						</h3>
-						<p>이더리움</p>
+						<p>�̴�����</p>
 					</header>
 				</article>
 				<article>
@@ -201,7 +210,7 @@
 						<h3>
 							<a href="generic.html" class="link">BTC</a>
 						</h3>
-						<p>비트코인</p>
+						<p>��Ʈ����</p>
 					</header>
 				</article>
 				<article>
@@ -212,7 +221,7 @@
 						<h3>
 							<a href="generic.html" class="link">DASH</a>
 						</h3>
-						<p>대쉬코인</p>
+						<p>�뽬����</p>
 					</header>
 				</article>
 				<article>
@@ -223,7 +232,7 @@
 						<h3>
 							<a href="generic.html" class="link">LTC</a>
 						</h3>
-						<p>라이트코인</p>
+						<p>����Ʈ����</p>
 					</header>
 				</article>
 				<article>
@@ -234,7 +243,7 @@
 						<h3>
 							<a href="generic.html" class="link">ETC</a>
 						</h3>
-						<p>이더리움 클래식</p>
+						<p>�̴����� Ŭ����</p>
 					</header>
 				</article>
 				<article>
@@ -245,29 +254,9 @@
 						<h3>
 							<a href="generic.html" class="link">XRP</a>
 						</h3>
-						<p>리플</p>
+						<p>����</p>
 					</header>
 				</article>
-			</section>
-
-			<!-- Two -->
-			<section id="two">
-				<div class="inner">
-					<header class="major">
-						<h2>비트코인 시세 조회 서비스</h2>
-					</header>
-					<p style="font-size: 13px;">'비트코인 시세 조회' 서비스는 가상화폐의 다양한 종류, 그리고
-						거래소 별 시세 차이를 한 눈에 쉽게 그래프 차트로 제공하는 것을 목적으로 합니다.</p>
-					<p style="font-size: 13px;">'비트코인 시세 조회' 서비스를 통해, 사용자들은 다양한
-						가상화폐의 시세와 거래소 별 시세 차이를 편하게 파악하고 수익률 증진에 도움받을 수 있습니다.</p>
-					<p style="font-size: 13px;">또한 '내 지갑 관리' 기능을 통해, 사용자가 직접 본인이
-						구매한 가상화폐의 종류와 금액을 입력하고, 현재 시세와 비교하여 현재 매도 시 얻을 수 있는 수익률을 자동 계산하는
-						기능을 추가로 제공합니다.</p>
-					<ul class="actions">
-						<li><a href="landing.html" class="button next">Get
-								Started</a></li>
-					</ul>
-				</div>
 			</section>
 
 		</div>
@@ -278,7 +267,7 @@
 			<div class="inner"
 				style="padding: 10px !important; text-align: center; width: 60%;">
 				<ul class="copyright">
-					<li>ⓒ 2017. kData Bitcoin Viewer Team all rights reserved.</li>
+					<li>�� 2017. kData Bitcoin Viewer Team all rights reserved.</li>
 				</ul>
 			</div>
 		</footer>
