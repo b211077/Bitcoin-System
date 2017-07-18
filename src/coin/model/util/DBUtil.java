@@ -1,3 +1,6 @@
+/* ???
+ * 1. JDBC URL - oracle.jdbc.driver.OracleDriver
+ */
 package coin.model.util;
 
 import java.sql.Connection;
@@ -13,15 +16,15 @@ import javax.sql.DataSource;
 public class DBUtil {
 	static ResourceBundle resource = null;
 	static DataSource source = null;
-	
 	static{		 
 		try {
 			Context initContext = new InitialContext();		
 			Context envContext = (Context)initContext.lookup("java:/comp/env");
 			source = (DataSource)envContext.lookup("jdbc/myoracle");
 			resource = ResourceBundle.getBundle("conf/sql");
+			
 		} catch (Exception e) {			
-			e.printStackTrace();
+			e.printStackTrace();    
 		}	
 	}
 	
@@ -47,7 +50,6 @@ public class DBUtil {
 			e.printStackTrace();
 		}
 	}
-	
 	public  static void close(Connection con, Statement stmt, ResultSet rset){
 		try{
 			if(rset != null){

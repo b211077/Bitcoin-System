@@ -1,9 +1,3 @@
-/* CREATE TABLE activist (
-       activist_id          VARCHAR2(20)  PRIMARY KEY,
-       name                 VARCHAR2(20) NULL,
-       password             VARCHAR2(20) NULL,
-       major                VARCHAR2(50) NULL
-);  */
 package coin.model;
 
 import java.sql.Connection;
@@ -21,7 +15,6 @@ public class BtcDAO {
 
 	// 비트코인 데이터 삽입
 	public static boolean addBtc(BtcDTO btc) throws SQLException {
-		System.out.println(2);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {

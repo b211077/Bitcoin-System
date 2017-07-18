@@ -32,7 +32,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
+						<a href="index.jsp" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -56,7 +56,7 @@
 					<section id="contact">
 						<div class="inner">
 							<section>
-								<form method="post" action="#">
+								<form method="post" action="coin">
 								<h2 style="text-align:center; border-bottom:2px solid; border-bottom-color:white; margin-bottom:80px;
 								margin-top:0px !important;">회&nbsp;&nbsp;&nbsp;원&nbsp;&nbsp;&nbsp;가&nbsp;&nbsp;&nbsp;입</h2>
 									<div class="field half">
@@ -69,7 +69,7 @@
 									</div>
 									<div class="field half">
 										<label for="pw">비밀번호</label>
-										<input type="text" name="pw" id="pw" />
+										<input type="password" name="pw" id="pw" />
 									</div>
 									<div class="field half">
 										<label for="email">이메일</label>
@@ -80,6 +80,9 @@
 										<textarea name="message" id="message" rows="6"></textarea>
 									</div> -->
 									<br>
+									
+									<input type="hidden" name="command" value="memberInsert" />
+									
 									<ul class="actions" style="margin:0 auto !important; width:44%;">
 										<li><input type="submit" value="가입 신청" class="special" /></li>
 										<li><input type="reset" value="다시 작성" /></li>

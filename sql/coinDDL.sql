@@ -1,4 +1,3 @@
-DROP TABLE cascade constraint;
 -- 회원
 DROP TABLE member cascade constraint;
 -- 지갑
@@ -18,18 +17,16 @@ DROP TABLE xrp cascade constraint;
 -- 대쉬
 DROP TABLE dash cascade constraint;
 
-
 CREATE TABLE member (
-       mid          			NUMBER(5)  PRIMARY KEY,
-       mname               	VARCHAR2(20) NOT NULL,
-       pw         				NUMBER(20) NOT NULL,
-       email                	VARCHAR2(50) NOT NULL,
-       wid						NUMBER(5) NOT NULL
+	   mid          			VARCHAR2(30)  PRIMARY KEY,
+	   mname               	VARCHAR2(30) NOT NULL,
+       pw         				VARCHAR2(30) NOT NULL,
+       email                	VARCHAR2(50) NOT NULL
 );
 
 CREATE TABLE wallet (
-       wid        				NUMBER(5) PRIMARY KEY,
-       cname					VARCHAR2(10) NOT NULL,
+       mid        				VARCHAR2(30) NOT NULL,
+       cname					VARCHAR2(30) NOT NULL,
        amount               	NUMBER(10) NOT NULL,
        price		          	NUMBER(15) NOT NULL
 );
@@ -83,7 +80,7 @@ CREATE TABLE dash (
 );
 
 
-ALTER TABLE member  ADD FOREIGN KEY (wid) REFERENCES wallet  (wid);
+ALTER TABLE wallet  ADD FOREIGN KEY (mid) REFERENCES member  (mid);
 ALTER TABLE btc ADD FOREIGN KEY (eid) REFERENCES exchange  (eid);
 ALTER TABLE eth ADD FOREIGN KEY (eid) REFERENCES exchange  (eid);
 ALTER TABLE ltc ADD FOREIGN KEY (eid) REFERENCES exchange  (eid);
