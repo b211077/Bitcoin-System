@@ -42,9 +42,9 @@
             <!-- Menu -->
                <nav id="menu">
                   <ul class="links">
-                     <li><a href="index.html">Home</a></li>
+                     <li><a href="index.jsp">Home</a></li>
                      <li><a href="wallet.jsp">wallet</a></li>
-                     <li><a href="generic.html">Generic</a></li>
+                     <li><a href="index.jsp?#one">Generic</a></li>
                      <li><a href="elements.html">Elements</a></li>
                   </ul>
                   <ul class="actions vertical">
@@ -87,7 +87,7 @@
          </div>
          
          <div class="table-wrapper" style="width:46%; float:left; margin-left:40px;">
-            <a href="https://www.bithumb.com"></a><img src="images/logo_bithumb.png" width="240" height="66" /></a>
+            <a href="https://www.bithumb.com/" class="logo"><img src="images/logo_bithumb.png" width="240" height="66" /></a>
             <br>
             <br>
             <table>
@@ -141,7 +141,7 @@
 
          
          <div class="table-wrapper" style="width:46%; float:right; margin-right:40px;">
-         <img src="images/poloniex.png" width="250" height="40" style="margin-top:24px;"/>
+         <a href="https://poloniex.com/" class="logo"><img src="images/poloniex.png" width="250" height="40" style="margin-top:24px;"/></a>
          <br>
          <br>
             <table class="alt">
