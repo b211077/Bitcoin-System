@@ -11,8 +11,8 @@ import coin.model.CoinService;
 import coin.model.dto.BtcDTO;
 
 public class CoinController extends HttpServlet {
+	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("----------  -------");
 		request.setCharacterEncoding("euc-kr");   
 		String command = request.getParameter("command");
 		try{
@@ -57,16 +57,17 @@ public class CoinController extends HttpServlet {
 	// 비트코인 데이터 삽입
 	protected void btcInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
-		String d = request.getParameter("data");
+		String d = request.getParameter("hiddenData");
 		String[] data = d.split(",");
 		String date = null;
-		int price, volume, eid;
+		double price, volume;
+		int eid;
 		
 		try{
 			for (int i = 0; i < data.length; i++) {
 				date = data[i].split("/")[0];
-				price = Integer.parseInt(data[i].split("/")[1]);
-				volume = Integer.parseInt(data[i].split("/")[2]);
+				price = Double.parseDouble(data[i].split("/")[1]);
+				volume = Double.parseDouble(data[i].split("/")[2]);
 				eid = Integer.parseInt(data[i].split("/")[3]);
 				BtcDTO btc = new BtcDTO(date, price, volume, eid);
 				boolean result = CoinService.addBtc(btc);
@@ -74,14 +75,13 @@ public class CoinController extends HttpServlet {
 				if(result){
 					request.setAttribute("btc", btc);
 					request.setAttribute("successMsg", "삽입 완료");
-					//url = "btcDetail.jsp";
 				}else{
 					request.setAttribute("errorMsg", "다시 시도하세요");
 				}
 			}
 		}catch(Exception s){
+			s.printStackTrace();
 			request.setAttribute("errorMsg", s.getMessage());
 		}
-		request.getRequestDispatcher(url).forward(request, response);
 	}
 }
