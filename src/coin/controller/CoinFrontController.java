@@ -3,9 +3,11 @@ package coin.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import coin.model.MemberService;
 import coin.model.dto.MemberDTO;
@@ -24,9 +26,20 @@ public class CoinFrontController extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		String command = request.getParameter("command");
 		try{
-			if(command.equals("memberInsert")){//회원가입
-				memberInsert(request, response);
+			if(command != null){
+				if(command.equals("memberInsert")){//회원가입
+					memberInsert(request, response);
+				}
+				else if(command.equals("login")){
+					memberLogin(request, response);
+				}
+				else if(command.equals("logout")){
+					memberLogout(request, response);
+				}
+			}else{
+				response.sendRedirect("login.html");
 			}
+			
 //			else if(command.equals("activistAll")){//모든 재능 기부자 검색
 //				activistAll(request, response);
 //			}else if(command.equals("activist")){//특정 재능 기부자 정보 검색
@@ -111,6 +124,46 @@ public class CoinFrontController extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
+	
+	protected void memberLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		
+		
+		try{
+			MemberDTO member = MemberService.getMember(id);
+			HttpSession session = request.getSession();//세션 생성
+			
+			session.setAttribute("member", member);
+			System.out.println("세션의 id값 : "+session.getAttribute("member"));
+			
+			request.setAttribute("successMsg", "로그인 성공");
+			url = "index.jsp";
+		}catch(Exception s){
+			s.printStackTrace();
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+		
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+	protected void memberLogout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		
+		try{
+			request.getSession(true).invalidate();
+			request.setAttribute("successMsg", "로그아웃 성공");
+			url = "index.jsp";
+		}catch(Exception s){
+			s.printStackTrace();
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+		
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+	
+	
 	
 //	//재능 기부자 수정 요구
 //	public void activistUpdateReq(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

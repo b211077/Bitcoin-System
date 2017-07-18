@@ -111,7 +111,7 @@ public class MemberDAO {
 
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select * from member where member_id=?");
+			pstmt = con.prepareStatement(sql.getString("getMember"));
 			pstmt.setString(1, memberId);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
