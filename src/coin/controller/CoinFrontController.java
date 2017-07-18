@@ -1,9 +1,9 @@
 package coin.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,14 +30,23 @@ public class CoinFrontController extends HttpServlet {
 				if(command.equals("memberInsert")){//회원가입
 					memberInsert(request, response);
 				}
-				else if(command.equals("login")){
+				else if(command.equals("login")){//로그인
 					memberLogin(request, response);
 				}
-				else if(command.equals("logout")){
-					memberLogout(request, response);
+				else if(request.getSession().getAttribute("name") != null){//로그인 상태에서만 가능
+					if(command.equals("generic")){
+						response.sendRedirect("generic.html");
+					}
+					else if(command.equals("logout")){//로그인
+						memberLogout(request, response);
+					}
+				}
+				else{
+					request.setAttribute("errorMsg", "로그인 후 이용해주세요");
+					request.getRequestDispatcher("showError.jsp").forward(request, response);
 				}
 			}else{
-				response.sendRedirect("login.html");
+				response.sendRedirect("index.jsp");
 			}
 			
 //			else if(command.equals("activistAll")){//모든 재능 기부자 검색
@@ -137,7 +146,9 @@ public class CoinFrontController extends HttpServlet {
 			HttpSession session = request.getSession();//세션 생성
 			
 			session.setAttribute("member", member);
-			System.out.println("세션의 id값 : "+session.getAttribute("member"));
+			session.setAttribute("name", member.getName());
+			session.setAttribute("id", member.getId());
+			System.out.println("세션의 id값 : "+((MemberDTO)session.getAttribute("member")).getId());
 			
 			request.setAttribute("successMsg", "로그인 성공");
 			url = "index.jsp";
@@ -162,6 +173,29 @@ public class CoinFrontController extends HttpServlet {
 		
 		request.getRequestDispatcher(url).forward(request, response);
 	}
+	
+	
+//	protected void btcInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		String url = "showError.jsp";
+//		
+//		String command = request.getParameter("command");
+//		
+//		String array = request.getParameter("array");
+//		
+//		try{
+//			System.out.println(command+"------------"+array);
+//			
+//			
+//			request.getSession(true).invalidate();
+//			request.setAttribute("successMsg", "로그아웃 성공");
+//			url = "index.jsp";
+//		}catch(Exception s){
+//			s.printStackTrace();
+//			request.setAttribute("errorMsg", s.getMessage());
+//		}
+//		
+//		request.getRequestDispatcher(url).forward(request, response);
+//	}
 	
 	
 	
