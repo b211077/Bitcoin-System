@@ -87,7 +87,7 @@
          </div>
          
          <div class="table-wrapper" style="width:46%; float:left; margin-left:40px;">
-            <img src="images/logo_bithumb.png" width="240" height="66" />
+            <a href="https://www.bithumb.com"></a><img src="images/logo_bithumb.png" width="240" height="66" /></a>
             <br>
             <br>
             <table>
