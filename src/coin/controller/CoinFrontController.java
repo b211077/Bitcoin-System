@@ -117,7 +117,7 @@ public class CoinFrontController extends HttpServlet {
 		String pw = request.getParameter("pw");
 		String major = request.getParameter("email");
 		
-		MemberDTO member = new MemberDTO(id, name, pw, major);
+		MemberDTO member = new MemberDTO(name, id, pw, major);
 		try{
 			boolean result = MemberService.addMember(member);
 			if(result){
