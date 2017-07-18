@@ -1,4 +1,4 @@
-DROP TABLE  cascade constraint;
+DROP TABLE cascade constraint;
 -- È¸¿ø
 DROP TABLE member cascade constraint;
 -- Áö°©
@@ -41,46 +41,47 @@ CREATE TABLE exchange (
 );
 
 CREATE TABLE btc (
-	   day						VARCHAR2(20) NOT NULL, 
-       last_price				NUMBER(15) NOT NULL,
-       volume				NUMBER(15) NOT NULL,
- 	   eid						NUMBER(5) NOT NULL
+	day 						VARCHAR2(20) NOT NULL, 
+    price 						NUMBER(20) NOT NULL,
+    volume 					NUMBER(20) NOT NULL,
+	eid 						NUMBER(5) NOT NULL
 );
 
 CREATE TABLE eth (
 	   day						VARCHAR2(20) NOT NULL, 
-       last_price				NUMBER(15) NOT NULL,
+       price					NUMBER(15) NOT NULL,
        volume				NUMBER(15) NOT NULL,
  	   eid						NUMBER(5) NOT NULL
 );
 
 CREATE TABLE ltc (
 	   day						VARCHAR2(20) NOT NULL, 
-       last_price				NUMBER(15) NOT NULL,
+       price					NUMBER(15) NOT NULL,
        volume				NUMBER(15) NOT NULL,
  	   eid						NUMBER(5) NOT NULL
 );
 
 CREATE TABLE etc (
 	   day						VARCHAR2(20) NOT NULL, 
-       last_price				NUMBER(15) NOT NULL,
+       price					NUMBER(15) NOT NULL,
        volume				NUMBER(15) NOT NULL,
  	   eid						NUMBER(5) NOT NULL
 );
 
 CREATE TABLE xrp (
 	   day						VARCHAR2(20) NOT NULL, 
-       last_price				NUMBER(15) NOT NULL,
+       price					NUMBER(15) NOT NULL,
        volume				NUMBER(15) NOT NULL,
  	   eid						NUMBER(5) NOT NULL
 );
 
 CREATE TABLE dash (
 	   day						VARCHAR2(20) NOT NULL, 
-       last_price				NUMBER(15) NOT NULL,
+       price					NUMBER(15) NOT NULL,
        volume				NUMBER(15) NOT NULL,
  	   eid						NUMBER(5) NOT NULL
 );
+
 
 ALTER TABLE member  ADD FOREIGN KEY (wid) REFERENCES wallet  (wid);
 ALTER TABLE btc ADD FOREIGN KEY (eid) REFERENCES exchange  (eid);
