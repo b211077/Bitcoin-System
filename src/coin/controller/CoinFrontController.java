@@ -40,6 +40,9 @@ public class CoinFrontController extends HttpServlet {
 					else if(command.equals("logout")){//로그인
 						memberLogout(request, response);
 					}
+					else if(command.equals("wallet")){//로그인
+						response.sendRedirect("wallet.jsp");
+					}
 				}
 				else{
 					request.setAttribute("errorMsg", "로그인 후 이용해주세요");
