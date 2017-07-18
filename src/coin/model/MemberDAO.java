@@ -21,7 +21,7 @@ import coin.model.util.DBUtil;
 public class MemberDAO {
 	static ResourceBundle sql = DBUtil.getResourceBundle();
 
-	public static boolean addMember(MemberDTO member) throws SQLException {
+	public static boolean addMember(MemberDTO member) {// throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -32,7 +32,6 @@ public class MemberDAO {
 			pstmt.setString(3, member.getPw());
 			pstmt.setString(4, member.getEmail());
 			int result = pstmt.executeUpdate();
-			
 			pstmt = con.prepareStatement(sql.getString("addWallet1"));
 			pstmt.setString(1, member.getId());
 			pstmt.executeUpdate();
@@ -55,6 +54,8 @@ public class MemberDAO {
 			if (result == 1) {
 				return true;
 			}
+		}catch(Exception e) {
+			e.printStackTrace();
 		} finally {
 			DBUtil.close(con, pstmt);
 		}

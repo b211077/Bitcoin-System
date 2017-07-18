@@ -16,15 +16,15 @@ import javax.sql.DataSource;
 public class DBUtil {
 	static ResourceBundle resource = null;
 	static DataSource source = null;
-	
 	static{		 
 		try {
 			Context initContext = new InitialContext();		
 			Context envContext = (Context)initContext.lookup("java:/comp/env");
-			source = (DataSource)envContext.lookup("myoracle");
+			source = (DataSource)envContext.lookup("jdbc/myoracle");
 			resource = ResourceBundle.getBundle("conf/sql");
+			
 		} catch (Exception e) {			
-			e.printStackTrace();
+			e.printStackTrace();    
 		}	
 	}
 	

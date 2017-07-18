@@ -3,12 +3,11 @@
 <Context>
 	
 	 <Resource 
-	 		  name="myoracle" auth="Container"
+	 		  name="jdbc/myoracle" auth="Container"
               type="javax.sql.DataSource" 
-              driverClassName="oracle.jdbc.OracleDriver"
+              driverClassName="oracle.jdbc.driver.OracleDriver"
               url="jdbc:oracle:thin:@127.0.0.1:1521:XE"
               username="scott" password="tiger" 
               maxActive="25" maxIdle="10"
               maxWait="-1"/> 
-	
 </Context>

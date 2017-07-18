@@ -19,11 +19,11 @@ public class MemberService {
 	}
 	public static boolean addMember(MemberDTO member) throws MessageException{
 		boolean result = false;
-		try{
+	//	try{
 			result = MemberDAO.addMember(member);
-		}catch(SQLException s){
+		/*}catch(SQLException s){
 			throw new MessageException("이미 존재하는 ID입니다 다시 시도 하세요");
-		}
+		}*/
 		return result;
 	}
 	

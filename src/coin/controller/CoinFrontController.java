@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import coin.model.CoinService;
 import coin.model.MemberService;
+import coin.model.dto.BtcDTO;
 import coin.model.dto.MemberDTO;
 
 public class CoinFrontController extends HttpServlet {
@@ -43,6 +45,13 @@ public class CoinFrontController extends HttpServlet {
 					else if(command.equals("wallet")){//로그인
 						response.sendRedirect("wallet.jsp");
 					}
+				}
+				else if(command.equals("btcAll")){					// 모든 비트코인 정보 검색
+					btcAll(request, response);
+				}else if(command.equals("btc")){			// 날짜별 비트코인 검색
+					btc(request, response);
+				}else if(command.equals("btcInsert")){	// 비트코인 추가 등록
+					btcInsert(request, response);   
 				}
 				else{
 					request.setAttribute("errorMsg", "로그인 후 이용해주세요");
@@ -177,6 +186,61 @@ public class CoinFrontController extends HttpServlet {
 		
 		request.getRequestDispatcher(url).forward(request, response);
 	}
+	
+	// 모든 비트코인 검색
+		public void btcAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				request.setAttribute("btcAll", CoinService.getAllBtc());
+				url = "coinList.jsp";
+			}catch(Exception s){
+				request.setAttribute("errorMsg", s.getMessage());
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+		
+		// 날짜에 따른 비트코인 검색 
+		public void btc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			String url = "showError.jsp";
+			try {
+				request.setAttribute("btc", CoinService.getBtc(request.getParameter("btcDay")));
+				url = "btcDetail.jsp";
+			}catch(Exception s){
+				request.setAttribute("errorMsg", s.getMessage());
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+		
+		// 비트코인 데이터 삽입
+		protected void btcInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			String url = "showError.jsp";
+			String d = request.getParameter("hiddenData");
+			String[] data = d.split(",");
+			String date = null;
+			double price, volume;
+			int eid;
+			
+			try{
+				for (int i = 0; i < data.length; i++) {
+					date = data[i].split("/")[0];
+					price = Double.parseDouble(data[i].split("/")[1]);
+					volume = Double.parseDouble(data[i].split("/")[2]);
+					eid = Integer.parseInt(data[i].split("/")[3]);
+					BtcDTO btc = new BtcDTO(date, price, volume, eid);
+					boolean result = CoinService.addBtc(btc);
+					
+					if(result){
+						request.setAttribute("btc", btc);
+						request.setAttribute("successMsg", "삽입 완료");
+					}else{
+						request.setAttribute("errorMsg", "다시 시도하세요");
+					}
+				}
+			}catch(Exception s){
+				s.printStackTrace();
+				request.setAttribute("errorMsg", s.getMessage());
+			}
+		}
 	
 	
 //	protected void btcInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
