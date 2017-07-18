@@ -2,15 +2,15 @@ package coin.model.dto;
 
 public class BtcDTO {
 	String day;
-	int last_price;
-	int volume;
+	double last_price;
+	double volume;
 	int eid;
 	
 	public BtcDTO() {
 		super();
 	}
 
-	public BtcDTO(String day, int last_price, int volume, int eid) {
+	public BtcDTO(String day, double last_price, double volume, int eid) {
 		super();
 		this.day = day;
 		this.last_price = last_price;
@@ -26,19 +26,19 @@ public class BtcDTO {
 		this.day = day;
 	}
 
-	public int getLast_price() {
+	public double getLast_price() {
 		return last_price;
 	}
 
-	public void setLast_price(int last_price) {
+	public void setLast_price(double last_price) {
 		this.last_price = last_price;
 	}
 
-	public int getVolume() {
+	public double getVolume() {
 		return volume;
 	}
 
-	public void setVolume(int volume) {
+	public void setVolume(double volume) {
 		this.volume = volume;
 	}
 

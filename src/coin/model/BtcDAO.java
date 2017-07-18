@@ -21,23 +21,26 @@ public class BtcDAO {
 
 	// 비트코인 데이터 삽입
 	public static boolean addBtc(BtcDTO btc) throws SQLException {
+		System.out.println(2);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("addBtc"));
 			pstmt.setString(1, btc.getDay());
-			pstmt.setInt(2, btc.getLast_price());
-			pstmt.setInt(3, btc.getVolume());
+			pstmt.setDouble(2, btc.getLast_price());
+			pstmt.setDouble(3, btc.getVolume());
 			pstmt.setInt(4, btc.getEid());
 
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
 				return true;
 			}
+			
 		} finally {
 			DBUtil.close(con, pstmt);
 		}
+		
 		return false;
 	}
 
@@ -53,7 +56,7 @@ public class BtcDAO {
 			pstmt.setString(1, date);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
-				btc = new BtcDTO(rset.getString(1), rset.getInt(2), rset.getInt(3), rset.getInt(4));
+				btc = new BtcDTO(rset.getString(1), rset.getDouble(2), rset.getDouble(3), rset.getInt(4));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
@@ -74,7 +77,7 @@ public class BtcDAO {
 
 			list = new ArrayList<BtcDTO>();
 			while (rset.next()) {
-				list.add(new BtcDTO(rset.getString(1), rset.getInt(2), rset.getInt(3), rset.getInt(4)));
+				list.add(new BtcDTO(rset.getString(1), rset.getDouble(2), rset.getDouble(3), rset.getInt(4)));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
