@@ -18,8 +18,8 @@ DROP TABLE xrp cascade constraint;
 DROP TABLE dash cascade constraint;
 
 CREATE TABLE member (
-       mid          			VARCHAR2(30)  PRIMARY KEY,
-       mname               	VARCHAR2(30) NOT NULL,
+	   mid          			VARCHAR2(30)  PRIMARY KEY,
+	   mname               	VARCHAR2(30) NOT NULL,
        pw         				VARCHAR2(30) NOT NULL,
        email                	VARCHAR2(50) NOT NULL
 );
