@@ -97,7 +97,7 @@
 									</div>
 									<br>
 									
-									<input type="hidden" name="command" value="memberInsert" />
+									<input type="hidden" name="command" value="coinInfoInsert" />
 									
 									<ul class="actions" style="margin:0 auto !important; width:50%;">
 										<li><input type="submit" value="Áö°©¿¡ µî·Ï" class="special" /></li>
