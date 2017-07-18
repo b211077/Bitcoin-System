@@ -1,4 +1,6 @@
-
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html>
 
@@ -14,7 +16,7 @@
  		<!-- <link href="https://cdn.rawgit.com/YJSoft/Webfonts/0.1/BM_HANNA.css"  rel="stylesheet" type="text/css" /> -->
 	</head>
 	<style type="text/css">
-		/*  * {font-family:'BM HANNA','ë°°ë‹¬ì˜ë¯¼ì¡± í•œë‚˜ ' !important, sans-serif; } */
+		/*  * {font-family:'BM HANNA','¹è´ÞÀÇ¹ÎÁ· ÇÑ³ª ' !important, sans-serif; } */
 	</style>
 	<body>
 
@@ -23,10 +25,16 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<a href="index.html" class="logo"><strong>ì´ë¦„ì´ ì—†ì–´ìš”....</strong></a>
+						<a href="index.jsp" class="logo"><strong>ÀÌ¸§ÀÌ ¾ø¾î¿ä....</strong></a>
 						<nav>
+						
+						<c:if test="${empty sessionScope.member}">
 							<p><a href="join.html">JOIN</a></p>
 							<p><a href="login.html">LOGIN</a></p>
+						</c:if>
+						<c:if test="${not empty sessionScope.member}">
+							<p><a href="coin?command=logout">logout</a></p>
+						</c:if>
 							<a href="#menu">Menu</a>
 						</nav>
 					</header>
@@ -34,10 +42,10 @@
 				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
-							<li><a href="index.html">Home</a></li>
+							<li><a href="index.jsp">Home</a></li>
 							<li><a href="landing.html">Landing</a></li>
 							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
+							<li><a href="elements.jsp">Elements</a></li>
 						</ul>
 						<ul class="actions vertical">
 							<li><a href="#" class="button special fit">Get Started</a></li>
@@ -49,12 +57,12 @@
 					<section id="banner" class="major" style="height:700px;">
 						<div class="inner">
 							<header class="major">
-								<h1>ë¹„íŠ¸ì½”ì¸ ì‹œì„¸ ë¹„êµ ì„œë¹„ìŠ¤ ìž…ë‹ˆë‹¤.</h1>
+								<h1>ºñÆ®ÄÚÀÎ ½Ã¼¼ ºñ±³ ¼­ºñ½º ÀÔ´Ï´Ù.</h1>
 							</header>
 							<div class="content">
-								<p>ì´ë¦„ì€ ì•„ì§ ì—†ìŠµë‹ˆë‹¤.. ê·¸ëƒ¥ ì‹œì„¸ ë¹„êµ ì‚¬ì´íŠ¸...</p>
+								<p>ÀÌ¸§Àº ¾ÆÁ÷ ¾ø½À´Ï´Ù.. ±×³É ½Ã¼¼ ºñ±³ »çÀÌÆ®...</p>
 								<ul class="actions">
-									<li><a href="#hihi" class="button next scrolly">ì‹œìž‘í•˜ê¸°</a></li>
+									<li><a href="#hihi" class="button next scrolly">½ÃÀÛÇÏ±â</a></li>
 								</ul>
 							</div>
 						</div>
@@ -184,7 +192,7 @@
 						<h3>
 							<a href="generic.html" class="link">ETH</a>
 						</h3>
-						<p>ì´ë”ë¦¬ì›€</p>
+						<p>ÀÌ´õ¸®¿ò</p>
 					</header>
 				</article>
 				<article>
@@ -195,7 +203,7 @@
 						<h3>
 							<a href="generic.html" class="link">BTC</a>
 						</h3>
-						<p>ë¹„íŠ¸ì½”ì¸</p>
+						<p>ºñÆ®ÄÚÀÎ</p>
 					</header>
 				</article>
 				<article>
@@ -206,7 +214,7 @@
 						<h3>
 							<a href="generic.html" class="link">DASH</a>
 						</h3>
-						<p>ëŒ€ì‰¬ì½”ì¸</p>
+						<p>´ë½¬ÄÚÀÎ</p>
 					</header>
 				</article>
 				<article>
@@ -217,7 +225,7 @@
 						<h3>
 							<a href="generic.html" class="link">LTC</a>
 						</h3>
-						<p>ë¼ì´íŠ¸ì½”ì¸</p>
+						<p>¶óÀÌÆ®ÄÚÀÎ</p>
 					</header>
 				</article>
 				<article>
@@ -228,7 +236,7 @@
 						<h3>
 							<a href="generic.html" class="link">ETC</a>
 						</h3>
-						<p>ì´ë”ë¦¬ì›€ í´ëž˜ì‹</p>
+						<p>ÀÌ´õ¸®¿ò Å¬·¡½Ä</p>
 					</header>
 				</article>
 				<article>
@@ -239,7 +247,7 @@
 						<h3>
 							<a href="generic.html" class="link">XRP</a>
 						</h3>
-						<p>ë¦¬í”Œ</p>
+						<p>¸®ÇÃ</p>
 					</header>
 				</article>
 			</section>
@@ -248,15 +256,15 @@
 			<section id="two">
 				<div class="inner">
 					<header class="major">
-						<h2>ë¹„íŠ¸ì½”ì¸ ì‹œì„¸ ì¡°íšŒ ì„œë¹„ìŠ¤</h2>
+						<h2>ºñÆ®ÄÚÀÎ ½Ã¼¼ Á¶È¸ ¼­ºñ½º</h2>
 					</header>
-					<p style="font-size: 13px;">'ë¹„íŠ¸ì½”ì¸ ì‹œì„¸ ì¡°íšŒ' ì„œë¹„ìŠ¤ëŠ” ê°€ìƒí™”íì˜ ë‹¤ì–‘í•œ ì¢…ë¥˜, ê·¸ë¦¬ê³ 
-						ê±°ëž˜ì†Œ ë³„ ì‹œì„¸ ì°¨ì´ë¥¼ í•œ ëˆˆì— ì‰½ê²Œ ê·¸ëž˜í”„ ì°¨íŠ¸ë¡œ ì œê³µí•˜ëŠ” ê²ƒì„ ëª©ì ìœ¼ë¡œ í•©ë‹ˆë‹¤.</p>
-					<p style="font-size: 13px;">'ë¹„íŠ¸ì½”ì¸ ì‹œì„¸ ì¡°íšŒ' ì„œë¹„ìŠ¤ë¥¼ í†µí•´, ì‚¬ìš©ìžë“¤ì€ ë‹¤ì–‘í•œ
-						ê°€ìƒí™”íì˜ ì‹œì„¸ì™€ ê±°ëž˜ì†Œ ë³„ ì‹œì„¸ ì°¨ì´ë¥¼ íŽ¸í•˜ê²Œ íŒŒì•…í•˜ê³  ìˆ˜ìµë¥  ì¦ì§„ì— ë„ì›€ë°›ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</p>
-					<p style="font-size: 13px;">ë˜í•œ 'ë‚´ ì§€ê°‘ ê´€ë¦¬' ê¸°ëŠ¥ì„ í†µí•´, ì‚¬ìš©ìžê°€ ì§ì ‘ ë³¸ì¸ì´
-						êµ¬ë§¤í•œ ê°€ìƒí™”íì˜ ì¢…ë¥˜ì™€ ê¸ˆì•¡ì„ ìž…ë ¥í•˜ê³ , í˜„ìž¬ ì‹œì„¸ì™€ ë¹„êµí•˜ì—¬ í˜„ìž¬ ë§¤ë„ ì‹œ ì–»ì„ ìˆ˜ ìžˆëŠ” ìˆ˜ìµë¥ ì„ ìžë™ ê³„ì‚°í•˜ëŠ”
-						ê¸°ëŠ¥ì„ ì¶”ê°€ë¡œ ì œê³µí•©ë‹ˆë‹¤.</p>
+					<p style="font-size: 13px;">'ºñÆ®ÄÚÀÎ ½Ã¼¼ Á¶È¸' ¼­ºñ½º´Â °¡»óÈ­ÆóÀÇ ´Ù¾çÇÑ Á¾·ù, ±×¸®°í
+						°Å·¡¼Ò º° ½Ã¼¼ Â÷ÀÌ¸¦ ÇÑ ´«¿¡ ½±°Ô ±×·¡ÇÁ Â÷Æ®·Î Á¦°øÇÏ´Â °ÍÀ» ¸ñÀûÀ¸·Î ÇÕ´Ï´Ù.</p>
+					<p style="font-size: 13px;">'ºñÆ®ÄÚÀÎ ½Ã¼¼ Á¶È¸' ¼­ºñ½º¸¦ ÅëÇØ, »ç¿ëÀÚµéÀº ´Ù¾çÇÑ
+						°¡»óÈ­ÆóÀÇ ½Ã¼¼¿Í °Å·¡¼Ò º° ½Ã¼¼ Â÷ÀÌ¸¦ ÆíÇÏ°Ô ÆÄ¾ÇÇÏ°í ¼öÀÍ·ü ÁõÁø¿¡ µµ¿ò¹ÞÀ» ¼ö ÀÖ½À´Ï´Ù.</p>
+					<p style="font-size: 13px;">¶ÇÇÑ '³» Áö°© °ü¸®' ±â´ÉÀ» ÅëÇØ, »ç¿ëÀÚ°¡ Á÷Á¢ º»ÀÎÀÌ
+						±¸¸ÅÇÑ °¡»óÈ­ÆóÀÇ Á¾·ù¿Í ±Ý¾×À» ÀÔ·ÂÇÏ°í, ÇöÀç ½Ã¼¼¿Í ºñ±³ÇÏ¿© ÇöÀç ¸Åµµ ½Ã ¾òÀ» ¼ö ÀÖ´Â ¼öÀÍ·üÀ» ÀÚµ¿ °è»êÇÏ´Â
+						±â´ÉÀ» Ãß°¡·Î Á¦°øÇÕ´Ï´Ù.</p>
 					<ul class="actions">
 						<li><a href="landing.html" class="button next">Get
 								Started</a></li>
@@ -272,7 +280,7 @@
 			<div class="inner"
 				style="padding: 10px !important; text-align: center; width: 60%;">
 				<ul class="copyright">
-					<li>â“’ 2017. kData Bitcoin Viewer Team all rights reserved.</li>
+					<li>¨Ï 2017. kData Bitcoin Viewer Team all rights reserved.</li>
 				</ul>
 			</div>
 		</footer>
