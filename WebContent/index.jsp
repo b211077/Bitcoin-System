@@ -92,9 +92,7 @@
                      $("#PDASH").text(pdash_c);
                      $("#PLTC").text(pltc_c);
                      $("#PETC").text(petc_c);
-                     $("#PXRP").text(pxrp_c);
-<<<<<<< HEAD
-                     
+                     $("#PXRP").text(pxrp_c);                
                      if(btc_c>pbtc_c){
                      tempval = (btc_c - pbtc_c)/btc_c*100;
                      $("#BTC_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ก่)");   
@@ -143,10 +141,6 @@
                      tempval = (pxrp_c-xrp_c)/xrp_c*100;
                      $("#XRP_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ก่)");
                      } 
-=======
-                     tempval = btc_c / pbtc_c;
-                     $("#BTC_p").text(tempval.toFixed(2) + "%");
->>>>>>> 35fb602e2f7025c1cf830ab0a31de6ba68abd675
                   }
                });
             }
