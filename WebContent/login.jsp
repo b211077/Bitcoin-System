@@ -44,6 +44,7 @@ form .field.half {
 					</p>
 				</c:if>
 				<c:if test="${not empty sessionScope.member}">
+					<p>${sessionScope.member.id}(${sessionScope.member.name})</p>
 					<p>
 						<a href="coin?command=logout">logout</a>
 					</p>
@@ -61,7 +62,7 @@ form .field.half {
 				<li><a href="elements.jsp">Elements</a></li>
 			</ul>
 			<ul class="actions vertical">
-				<li><a href="#hihi" class="button special fit">Get Started</a></li>
+				<li><a href="index.jsp#hihi" class="button special fit">Get Started</a></li>
                     <c:if test="${empty sessionScope.member}">
                     	<li><a href="login.jsp" class="button fit">Log In</a></li>		
 				</c:if>
