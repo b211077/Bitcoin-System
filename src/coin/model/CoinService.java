@@ -10,7 +10,6 @@ import coin.model.dto.EtcDTO;
 import coin.model.dto.EthDTO;
 import coin.model.dto.LtcDTO;
 import coin.model.dto.XrpDTO;
-
 public class CoinService {
 
 	public static void notExistProbono(String date) throws NotExistException, SQLException{

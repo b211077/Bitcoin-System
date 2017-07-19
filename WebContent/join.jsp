@@ -1,3 +1,13 @@
+<<<<<<< HEAD:WebContent/join.jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
 		<title>Generic - Forty by HTML5 UP</title>
@@ -36,13 +46,18 @@
 					<nav id="menu">
 						<ul class="links">
 							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
+							<li><a href="coin?command=wallet">wallet</a></li>
+			                <li><a href="coin?command=wallet">Generic</a></li>
 							<li><a href="elements.html">Elements</a></li>
 						</ul>
 						<ul class="actions vertical">
-							<li><a href="#" class="button special fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
+							<li><a href="#hihi" class="button special fit">Get Started</a></li>
+			                    <c:if test="${empty sessionScope.member}">
+			                    	<li><a href="login.jsp" class="button fit">Log In</a></li>		
+							</c:if>
+							<c:if test="${not empty sessionScope.member}">
+								<li><a href="coin?command=logout" class="button fit">Log Out</a></li>	
+							</c:if>
 						</ul>
 					</nav>
 
@@ -52,21 +67,21 @@
 							<section>
 								<form method="post" action="coin">
 								<h2 style="text-align:center; border-bottom:2px solid; border-bottom-color:white; margin-bottom:80px;
-								margin-top:0px !important;">Ìöå&nbsp;&nbsp;&nbsp;Ïõê&nbsp;&nbsp;&nbsp;Í∞Ä&nbsp;&nbsp;&nbsp;ÏûÖ</h2>
+								margin-top:0px !important;">»∏&nbsp;&nbsp;&nbsp;ø¯&nbsp;&nbsp;&nbsp;∞°&nbsp;&nbsp;&nbsp;¿‘</h2>
 									<div class="field half">
-										<label for="name">Ïù¥Î¶Ñ</label>
+										<label for="name">¿Ã∏ß</label>
 										<input type="text" name="name" id="name" />
 									</div>
 									<div class="field half">
-										<label for="id">ÏïÑÏù¥Îîî</label>
+										<label for="id">æ∆¿Ãµ</label>
 										<input type="text" name="id" id="id" />
 									</div>
 									<div class="field half">
-										<label for="pw">ÎπÑÎ∞ÄÎ≤àÌò∏</label>
+										<label for="pw">∫Òπ–π¯»£</label>
 										<input type="password" name="pw" id="pw" />
 									</div>
 									<div class="field half">
-										<label for="email">Ïù¥Î©îÏùº</label>
+										<label for="email">¿Ã∏ﬁ¿œ</label>
 										<input type="text" name="email" id="email" />
 									</div>
 									<!-- <div class="field">
@@ -78,8 +93,8 @@
 									<input type="hidden" name="command" value="memberInsert" />
 									
 									<ul class="actions" style="margin:0 auto !important; width:44%;">
-										<li><input type="submit" value="Í∞ÄÏûÖ Ïã†Ï≤≠" class="special" /></li>
-										<li><input type="reset" value="Îã§Ïãú ÏûëÏÑ±" /></li>
+										<li><input type="submit" value="∞°¿‘ Ω≈√ª" class="special" /></li>
+										<li><input type="reset" value="¥ŸΩ√ ¿€º∫" /></li>
 									</ul>
 								</form>
 							</section>
@@ -90,7 +105,7 @@
 					<footer id="footer">
 						<div class="inner" style="padding:10px !important; text-align:center; width:60%;">
 							<ul class="copyright" >
-								<li>‚ìí 2017. kData Bitcoin Viewer Team all rights reserved.</li>
+								<li>®œ 2017. kData Bitcoin Viewer Team all rights reserved.</li>
 							</ul>
 						</div>
 						

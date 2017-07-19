@@ -27,6 +27,24 @@
 				border-right:0px !important;
 			}
 		</style>
+		<script type="text/javascript">
+			function coinInfo(c){
+				$.ajax({
+					url : "coin",
+					data : {
+						command: "coinInfo",
+						coinName: c
+						},
+					method : "post",
+					dataType: "html",
+					success : function(responseData) {
+						var data = JSON.parse(responseData);
+						$("#amount").val(data.amount);
+						$("#price").val(data.price);
+					}
+				});
+			}
+		</script>
 	</head>
 	<body>
 
@@ -40,10 +58,10 @@
 			<nav>
 				<c:if test="${empty sessionScope.member}">
 					<p>
-						<a href="join.html">JOIN</a>
+						<a href="join.jsp">JOIN</a>
 					</p>
 					<p>
-						<a href="login.html">LOGIN</a>
+						<a href="login.jsp">LOGIN</a>
 					</p>
 				</c:if>
 				<c:if test="${not empty sessionScope.member}">
@@ -58,14 +76,19 @@
 		<!-- Menu -->
 		<nav id="menu">
 			<ul class="links">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="wallet.jsp">wallet</a></li>
-				<li><a href="generic.html">Generic</a></li>
-				<li><a href="elements.html">Elements</a></li>
+				<li><a href="index.jsp">Home</a></li>
+				<li><a href="coin?command=wallet">wallet</a></li>
+                <li><a href="coin?command=wallet">Generic</a></li>
+				<li><a href="elements.jsp">Elements</a></li>
 			</ul>
 			<ul class="actions vertical">
-				<li><a href="#" class="button special fit">Get Started</a></li>
-				<li><a href="#" class="button fit">Log In</a></li>
+				<li><a href="#hihi" class="button special fit">Get Started</a></li>
+                    <c:if test="${empty sessionScope.member}">
+                    	<li><a href="login.jsp" class="button fit">Log In</a></li>		
+				</c:if>
+				<c:if test="${not empty sessionScope.member}">
+					<li><a href="coin?command=logout" class="button fit">Log Out</a></li>	
+				</c:if>
 			</ul>
 		</nav>
 
@@ -78,7 +101,8 @@
 								margin-top:0px !important;">지&nbsp;&nbsp;&nbsp;갑&nbsp;&nbsp;&nbsp;관&nbsp;&nbsp;&nbsp;리</h2>
 									<div class="field half">
 										<label for="cname">코인 종류</label>
-										<select name="cname" id="cname">
+										<select name="cname" id="cname" onChange="coinInfo(this.value)">
+											<option value="empty" style="color:navy !important;">( 코인 종류 선택 )</option>
 											<option value="BTC" style="color:navy !important;">비트코인</option>
 											<option value="ETH" style="color:navy !important;">이더리움</option>
 											<option value="DASH" style="color:navy !important;">대쉬코인</option>
@@ -89,15 +113,15 @@
 									</div>
 									<div class="field half">
 										<label for="id">수량</label>
-										<input type="text" name="id" id="id" />
+										<input type="text" name="amount" id="amount" />
 									</div>
 									<div class="field half">
 										<label for="pw">금액</label>
-										<input type="text" name="pw" id="pw" />
+										<input type="text" name="price" id="price" />
 									</div>
 									<br>
 									
-									<input type="hidden" name="command" value="coinInfoInsert" />
+									<input type="hidden" name="command" value="coinInfoUpdate" />
 									
 									<ul class="actions" style="margin:0 auto !important; width:50%;">
 										<li><input type="submit" value="지갑에 등록" class="special" /></li>

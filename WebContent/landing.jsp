@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <!--
 	Forty by HTML5 UP
@@ -27,7 +30,7 @@
 				<!-- Header -->
 				<!-- Note: The "styleN" class below should match that of the banner element. -->
 					<header id="header" class="alt style2">
-						<a href="index.html" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
+						<a href="index.jsp" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -36,14 +39,19 @@
 				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
+							<li><a href="index.jsp">Home</a></li>
+							<li><a href="coin?command=wallet">wallet</a></li>
+			                <li><a href="coin?command=wallet">Generic</a></li>
+							<li><a href="elements.jsp">Elements</a></li>
 						</ul>
 						<ul class="actions vertical">
-							<li><a href="#" class="button special fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
+							<li><a href="#hihi" class="button special fit">Get Started</a></li>
+			                    <c:if test="${empty sessionScope.member}">
+			                    	<li><a href="login.jsp" class="button fit">Log In</a></li>		
+							</c:if>
+							<c:if test="${not empty sessionScope.member}">
+								<li><a href="coin?command=logout" class="button fit">Log Out</a></li>	
+							</c:if>
 						</ul>
 					</nav>
 
@@ -88,8 +96,8 @@
 			<ul class="actions"
 				style="width: 15%; margin: 20px auto; margin-bottom: 100px;">
 				<li>
-					<button id="clickButton" onclick="openVolume()">ê±°ëž˜ëŸ‰ë³´ê¸°</button>
-					<button id="clickButton2" onclick="openVolume()">ì‹œì„¸ë³´ê¸°</button>
+					<button id="clickButton" onclick="openVolume()">°Å·¡·®º¸±â</button>
+					<button id="clickButton2" onclick="openVolume()">½Ã¼¼º¸±â</button>
 				</li>
 			</ul>
 			<script>
@@ -122,7 +130,7 @@
 			<!-- Two -->
 			<section id="two" class="spotlights">
 				<section>
-					<a href="generic.html" class="image"> <img
+					<a href="generic.jsp" class="image"> <img
 						src="images/pic08.jpg" alt="" data-position="center center" />
 					</a>
 					<div class="content">
@@ -136,13 +144,13 @@
 								pellentesque lorem ipsum dolor. Nullam et orci eu lorem
 								consequat tincidunt. Vivamus et sagittis tempus.</p>
 							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn more</a></li>
+								<li><a href="generic.jsp" class="button">Learn more</a></li>
 							</ul>
 						</div>
 					</div>
 				</section>
 				<section>
-					<a href="generic.html" class="image"> <img
+					<a href="generic.jsp" class="image"> <img
 						src="images/pic09.jpg" alt="" data-position="top center" />
 					</a>
 					<div class="content">
@@ -156,7 +164,7 @@
 								pellentesque lorem ipsum dolor. Nullam et orci eu lorem
 								consequat tincidunt. Vivamus et sagittis tempus.</p>
 							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn more</a></li>
+								<li><a href="generic.jsp" class="button">Learn more</a></li>
 							</ul>
 						</div>
 					</div>
@@ -164,7 +172,7 @@
 				
 
 				<section>
-					<a href="generic.html" class="image"> <img
+					<a href="generic.jsp" class="image"> <img
 						src="images/pic10.jpg" alt="" data-position="25% 25%" />
 					</a>
 					<div class="content">
@@ -178,7 +186,7 @@
 								pellentesque lorem ipsum dolor. Nullam et orci eu lorem
 								consequat tincidunt. Vivamus et sagittis tempus.</p>
 							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn more</a></li>
+								<li><a href="generic.jsp" class="button">Learn more</a></li>
 							</ul>
 						</div>
 					</div>
@@ -193,7 +201,7 @@
 									</header>
 									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
 									<ul class="actions">
-										<li><a href="generic.html" class="button next">Get Started</a></li>
+										<li><a href="generic.jsp" class="button next">Get Started</a></li>
 									</ul>
 								</div>
 							</section>

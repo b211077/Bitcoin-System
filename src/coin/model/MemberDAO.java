@@ -16,12 +16,13 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import coin.model.dto.MemberDTO;
+import coin.model.dto.WalletCoinDTO;
 import coin.model.util.DBUtil;
 
 public class MemberDAO {
 	static ResourceBundle sql = DBUtil.getResourceBundle();
 
-	public static boolean addMember(MemberDTO member) {// throws SQLException {
+	public static boolean addMember(MemberDTO member) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -54,8 +55,6 @@ public class MemberDAO {
 			if (result == 1) {
 				return true;
 			}
-		}catch(Exception e) {
-			e.printStackTrace();
 		} finally {
 			DBUtil.close(con, pstmt);
 		}
@@ -144,5 +143,46 @@ public class MemberDAO {
 			DBUtil.close(con, pstmt, rset);
 		}
 		return list;
+	}
+	// 모든 코인 정보 조회
+	public static ArrayList<WalletCoinDTO> getWalletCoin(String memberId) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<WalletCoinDTO> list = null;
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getWalletCoin"));
+			pstmt.setString(1, memberId);
+			rset = pstmt.executeQuery();
+			list = new ArrayList<WalletCoinDTO>();
+			while (rset.next()) {
+				list.add(new WalletCoinDTO(rset.getString(2), rset.getInt(3), rset.getInt(4)));
+			}
+		} finally {
+			DBUtil.close(con, pstmt, rset);
+		}
+		return list;
+	}
+	
+	// 코인 정보 수정
+	public static boolean updateCoin(String memberId, String cName, int amount, int price) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("updateCoin"));
+			pstmt.setInt(1, amount);
+			pstmt.setInt(2, price);
+			pstmt.setString(3, cName);
+			pstmt.setString(4, memberId);
+			int result = pstmt.executeUpdate();
+			if (result == 1) {
+				return true;
+			}
+		} finally {
+			DBUtil.close(con, pstmt);
+		}
+		return false;
 	}
 }
