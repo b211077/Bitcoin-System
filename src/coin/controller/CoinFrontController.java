@@ -11,7 +11,12 @@ import javax.servlet.http.HttpSession;
 import coin.model.CoinService;
 import coin.model.MemberService;
 import coin.model.dto.BtcDTO;
+import coin.model.dto.DashDTO;
+import coin.model.dto.EtcDTO;
+import coin.model.dto.EthDTO;
+import coin.model.dto.LtcDTO;
 import coin.model.dto.MemberDTO;
+import coin.model.dto.XrpDTO;
 
 public class CoinFrontController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,6 +47,16 @@ public class CoinFrontController extends HttpServlet {
 					btc(request, response);
 				}else if(command.equals("btcInsert")){	// 비트코인 추가 등록
 					btcInsert(request, response);   
+				}else if(command.equals("ethInsert")){	// 비트코인 추가 등록
+					ethInsert(request, response);   
+				}else if(command.equals("ltcInsert")){	// 비트코인 추가 등록
+					ltcInsert(request, response);   
+				}else if(command.equals("etcInsert")){	// 비트코인 추가 등록
+					etcInsert(request, response);   
+				}else if(command.equals("xrpInsert")){	// 비트코인 추가 등록
+					xrpInsert(request, response);   
+				}else if(command.equals("dashInsert")){	// 비트코인 추가 등록
+					dashInsert(request, response);   
 				}
 				else{
 					request.setAttribute("errorMsg", "로그인 후 이용해주세요");
@@ -50,20 +65,6 @@ public class CoinFrontController extends HttpServlet {
 			}else{
 				response.sendRedirect("index.jsp");
 			}
-			
-//			else if(command.equals("activistAll")){//모든 재능 기부자 검색
-//				activistAll(request, response);
-//			}else if(command.equals("activist")){//특정 재능 기부자 정보 검색
-//				activist(request, response);
-//			}else if(command.equals("activistInsert")){//재능 기부자 추가 등록
-//				activistInsert(request, response);
-//			}else if(command.equals("activistUpdateReq")){//재능 기부자 정보 수정요청
-//				activistUpdateReq(request, response);
-//			}else if(command.equals("activistUpdate")){//재능 기부자 정보 수정
-//				activistUpdate(request, response);
-//			}else if(command.equals("activistDelete")){//재능 기부자 탈퇴[삭제]
-//				activistDelete(request, response);
-//			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
 			request.getRequestDispatcher("showError.jsp").forward(request, response);
@@ -71,46 +72,7 @@ public class CoinFrontController extends HttpServlet {
 		}
 	}
 	
-
-//	//모두 ProbonoProject 검색 메소드
-//	public void probonoProjectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String url = "showError.jsp";
-//		try {
-//			request.setAttribute("probonoProjectAll", ProbonoService.getAllProbonoProjects());
-//			url = "probonoProjectList.jsp";
-//		}catch(Exception s){
-//			request.setAttribute("errorMsg", s.getMessage());
-//		}
-//		request.getRequestDispatcher(url).forward(request, response);
-//	}
-//	
-//	//???
-//	//모든 재능 기부자 검색 - 검색된 데이터 출력 화면[activistList.jsp]
-//	public void activistAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String url = "showError.jsp";
-//		try {
-//			request.setAttribute("activistAll", ProbonoService.getAllActivists());
-//			url = "activistList.jsp";
-//		}catch(Exception s){
-//			request.setAttribute("errorMsg", s.getMessage());
-//		}
-//		request.getRequestDispatcher(url).forward(request, response);
-//	}
-//	
-//	//재능 기부자 검색 
-//	public void activist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String url = "showError.jsp";
-//		try {
-//			request.setAttribute("activist", ProbonoService.getActivist(request.getParameter("activistId")));
-//			url = "activistDetail.jsp";
-//		}catch(Exception s){
-//			request.setAttribute("errorMsg", s.getMessage());
-//		}
-//		request.getRequestDispatcher(url).forward(request, response);
-//	}
-//	
-
-	//재능 기부자 가입 메소드
+	// 가입 메소드
 	protected void memberInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 		
@@ -163,6 +125,7 @@ public class CoinFrontController extends HttpServlet {
 		
 		request.getRequestDispatcher(url).forward(request, response);
 	}
+	
 	protected void memberLogout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 		
@@ -179,84 +142,268 @@ public class CoinFrontController extends HttpServlet {
 	}
 	
 	// 모든 비트코인 검색
-		public void btcAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String url = "showError.jsp";
-			try {
-				request.setAttribute("btcAll", CoinService.getAllBtc());
-				url = "coinList.jsp";
-			}catch(Exception s){
-				request.setAttribute("errorMsg", s.getMessage());
-			}
-			request.getRequestDispatcher(url).forward(request, response);
+	public void btcAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		try {
+			request.setAttribute("btcAll", CoinService.getAllBtc());
+			url = "coinList.jsp";
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
 		}
-		
-		// 날짜에 따른 비트코인 검색 
-		public void btc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String url = "showError.jsp";
-			try {
-				request.setAttribute("btc", CoinService.getBtc(request.getParameter("btcDay")));
-				url = "btcDetail.jsp";
-			}catch(Exception s){
-				request.setAttribute("errorMsg", s.getMessage());
-			}
-			request.getRequestDispatcher(url).forward(request, response);
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+
+	// 날짜에 따른 비트코인 검색
+	public void btc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		try {
+			request.setAttribute("btc", CoinService.getBtc(request.getParameter("btcDay")));
+			url = "btcDetail.jsp";
+		} catch (Exception s) {
+			request.setAttribute("errorMsg", s.getMessage());
 		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
 		
-		// 비트코인 데이터 삽입
-		protected void btcInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	// 비트코인 데이터 삽입
+	protected void btcInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		String date = null;
+		double price, volume;
+		int eid;
+		boolean result = false;
+		String[] data = request.getParameter("btcData").split(",");
+
+		try {
+			for (int i = 0; i < data.length; i++) {
+				date = data[i].split("/")[0];
+				price = Double.parseDouble(data[i].split("/")[1]);
+				volume = Double.parseDouble(data[i].split("/")[2]);
+				eid = Integer.parseInt(data[i].split("/")[3]);
+				BtcDTO btc = new BtcDTO(date, price, volume, eid);
+				result = CoinService.addBtc(btc);
+			}
+			if (result) {
+				request.setAttribute("errorMsg", "삽입 완료");
+				url = "showError.jsp";
+			} else {
+				request.setAttribute("errorMsg", "다시 시도하세요");
+			}
+		} catch (Exception s) {
+			s.printStackTrace();
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+	
+	// 이더리움 데이터 삽입
+	protected void ethInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		String date = null;
+		double price, volume;
+		int eid;
+		boolean result = false;
+		String[] data = request.getParameter("ethData").split(",");
+
+		try {
+			for (int i = 0; i < data.length; i++) {
+				date = data[i].split("/")[0];
+				price = Double.parseDouble(data[i].split("/")[1]);
+				volume = Double.parseDouble(data[i].split("/")[2]);
+				eid = Integer.parseInt(data[i].split("/")[3]);
+				EthDTO eth = new EthDTO(date, price, volume, eid);
+				result = CoinService.addEth(eth);
+			}
+			if (result) {
+				request.setAttribute("errorMsg", "삽입 완료");
+				url = "showError.jsp";
+			} else {
+				request.setAttribute("errorMsg", "다시 시도하세요");
+			}
+		} catch (Exception s) {
+			s.printStackTrace();
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+	
+	// 라이트코인 데이터 삽입
+	protected void ltcInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String url = "showError.jsp";
-			String d = request.getParameter("hiddenData");
-			String[] data = d.split(",");
 			String date = null;
 			double price, volume;
 			int eid;
-			
-			try{
+			boolean result = false;
+			String[] data = request.getParameter("ltcData").split(",");
+
+			try {
 				for (int i = 0; i < data.length; i++) {
 					date = data[i].split("/")[0];
 					price = Double.parseDouble(data[i].split("/")[1]);
 					volume = Double.parseDouble(data[i].split("/")[2]);
 					eid = Integer.parseInt(data[i].split("/")[3]);
-					BtcDTO btc = new BtcDTO(date, price, volume, eid);
-					boolean result = CoinService.addBtc(btc);
-					
-					if(result){
-						request.setAttribute("btc", btc);
-						request.setAttribute("successMsg", "삽입 완료");
-					}else{
-						request.setAttribute("errorMsg", "다시 시도하세요");
-					}
+					LtcDTO ltc = new LtcDTO(date, price, volume, eid);
+					result = CoinService.addLtc(ltc);
 				}
-			}catch(Exception s){
+				if (result) {
+					request.setAttribute("errorMsg", "삽입 완료");
+					url = "showError.jsp";
+				} else {
+					request.setAttribute("errorMsg", "다시 시도하세요");
+				}
+			} catch (Exception s) {
 				s.printStackTrace();
 				request.setAttribute("errorMsg", s.getMessage());
 			}
+			request.getRequestDispatcher(url).forward(request, response);
 		}
 	
+	// 이더리움클래식 데이터 삽입
+	protected void etcInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		String date = null;
+		double price, volume;
+		int eid;
+		boolean result = false;
+		String[] data = request.getParameter("etcData").split(",");
+
+		try {
+			for (int i = 0; i < data.length; i++) {
+				date = data[i].split("/")[0];
+				price = Double.parseDouble(data[i].split("/")[1]);
+				volume = Double.parseDouble(data[i].split("/")[2]);
+				eid = Integer.parseInt(data[i].split("/")[3]);
+				EtcDTO etc = new EtcDTO(date, price, volume, eid);
+				result = CoinService.addEtc(etc);
+			}
+			if (result) {
+				request.setAttribute("errorMsg", "삽입 완료");
+				url = "showError.jsp";
+			} else {
+				request.setAttribute("errorMsg", "다시 시도하세요");
+			}
+		} catch (Exception s) {
+			s.printStackTrace();
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
 	
-//	protected void btcInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String url = "showError.jsp";
-//		
-//		String command = request.getParameter("command");
-//		
-//		String array = request.getParameter("array");
-//		
-//		try{
-//			System.out.println(command+"------------"+array);
-//			
-//			
-//			request.getSession(true).invalidate();
-//			request.setAttribute("successMsg", "로그아웃 성공");
-//			url = "index.jsp";
-//		}catch(Exception s){
-//			s.printStackTrace();
-//			request.setAttribute("errorMsg", s.getMessage());
-//		}
-//		
-//		request.getRequestDispatcher(url).forward(request, response);
+	// 리플 데이터 삽입
+	protected void xrpInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		String date = null;
+		double price, volume;
+		int eid;
+		boolean result = false;
+		String[] data = request.getParameter("xrpData").split(",");
+
+		try {
+			for (int i = 0; i < data.length; i++) {
+				date = data[i].split("/")[0];
+				price = Double.parseDouble(data[i].split("/")[1]);
+				volume = Double.parseDouble(data[i].split("/")[2]);
+				eid = Integer.parseInt(data[i].split("/")[3]);
+				XrpDTO xrp = new XrpDTO(date, price, volume, eid);
+				result = CoinService.addXrp(xrp);
+			}
+			if (result) {
+				request.setAttribute("errorMsg", "삽입 완료");
+				url = "showError.jsp";
+			} else {
+				request.setAttribute("errorMsg", "다시 시도하세요");
+			}
+		} catch (Exception s) {
+			s.printStackTrace();
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+		
+		// 대쉬 데이터 삽입
+	protected void dashInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "showError.jsp";
+		String date = null;
+		double price, volume;
+		int eid;
+		boolean result = false;
+		String[] data = request.getParameter("dashData").split(",");
+
+		try {
+			for (int i = 0; i < data.length; i++) {
+				date = data[i].split("/")[0];
+				price = Double.parseDouble(data[i].split("/")[1]);
+				volume = Double.parseDouble(data[i].split("/")[2]);
+				eid = Integer.parseInt(data[i].split("/")[3]);
+				DashDTO xrp = new DashDTO(date, price, volume, eid);
+				result = CoinService.addDash(xrp);
+			}
+			if (result) {
+				request.setAttribute("errorMsg", "삽입 완료");
+				url = "showError.jsp";
+			} else {
+				request.setAttribute("errorMsg", "다시 시도하세요");
+			}
+		} catch (Exception s) {
+			s.printStackTrace();
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+		
+//		else if(command.equals("activistAll")){//모든 재능 기부자 검색
+//		activistAll(request, response);
+//	}else if(command.equals("activist")){//특정 재능 기부자 정보 검색
+//		activist(request, response);
+//	}else if(command.equals("activistInsert")){//재능 기부자 추가 등록
+//		activistInsert(request, response);
+//	}else if(command.equals("activistUpdateReq")){//재능 기부자 정보 수정요청
+//		activistUpdateReq(request, response);
+//	}else if(command.equals("activistUpdate")){//재능 기부자 정보 수정
+//		activistUpdate(request, response);
+//	}else if(command.equals("activistDelete")){//재능 기부자 탈퇴[삭제]
+//		activistDelete(request, response);
 //	}
-	
-	
+
+
+//		//모두 ProbonoProject 검색 메소드
+//		public void probonoProjectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//			String url = "showError.jsp";
+//			try {
+//				request.setAttribute("probonoProjectAll", ProbonoService.getAllProbonoProjects());
+//				url = "probonoProjectList.jsp";
+//			}catch(Exception s){
+//				request.setAttribute("errorMsg", s.getMessage());
+//			}
+//			request.getRequestDispatcher(url).forward(request, response);
+//		}
+	//	
+//		//???
+//		//모든 재능 기부자 검색 - 검색된 데이터 출력 화면[activistList.jsp]
+//		public void activistAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//			String url = "showError.jsp";
+//			try {
+//				request.setAttribute("activistAll", ProbonoService.getAllActivists());
+//				url = "activistList.jsp";
+//			}catch(Exception s){
+//				request.setAttribute("errorMsg", s.getMessage());
+//			}
+//			request.getRequestDispatcher(url).forward(request, response);
+//		}
+	//	
+//		//재능 기부자 검색 
+//		public void activist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//			String url = "showError.jsp";
+//			try {
+//				request.setAttribute("activist", ProbonoService.getActivist(request.getParameter("activistId")));
+//				url = "activistDetail.jsp";
+//			}catch(Exception s){
+//				request.setAttribute("errorMsg", s.getMessage());
+//			}
+//			request.getRequestDispatcher(url).forward(request, response);
+//		}
+	//	
+
 	
 //	//재능 기부자 수정 요구
 //	public void activistUpdateReq(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
