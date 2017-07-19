@@ -57,7 +57,7 @@ form .field.half {
 			<ul class="links">
 				<li><a href="index.jsp">Home</a></li>
 				<li><a href="coin?command=wallet">wallet</a></li>
-                <li><a href="coin?command=wallet">Generic</a></li>
+                <li><a href="coin?command=generic">Generic</a></li>
 				<li><a href="elements.jsp">Elements</a></li>
 			</ul>
 			<ul class="actions vertical">
