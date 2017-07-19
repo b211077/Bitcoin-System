@@ -166,7 +166,7 @@ public class MemberDAO {
 	}
 	
 	// 코인 정보 수정
-	public static boolean updateCoin(String memberId, String cName, int amount, int price) throws SQLException {
+	public static boolean updateCoin(String memberId, String cName , int amount, int price) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {

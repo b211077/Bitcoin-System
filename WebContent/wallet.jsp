@@ -26,6 +26,7 @@
 				padding-right:0px !important;
 				border-right:0px !important;
 			}
+		
 		</style>
 		<script type="text/javascript">
 			function coinInfo(c){
@@ -114,13 +115,33 @@
 									</div>
 									<div class="field half">
 										<label for="id">수량</label>
-										<input type="text" name="amount" id="amount" />
+										<input type="text" name="amount" id="amount" readonly />
 									</div>
 									<div class="field half">
 										<label for="pw">금액</label>
-										<input type="text" name="price" id="price" />
+										<input type="text" name="price" id="price" readonly />
 									</div>
-									<br>
+									
+									<h3 style="text-align:center; border-bottom:1px dashed; border-bottom-color:white;">지갑 정보 수정</h3>
+									<div class="field half">
+										<div style="width:24%; float:left; margin-right:21px;">
+											<label for="cname">분류</label>
+											<select name="updateType" id="updateType" >
+												<option value="buy" style="color:navy !important;">구입</option>
+												<option value="sell" style="color:navy !important;">판매</option>
+											</select>
+										</div>
+										<div style="width:35%;  float:left; margin:0 auto;" >
+											<label for="pw">수량</label>
+											<input type="text" name="updateAmount" id="updateAmount" />
+										</div>
+										<div style="width:35%;  float:right;">
+											<label for="pw">금액</label>
+											<input type="text" name="updatePrice" id="updatePrice" />
+										</div>
+									</div>
+									
+									<br><br><br><br><br>
 									
 									<input type="hidden" name="command" value="coinInfoUpdate" />
 									
