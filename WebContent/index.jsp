@@ -25,6 +25,7 @@
 		<!-- 실시간 코인 값 받아오는 로직 -->
 		<!-- <div id="BTC"></div> -->
 		<script type="text/javascript">
+<<<<<<< HEAD
 		         var btc_c;
 		         var eth_c;
 		         var dash_c;
@@ -47,10 +48,16 @@
 
 				function myFun() {
 					$.ajax({
+=======
+		  var btc_c,eth_c,dash_c,ltc_c,etc_c,xrp_c;
+			function myFun() {
+				$.ajax({
+>>>>>>> 43961abac99b8e6b5de059433264885763940b8f
 					url : "bithumbUrl.jsp",
 					dataType : "html",
-					method : "GET",
+					method : "post",
 					success : function(result) {
+<<<<<<< HEAD
 						result = result.replace(/(\s*)/g, "");			
 						obj = eval("(" + result + ")");
 						if (obj.message == null){
@@ -67,10 +74,29 @@
 						$("#ETC").text(etc_c);
 						$("#XRP").text(xrp_c);
 					//	$("#PP").text(pbtc_c-pbtc1);
+=======
+						obj = JSON.parse(result);
+						if (obj.message == null){
+							btc_c = obj.data.BTC.closing_price;
+							eth_c = obj.data.ETH.closing_price;
+							dash_c = obj.data.DASH.closing_price;
+							ltc_c = obj.data.LTC.closing_price;
+							etc_c = obj.data.ETC.closing_price;
+							xrp_c = obj.data.XRP.closing_price;
+							$("#BTC").text(btc_c);
+							$("#ETH").text(eth_c);
+							$("#DASH").text(dash_c);
+							$("#LTC").text(ltc_c);
+							$("#ETC").text(etc_c);
+							$("#XRP").text(xrp_c);
+							tempval = btc_c * 10;
+							$("#BTC_p").text(tempval + "%");
+>>>>>>> 43961abac99b8e6b5de059433264885763940b8f
 						}
 					}
 				});
 			}
+<<<<<<< HEAD
 			   function myFun2() {
 					$.ajax({
 						url : "poloniexUrl.jsp",
@@ -110,6 +136,15 @@
 				myFunction();
 				myFunction2();
 				
+=======
+
+			function myFunction() {
+				myVar = setInterval(myFun, 5000);
+				
+			}
+			
+			myFunction();
+>>>>>>> 43961abac99b8e6b5de059433264885763940b8f
 		</script>
 		<!-- ---------------------------------- -->
 		<!-- Header -->
@@ -175,22 +210,14 @@
 			</div>
 		</section>
 
-		<div id="hihi" style="height: 600px">
+		<div id="hihi" style="height:600px;">
 			<!-- Table -->
 
-			<div style="width: 10%; margin: 0 auto;">
-				<!-- <button
-					style="width: 100%; height: 50px; background-color: white; color: navy;">
-					<i class="fa fa-refresh" style="font-size: 24px"></i> 새로고침
-				</button> -->
-			</div>
-
-			<div class="table-wrapper"
-				style="width: 46%; float: left; margin-left: 40px;">
+			<div class="table-wrapper"	style="width: 35%; float: left; margin-left: 40px;">
 				<a href="https://www.bithumb.com/" class="logo"><img
 					src="images/logo_bithumb.png" width="240" height="66" /></a> <br>
 				<br>
-				<table>
+				<table class="alt">
 					<thead>
 						<tr>
 							<th>Coin</th>
@@ -202,10 +229,44 @@
 					</script>
 					<tbody>
 						<tr>
+<<<<<<< HEAD
 							<td>비트코인(BTC)</td>
 							<td><div id="BTC"></div></td>
+=======
+							<td><strong>비트코인(BTC)</strong></td>
+							<td><div id="BTC">로딩중입니다.</div></td>
 						</tr>
 						<tr>
+							<td><strong>이더리움(ETH)</strong></td>
+							<td><div id="ETH">로딩중입니다.</div></td>
+						</tr>
+						<tr>
+							<td><strong>대쉬 코인(DASH)</strong></td>
+							<td><div id="DASH">로딩중입니다.</div></td>
+						</tr>
+						<tr>
+							<td><strong>라이트 코인(LTC)</strong></td>
+							<td><div id="LTC">로딩중입니다.</div></td>
+						</tr>
+						<tr>
+							<td><strong>이더리움 클래식(ETC)</strong></td>
+							<td><div id="ETC">로딩중입니다.</div></td>
+						</tr>
+						<tr>
+							<td><strong>리플(XRP)</strong></td>
+							<td><div id="XRP">로딩중입니다.</div></td>
+>>>>>>> 43961abac99b8e6b5de059433264885763940b8f
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="table-wrapper"	style="width: 20%; float: left; margin:0 35px;">
+				<h2 style="margin-bottom:50px;"> Bithumb : Poloniex </h2>
+				<table class="alt">
+					<thead>
+						<tr>
+<<<<<<< HEAD
 							<td>이더리움(ETH)</td>
 							<td><div id="ETH"></div></td>
 						</tr>
@@ -224,6 +285,29 @@
 						<tr>
 							<td>리플(XRP)</td>
 							<td><div id="XRP"></div></td>
+=======
+							<th>변동 금액</th>
+						</tr>
+					</thead>
+					<tbody style="text-align:center;">
+						<tr> 
+							<td><div id="BTC_p">0</div></td>
+						</tr>
+						<tr>
+							<td><div id="ETH_p">0</div></td>
+						</tr>
+						<tr>
+							<td><div id="DASH_p">0</div></td>
+						</tr>
+						<tr>
+							<td><div id="LTC_p">0</div></td>
+						</tr>
+						<tr>
+							<td><div id="ETC_p">0</div></td>
+						</tr>
+						<tr>
+							<td><div id="XRP_p">0</div></td>
+>>>>>>> 43961abac99b8e6b5de059433264885763940b8f
 						</tr>
 					</tbody>
 					<!-- <tfoot>
@@ -234,10 +318,9 @@
                </tfoot> -->
 				</table>
 			</div>
-
-
-			<div class="table-wrapper"
-				style="width: 46%; float: right; margin-right: 40px;">
+		
+		
+			<div class="table-wrapper" style="width: 35%; float: right; margin-right: 40px;">
 				<a href="https://poloniex.com/" class="logo"><img
 					src="images/poloniex.png" width="250" height="40"
 					style="margin-top: 24px;" /></a> <br> <br>
