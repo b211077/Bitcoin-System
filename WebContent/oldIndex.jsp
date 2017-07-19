@@ -65,10 +65,10 @@
 			<nav>  
 				<c:if test="${empty sessionScope.member}">
 					<p>
-						<a href="join.html">JOIN</a>
+						<a href="join.jsp">JOIN</a>
 					</p>
 					<p>
-						<a href="login.html">LOGIN</a>
+						<a href="login.jsp">LOGIN</a>
 					</p>
 				</c:if>
 				<c:if test="${not empty sessionScope.member}">
@@ -115,7 +115,7 @@
 					</p>
 
 					<ul class="actions">
-						<li><a href="#hihi" class="button next scrolly">시작하기</a></li>
+						<li><a href="index.jsp#hihi" class="button next scrolly">시작하기</a></li>
 					</ul>
 				</div>
 			</div>
