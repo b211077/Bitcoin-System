@@ -108,7 +108,7 @@
 				function myFunction() {
 				myVar = setInterval(myFun, 1000);
 				myVar2 = setInterval(setTimeout(delayfunc(),1000));
-			}
+				}
 				myFunction();
 				myFunction2();
 		</script>
