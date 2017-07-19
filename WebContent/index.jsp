@@ -52,12 +52,9 @@
 					}
 				});
 			}
-
 			function myFunction() {
 				myVar = setInterval(myFun, 5000);
-				
 			}
-			
 			myFunction();
 		</script>
 		<!-- ---------------------------------- -->
@@ -65,7 +62,7 @@
 		<header id="header" class="alt">
 			<a href="index.jsp" class="logo"><img src="images/coinsight.png"
 				style="width: 260px; height: 60px;"></a>
-			<nav>
+			<nav>  
 				<c:if test="${empty sessionScope.member}">
 					<p>
 						<a href="join.html">JOIN</a>
