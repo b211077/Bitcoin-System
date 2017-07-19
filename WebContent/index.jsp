@@ -62,6 +62,8 @@
                   etc_c = obj.data.ETC.closing_price;
                   xrp_c = obj.data.XRP.closing_price;
                   $("#BTC").text(btc_c);
+                  //$("#BTC").css("backgroun-color","blue");
+                  //$("#BTC").animate({fontSize: '24px'}, "slow");
                   $("#ETH").text(eth_c);
                   $("#DASH").text(dash_c);
                   $("#LTC").text(ltc_c);
@@ -202,27 +204,27 @@
                <tbody>
                   <tr>
                      <td><strong>비트코인(BTC)</strong></td>
-                     <td><div id="BTC">로딩중입니다.</div></td>
+                     <td><div id="BTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td><strong>이더리움(ETH)</strong></td>
-                     <td><div id="ETH">로딩중입니다.</div></td>
+                     <td><div id="ETH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td><strong>대쉬 코인(DASH)</strong></td>
-                     <td><div id="DASH">로딩중입니다.</div></td>
+                     <td><div id="DASH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td><strong>라이트 코인(LTC)</strong></td>
-                     <td><div id="LTC">로딩중입니다.</div></td>
+                     <td><div id="LTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td><strong>이더리움 클래식(ETC)</strong></td>
-                     <td><div id="ETC">로딩중입니다.</div></td>
+                     <td><div id="ETC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td><strong>리플(XRP)</strong></td>
-                     <td><div id="XRP">로딩중입니다.</div></td>
+                     <td><div id="XRP" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                </tbody>
             </table>
@@ -236,22 +238,22 @@
                </thead>
                <tbody style="text-align:center;">
                   <tr> 
-                     <td><div id="BTC_p">0</div></td>
+                     <td><div id="BTC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="ETH_p">0</div></td>
+                     <td><div id="ETH_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="DASH_p">0</div></td>
+                     <td><div id="DASH_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="LTC_p">0</div></td>
+                     <td><div id="LTC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="ETC_p">0</div></td>
+                     <td><div id="ETC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="XRP_p">0</div></td>
+                     <td><div id="XRP_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                </tbody>
                <!-- <tfoot>
@@ -279,27 +281,27 @@
                <tbody>
                   <tr>
                      <td>비트코인(BTC)</td>
-                     <td><div id="PBTC"></div></td>
+                     <td><div id="PBTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td>이더리움(ETH)</td>
-                     <td><div id="PETH"></div></td>
+                     <td><div id="PETH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td>대쉬 코인(DASH)</td>
-                     <td><div id="PDASH"></div></td>
+                     <td><div id="PDASH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td>라이트 코인(LTC)</td>
-                     <td><div id="PLTC"></div></td>
+                     <td><div id="PLTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td>이더리움 클래식(ETC)</td>
-                     <td><div id="PETC"></div></td>
+                     <td><div id="PETC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td>리플(XRP)</td>
-                     <td><div id="PXRP"></div></td>
+                     <td><div id="PXRP" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                </tbody>
                <!-- <tfoot>
