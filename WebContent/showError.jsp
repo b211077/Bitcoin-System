@@ -3,6 +3,7 @@
 <%
 	String url = application.getContextPath() + "/";
 %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <!--
 	Forty by HTML5 UP
@@ -42,10 +43,10 @@
 			<nav>
 				<c:if test="${empty sessionScope.member}">
 					<p>
-						<a href="join.html">JOIN</a>
+						<a href="join.jsp">JOIN</a>
 					</p>
 					<p>
-						<a href="login.html">LOGIN</a>
+						<a href="login.jsp">LOGIN</a>
 					</p>
 				</c:if>
 				<c:if test="${not empty sessionScope.member}">
@@ -60,14 +61,19 @@
 		<!-- Menu -->
 		<nav id="menu">
 			<ul class="links">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="wallet.jsp">wallet</a></li>
-				<li><a href="generic.html">Generic</a></li>
-				<li><a href="elements.html">Elements</a></li>
+				<li><a href="index.jsp">Home</a></li>
+				<li><a href="coin?command=wallet">wallet</a></li>
+                <li><a href="coin?command=wallet">Generic</a></li>
+				<li><a href="elements.jsp">Elements</a></li>
 			</ul>
 			<ul class="actions vertical">
-				<li><a href="#" class="button special fit">Get Started</a></li>
-				<li><a href="#" class="button fit">Log In</a></li>
+				<li><a href="#hihi" class="button special fit">Get Started</a></li>
+                    <c:if test="${empty sessionScope.member}">
+                    	<li><a href="login.jsp" class="button fit">Log In</a></li>		
+				</c:if>
+				<c:if test="${not empty sessionScope.member}">
+					<li><a href="coin?command=logout" class="button fit">Log Out</a></li>	
+				</c:if>
 			</ul>
 		</nav>
 

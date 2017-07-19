@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import coin.exception.NotExistException;
 import coin.model.dto.BtcDTO;
+import coin.model.dto.WalletCoinDTO;
 
 public class CoinService {
 
@@ -33,4 +34,5 @@ public class CoinService {
 	public static boolean addBtc(BtcDTO btc) throws SQLException{
 		return BtcDAO.addBtc(btc);
 	}
+	
 }
