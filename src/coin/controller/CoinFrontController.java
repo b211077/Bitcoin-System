@@ -20,8 +20,7 @@ import coin.model.dto.XrpDTO;
 
 public class CoinFrontController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("utf-8");
 		String command = request.getParameter("command");
 		try{
 			if(command != null){
@@ -78,6 +77,7 @@ public class CoinFrontController extends HttpServlet {
 		String url = "showError.jsp";
 		
 		String name = request.getParameter("name");
+		System.out.println(name);
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String email = request.getParameter("email");
@@ -115,7 +115,7 @@ public class CoinFrontController extends HttpServlet {
 			session.setAttribute("name", member.getName());
 			session.setAttribute("id", member.getId());
 			System.out.println("세션의 id값 : "+((MemberDTO)session.getAttribute("member")).getId());
-			
+			System.out.println("세션의 이름값 : "+((MemberDTO)session.getAttribute("member")).getName());
 			request.setAttribute("successMsg", "로그인 성공");
 			url = "index.jsp";
 		}catch(Exception s){
