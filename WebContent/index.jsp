@@ -47,19 +47,21 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                   ltc_c = obj.data.LTC.closing_price;
                   etc_c = obj.data.ETC.closing_price;
                   xrp_c = obj.data.XRP.closing_price;
-                  $("#BTC").text(btc_c);
+                  $("#BTC").text(btc_c+"    (" + ((btc_c-obj.data.BTC.opening_price)/btc_c*100).toFixed(2) + "%" + ")");
                   //$("#BTC").css("backgroun-color","blue");
                   //$("#BTC").animate({fontSize: '24px'}, "slow");
-                  $("#ETH").text(eth_c);
-                  $("#DASH").text(dash_c);
-                  $("#LTC").text(ltc_c);
-                  $("#ETC").text(etc_c);
-                  $("#XRP").text(xrp_c);
+                  $("#ETH").text(eth_c+"    (" + ((eth_c-obj.data.ETH.opening_price)/eth_c*100).toFixed(2) + "%" + ")");
+                  $("#DASH").text(dash_c+"    (" + ((dash_c-obj.data.DASH.opening_price)/dash_c*100).toFixed(2) + "%" + ")");
+                  $("#LTC").text(ltc_c+"    (" + ((ltc_c-obj.data.LTC.opening_price)/ltc_c*100).toFixed(2) + "%" + ")");
+                  $("#ETC").text(etc_c+"    (" + ((etc_c-obj.data.ETC.opening_price)/etc_c*100).toFixed(2) + "%" + ")");
+                  $("#XRP").text(xrp_c+"    (" + ((xrp_c-obj.data.XRP.opening_price)/xrp_c*100).toFixed(2) + "%" + ")");
+                  	
                     
                   }
                }
             });
          }
+            //폴로닉스 api 받아오는 함수
             function myFun2() {
                $.ajax({
                   url : "poloniexUrl.jsp",
@@ -74,12 +76,12 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                      pltc_c = parseInt(obj.USDT_LTC.last*1121);
                      petc_c = parseInt(obj.USDT_ETC.last*1121);
                      pxrp_c = parseInt(obj.USDT_XRP.last*1121);
-                     $("#PBTC").text(pbtc_c);
-                     $("#PETH").text(peth_c);
-                     $("#PDASH").text(pdash_c);
-                     $("#PLTC").text(pltc_c);
-                     $("#PETC").text(petc_c);
-                     $("#PXRP").text(pxrp_c); 
+                     $("#PBTC").html(pbtc_c +"<div style='float:right;'>(" + (obj.USDT_BTC.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PETH").html(peth_c+"    <div style='float:right;'>(" + (obj.USDT_ETH.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PDASH").html(pdash_c+"    <div style='float:right;'>(" + (obj.USDT_DASH.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PLTC").html(pltc_c+"    <div style='float:right;'>(" + (obj.USDT_LTC.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PETC").html(petc_c+"    <div style='float:right;'>(" + (obj.USDT_ETC.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PXRP").html(pxrp_c+"    <div style='float:right;'>(" + (obj.USDT_XRP.percentChange*100).toFixed(2) + "%" + ")</div>");
                      if(btc_c != null && pbtc_c != null){
 	                     if(btc_c>pbtc_c){
 	                     tempval = (btc_c - pbtc_c)/btc_c*100;
