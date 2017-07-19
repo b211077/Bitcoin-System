@@ -80,51 +80,51 @@ td {text-align:center;}
                      $("#PXRP").text(pxrp_c);                
                      if(btc_c>pbtc_c){
                      tempval = (btc_c - pbtc_c)/btc_c*100;
-                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");   
+                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
                      }
                      else{
                      tempval = (pbtc_c-btc_c)/btc_c*100;
-                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");
+                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
                      }
                      if(eth_c>peth_c){
                      tempval = (eth_c - peth_c)/eth_c*100;
-                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");   
+                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
                      }
                      else{
                      tempval = (peth_c-eth_c)/eth_c*100;
-                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");
+                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
                      }
                      if(dash_c>pdash_c){
                      tempval = (dash_c - pdash_c)/dash_c*100;
-                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");   
+                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
                      }
                      else{
                      tempval = (pdash_c-dash_c)/dash_c*100;
-                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");
+                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
                      }
                      if(ltc_c>pltc_c){
                      tempval = (ltc_c - pltc_c)/ltc_c*100;
-                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");   
+                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
                      }
                      else{
                      tempval = (pltc_c-ltc_c)/ltc_c*100;
-                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");
+                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
                      }
                      if(etc_c>petc_c){
                    	 tempval = (etc_c - petc_c)/etc_c*100;
-                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");   
+                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
                      }
                      else{
                      tempval = (petc_c-etc_c)/etc_c*100;
-                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");
+                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
                      }
                      if(xrp_c>pxrp_c){
                      tempval = (xrp_c - pxrp_c)/xrp_c*100;
-                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");   
+                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
                      }
                      else{
                      tempval = (pxrp_c-xrp_c)/xrp_c*100;
-                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:red;'></i>)");
+                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
                      } 
                   }
                });
