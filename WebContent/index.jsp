@@ -74,23 +74,12 @@ td {text-align:center; }
                      pltc_c = parseInt(obj.USDT_LTC.last*1121);
                      petc_c = parseInt(obj.USDT_ETC.last*1121);
                      pxrp_c = parseInt(obj.USDT_XRP.last*1121);
-<<<<<<< HEAD
                      $("#PBTC").html(pbtc_c +"<div style='float:right;'>(" + (obj.USDT_BTC.percentChange*100).toFixed(2) + "%" + ")</div>");
                      $("#PETH").html(peth_c+"    <div style='float:right;'>(" + (obj.USDT_ETH.percentChange*100).toFixed(2) + "%" + ")</div>");
                      $("#PDASH").html(pdash_c+"    <div style='float:right;'>(" + (obj.USDT_DASH.percentChange*100).toFixed(2) + "%" + ")</div>");
                      $("#PLTC").html(pltc_c+"    <div style='float:right;'>(" + (obj.USDT_LTC.percentChange*100).toFixed(2) + "%" + ")</div>");
                      $("#PETC").html(petc_c+"    <div style='float:right;'>(" + (obj.USDT_ETC.percentChange*100).toFixed(2) + "%" + ")</div>");
                      $("#PXRP").html(pxrp_c+"    <div style='float:right;'>(" + (obj.USDT_XRP.percentChange*100).toFixed(2) + "%" + ")</div>");
-                     if(btc_c>pbtc_c){
-                     tempval = (btc_c - pbtc_c)/btc_c*100;
-                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
-=======
-                     $("#PBTC").text(pbtc_c);
-                     $("#PETH").text(peth_c);
-                     $("#PDASH").text(pdash_c);
-                     $("#PLTC").text(pltc_c);
-                     $("#PETC").text(petc_c);
-                     $("#PXRP").text(pxrp_c); 
                      if(btc_c != null && pbtc_c != null){
 	                     if(btc_c>pbtc_c){
 	                     tempval = (btc_c - pbtc_c)/btc_c*100;
@@ -100,7 +89,6 @@ td {text-align:center; }
 	                     tempval = (pbtc_c-btc_c)/btc_c*100;
 	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
 	                     }
->>>>>>> 51c29fe641d6b1906e06d3e8cf454ad7a496e647
                      }
                      if(eth_c != null && peth_c != null){
 	                     if(eth_c>peth_c){
