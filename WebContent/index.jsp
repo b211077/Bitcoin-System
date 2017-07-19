@@ -25,39 +25,91 @@
 		<!-- 실시간 코인 값 받아오는 로직 -->
 		<!-- <div id="BTC"></div> -->
 		<script type="text/javascript">
-			/* 
-			   var eth_c; 
-			   var dash_c; */
+		         var btc_c;
+		         var eth_c;
+		         var dash_c;
+		         var ltc_c;
+		         var etc_c;
+		         var xrp_c;
+		         var btc_c1;
+		         var eth_c1;
+		         var dash_c1;
+		         var ltc_c1;
+		         var etc_c1;
+		         var xrp_c1;
+		         var pbtc_c
+		         var peth_c;
+		         var pdash_c;
+		         var pltc_c;
+		         var petc_c;
+		         var pxrp_c;
+		         var obj;
 
-			function myFun() {
-				$.ajax({
+				function myFun() {
+					$.ajax({
 					url : "bithumbUrl.jsp",
 					dataType : "html",
 					method : "GET",
 					success : function(result) {
-						console.log(result)
-						obj = JSON.parse(result);
-						btc_c = obj.data.BTC.closing_price;
+						result = result.replace(/(\s*)/g, "");			
+						obj = eval("(" + result + ")");
+						if (obj.message == null){
+						btc_c = obj.data.BTC.closing_price;	
 						eth_c = obj.data.ETH.closing_price;
 						dash_c = obj.data.DASH.closing_price;
 						ltc_c = obj.data.LTC.closing_price;
 						etc_c = obj.data.ETC.closing_price;
 						xrp_c = obj.data.XRP.closing_price;
-						//$("#BTC").text(btc_c);
+						$("#BTC").text("btc_c"+"+"+"pbtc_c"+"pbtc1");
 						$("#ETH").text(eth_c);
 						$("#DASH").text(dash_c);
 						$("#LTC").text(ltc_c);
 						$("#ETC").text(etc_c);
 						$("#XRP").text(xrp_c);
+					//	$("#PP").text(pbtc_c-pbtc1);
+						}
 					}
 				});
 			}
-
-			function myFunction() {
-				btc_c;
+			   function myFun2() {
+					$.ajax({
+						url : "poloniexUrl.jsp",
+						dataType : "html",
+						method : "GET",
+						success : function(result2) {
+							console.log(result2)
+							result2 = result2.replace(/(\s*)/g, "");					
+							//obj = JSON.parse(result);
+							obj = eval("(" + result2 + ")");
+							pbtc_c = parseInt(obj.USDT_BTC.last*1121);
+							peth_c = parseInt(obj.USDT_ETH.last*1121);
+							pdash_c = parseInt(obj.USDT_DASH.last*1121);
+							pltc_c = parseInt(obj.USDT_LTC.last*1121);
+							petc_c = parseInt(obj.USDT_ETC.last*1121);
+							pxrp_c = parseInt(obj.USDT_XRP.last*1121);
+							$("#PBTC").text(pbtc_c);
+							$("#PETH").text(peth_c);
+							$("#PDASH").text(pdash_c);
+							$("#PLTC").text(pltc_c);
+							$("#PETC").text(petc_c);
+							$("#PXRP").text(pxrp_c);
+						}
+					});
+				}
+			   function delayfunc(){
+				   pbtc_c1=pbtc_c;
+			   }
+			   function myFunction2() {
+					myVar = setInterval(myFun2, 1000);
+					
+				}
+				function myFunction() {
 				myVar = setInterval(myFun, 1000);
-				 $("#BTC").text(btc_c);   
+				myVar2 = setInterval(setTimeout(delayfunc(),1000));
 			}
+				myFunction();
+				myFunction2();
+				
 		</script>
 		<!-- ---------------------------------- -->
 		<!-- Header -->
@@ -113,7 +165,7 @@
 						+ insight(통찰력) 이라는 뜻을 가지고 있습니다.<br> coINsight는 가상화폐의 다양한 종류
 						별, 그리고 거래소 별 시세 비교를 한 눈에 쉽게 그래프 차트로 제공합니다.<br> 또한 사용자가 구매한
 						가상화폐의 현재 시세와 비교하여 수익률을 계산하는 기능을 추가로 제공합니다.<br> coINsight와 함께
-						가상화폐 거래에서 더욱 뛰어난 통찰력으로 높은 수익 창출을 경험해보세요. <br>
+						가상화폐 거래에서 더욱 뛰어난 통찰력으로 높은 수익 창출을 경험해보세요. 한글<br>
 					</p>
 
 					<ul class="actions">
@@ -151,51 +203,27 @@
 					<tbody>
 						<tr>
 							<td>비트코인(BTC)</td>
-							<td><div id="BTC">
-									<script>
-										myFunction();
-									</script>
-								</div></td>
+							<td><div id="BTC"></div></td>
 						</tr>
 						<tr>
 							<td>이더리움(ETH)</td>
-							<td><div id="ETH">
-									<script>
-										myFunction()
-									</script>
-								</div></td>
+							<td><div id="ETH"></div></td>
 						</tr>
 						<tr>
 							<td>대쉬 코인(DASH)</td>
-							<td><div id="DASH">
-									<script>
-										myFunction()
-									</script>
-								</div></td>
+							<td><div id="DASH"></div></td>
 						</tr>
 						<tr>
 							<td>라이트 코인(LTC)</td>
-							<td><div id="LTC">
-									<script>
-										myFunction()
-									</script>
-								</div></td>
+							<td><div id="LTC"></div></td>
 						</tr>
 						<tr>
 							<td>이더리움 클래식(ETC)</td>
-							<td><div id="ETC">
-									<script>
-										myFunction()
-									</script>
-								</div></td>
+							<td><div id="ETC"></div></td>
 						</tr>
 						<tr>
 							<td>리플(XRP)</td>
-							<td><div id="XRP">
-									<script>
-										myFunction()
-									</script>
-								</div></td>
+							<td><div id="XRP"></div></td>
 						</tr>
 					</tbody>
 					<!-- <tfoot>
@@ -216,34 +244,34 @@
 				<table class="alt">
 					<thead>
 						<tr>
-							<th>Name</th>
-							<th>Price</th>
+							<th>Coin</th>
+							<th>Price(원화: KRW)</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>Item1</td>
-							<td>29.99</td>
+							<td>비트코인(BTC)</td>
+							<td><div id="PBTC"></div></td>
 						</tr>
 						<tr>
-							<td>Item2</td>
-							<td>19.99</td>
+							<td>이더리움(ETH)</td>
+							<td><div id="PETH"></div></td>
 						</tr>
 						<tr>
-							<td>Item3</td>
-							<td>29.99</td>
+							<td>대쉬 코인(DASH)</td>
+							<td><div id="PDASH"></div></td>
 						</tr>
 						<tr>
-							<td>Item4</td>
-							<td>19.99</td>
+							<td>라이트 코인(LTC)</td>
+							<td><div id="PLTC"></div></td>
 						</tr>
 						<tr>
-							<td>Item5</td>
-							<td>29.99</td>
+							<td>이더리움 클래식(ETC)</td>
+							<td><div id="PETC"></div></td>
 						</tr>
 						<tr>
-							<td>Item6</td>
-							<td>29.99</td>
+							<td>리플(XRP)</td>
+							<td><div id="PXRP"></div></td>
 						</tr>
 					</tbody>
 					<!-- <tfoot>
