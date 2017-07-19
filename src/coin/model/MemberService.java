@@ -84,8 +84,18 @@ public class MemberService {
 	}
 	
 	// 내 코인 정보 업데이트
-	public static boolean updateCoin(String memberId, String cName, int amount, int price) throws SQLException, NotExistException{		
-		boolean result = MemberDAO.updateCoin(memberId, cName, amount, price);
+	public static boolean updateCoin(String memberId, String cName, String updateType,int updateAmount, int updatePrice) throws SQLException, NotExistException{		
+		WalletCoinDTO coinInfo = getCoinInfo(memberId, cName);
+		int amount = coinInfo.getAmount() , price = coinInfo.getPrice();
+		if(updateType.equals("buy")){
+			amount += updateAmount;
+			price += updatePrice;
+		}else if(updateType.equals("sell")){
+			amount -= updateAmount;
+			price -= updatePrice;
+		}
+		
+		boolean result = MemberDAO.updateCoin(memberId, cName, amount, price); 
 		if(!result){
 			throw new NotExistException("코인 정보 수정 실패");
 		}

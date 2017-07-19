@@ -94,9 +94,10 @@ public class CoinFrontController extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			String cname = request.getParameter("cname");
-			int amount = Integer.parseInt(request.getParameter("amount"));
-			int price = Integer.parseInt(request.getParameter("price"));
-			MemberService.updateCoin((String)session.getAttribute("id"), cname, amount, price);
+			String updateType = request.getParameter("updateType");
+			int updateAmount = Integer.parseInt(request.getParameter("updateAmount"));
+			int updatePrice = Integer.parseInt(request.getParameter("updatePrice"));
+			MemberService.updateCoin((String)session.getAttribute("id"), cname, updateType, updateAmount, updatePrice);
 			url = "wallet.jsp";
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
