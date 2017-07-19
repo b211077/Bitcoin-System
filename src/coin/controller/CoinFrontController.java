@@ -14,17 +14,8 @@ import coin.model.dto.BtcDTO;
 import coin.model.dto.MemberDTO;
 
 public class CoinFrontController extends HttpServlet {
-	public CoinFrontController() {
-        super();
-    }
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		process(request, response);
-	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		process(request, response);
-	}
-	protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String command = request.getParameter("command");
 		try{
 			if(command != null){
@@ -124,6 +115,7 @@ public class CoinFrontController extends HttpServlet {
 		String url = "showError.jsp";
 		
 		String name = request.getParameter("name");
+		System.out.println(name);
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String email = request.getParameter("email");
@@ -161,7 +153,7 @@ public class CoinFrontController extends HttpServlet {
 			session.setAttribute("name", member.getName());
 			session.setAttribute("id", member.getId());
 			System.out.println("세션의 id값 : "+((MemberDTO)session.getAttribute("member")).getId());
-			
+			System.out.println("세션의 이름값 : "+((MemberDTO)session.getAttribute("member")).getName());
 			request.setAttribute("successMsg", "로그인 성공");
 			url = "index.jsp";
 		}catch(Exception s){

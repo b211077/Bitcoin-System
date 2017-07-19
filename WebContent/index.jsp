@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
    <head>
@@ -14,14 +14,12 @@
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    </head>
    <style type="text/css">
-      /*  * {font-family:'BM HANNA','¹è´ÞÀÇ¹ÎÁ· ÇÑ³ª ' !important, sans-serif; } */
+      /*  * {font-family:'BM HANNA','ë°°ë‹¬ì˜ë¯¼ì¡± í•œë‚˜ ' !important, sans-serif; } */
    </style>
    <body>
 
       <!-- Wrapper -->
          <div id="wrapper">
-
-
 				<!-- Header -->
 					<header id="header" class="alt">
 						<a href="index.jsp" class="logo"><img src="images/coinsight.png" style="width:260px; height:60px;"></a>
@@ -58,21 +56,21 @@
                   <div class="inner">
             <header class="major">
                <h1>
-                  ¾È³çÇÏ¼¼¿ä, <strong>coINsight</strong>ÀÔ´Ï´Ù.
+                <!--   ì•ˆë…•í•˜ì„¸ìš”, <strong>coINsight</strong>ìž…ë‹ˆë‹¤. -->
+                <img src="images/anigif.gif">
                </h1>
             </header>
             <div class="content">
                <p>
-                  coINsight´Â °¡»óÈ­Æä ½Ã¼¼ ºñ±³ Á¶È¸ ¼­ºñ½º¸¦ Á¦°øÇÕ´Ï´Ù.<br> 
-                  coINsight¶õ coin(ÄÚÀÎ)   + sight(½Ã¾ß)¸¦ ÅëÇØ ÆÄ»ýµÈ ´Ü¾î·Î¼­, <br> 
-                  ´õºÒ¾î co(ÇÔ²²) + insight(ÅëÂû·Â) ÀÌ¶ó´Â ¶æÀ» °¡Áö°í ÀÖ½À´Ï´Ù.<br> 
-                  coINsigh´Â °¡»óÈ­ÆóÀÇ ´Ù¾çÇÑ Á¾·ù º°, ±×¸®°í °Å·¡¼Ò º° ½Ã¼¼ ºñ±³¸¦ ÇÑ ´«¿¡ ½±°Ô ±×·¡ÇÁ Â÷Æ®·Î Á¦°øÇÕ´Ï´Ù.<br> 
-                  ¶ÇÇÑ »ç¿ëÀÚ°¡ ±¸¸ÅÇÑ °¡»óÈ­ÆóÀÇ ÇöÀç ½Ã¼¼¿Í ºñ±³ÇÏ¿© ¼öÀÍ·üÀ» °è»êÇÏ´Â ±â´ÉÀ» Ãß°¡·Î Á¦°øÇÕ´Ï´Ù.<br> 
-                  coINsight¿Í ÇÔ²² °¡»óÈ­Æó °Å·¡¿¡¼­ ´õ¿í ¶Ù¾î³­ ÅëÂû·ÂÀ¸·Î ³ôÀº ¼öÀÍ Ã¢ÃâÀ» °æÇèÇØº¸¼¼¿ä. <br>
+                  coINsightëž€ coin(ì½”ì¸)   + sight(ì‹œì•¼)ë¥¼ í†µí•´ íŒŒìƒëœ ë‹¨ì–´ë¡œì„œ, <br> 
+                  ë”ë¶ˆì–´ co(í•¨ê»˜) + insight(í†µì°°ë ¥) ì´ë¼ëŠ” ëœ»ì„ ê°€ì§€ê³  ìžˆìŠµë‹ˆë‹¤.<br> 
+                  coINsightëŠ” ê°€ìƒí™”íì˜ ë‹¤ì–‘í•œ ì¢…ë¥˜ ë³„, ê·¸ë¦¬ê³  ê±°ëž˜ì†Œ ë³„ ì‹œì„¸ ë¹„êµë¥¼ í•œ ëˆˆì— ì‰½ê²Œ ê·¸ëž˜í”„ ì°¨íŠ¸ë¡œ ì œê³µí•©ë‹ˆë‹¤.<br> 
+                  ë˜í•œ ì‚¬ìš©ìžê°€ êµ¬ë§¤í•œ ê°€ìƒí™”íì˜ í˜„ìž¬ ì‹œì„¸ì™€ ë¹„êµí•˜ì—¬ ìˆ˜ìµë¥ ì„ ê³„ì‚°í•˜ëŠ” ê¸°ëŠ¥ì„ ì¶”ê°€ë¡œ ì œê³µí•©ë‹ˆë‹¤.<br> 
+                  coINsightì™€ í•¨ê»˜ ê°€ìƒí™”í ê±°ëž˜ì—ì„œ ë”ìš± ë›°ì–´ë‚œ í†µì°°ë ¥ìœ¼ë¡œ ë†’ì€ ìˆ˜ìµ ì°½ì¶œì„ ê²½í—˜í•´ë³´ì„¸ìš”. <br>
                </p>
 
                <ul class="actions">
-                  <li><a href="#hihi" class="button next scrolly">½ÃÀÛÇÏ±â</a></li>
+                  <li><a href="#hihi" class="button next scrolly">ì‹œìž‘í•˜ê¸°</a></li>
                </ul>
             </div>
          </div>
@@ -83,7 +81,7 @@
 
          <div style="width:10%; margin:0 auto;">
             <button style="width:100%; height:50px; background-color:white; color:navy;">
-            <i class="fa fa-refresh" style="font-size:24px"></i> »õ·Î°íÄ§</button>
+            <i class="fa fa-refresh" style="font-size:24px"></i> ìƒˆë¡œê³ ì¹¨</button>
          </div>
          
          <div class="table-wrapper" style="width:46%; float:left; margin-left:40px;">
@@ -194,7 +192,7 @@
          </div>
       </div>
       
-      <div style="width:16%; margin:0 auto; margin-bottom:20px;"><a href="#one" class="button next scrolly">ÄÚÀÎ º° »ó¼¼º¸±â</a></div>
+      <div style="width:16%; margin:0 auto; margin-bottom:20px;"><a href="#one" class="button next scrolly">ì½”ì¸ ë³„ ìƒì„¸ë³´ê¸°</a></div>
       
       <!-- Main -->
       <div id="main">
@@ -208,7 +206,7 @@
                   <h3>
                      <a href="coin?command=generic" class="link">ETH</a>
                   </h3>
-                  <p>ÀÌ´õ¸®¿ò</p>
+                  <p>ì´ë”ë¦¬ì›€</p>
                </header>
             </article>
             <article>
@@ -219,7 +217,7 @@
                   <h3>
                      <a href="coin?command=generic" class="link">BTC</a>
                   </h3>
-                  <p>ºñÆ®ÄÚÀÎ</p>
+                  <p>ë¹„íŠ¸ì½”ì¸</p>
                </header>
             </article>
             <article>
@@ -230,7 +228,7 @@
                   <h3>
                      <a href="coin?command=generic" class="link">DASH</a>
                   </h3>
-                  <p>´ë½¬ÄÚÀÎ</p>
+                  <p>ëŒ€ì‰¬ì½”ì¸</p>
                </header>
             </article>
             <article>
@@ -241,7 +239,7 @@
                   <h3>
                      <a href="coin?command=generic" class="link">LTC</a>
                   </h3>
-                  <p>¶óÀÌÆ®ÄÚÀÎ</p>
+                  <p>ë¼ì´íŠ¸ì½”ì¸</p>
                </header>
             </article>
             <article>
@@ -252,7 +250,7 @@
                   <h3>
                      <a href="coin?command=generic" class="link">ETC</a>
                   </h3>
-                  <p>ÀÌ´õ¸®¿ò Å¬·¡½Ä</p>
+                  <p>ì´ë”ë¦¬ì›€ í´ëž˜ì‹</p>
                </header>
             </article>
             <article>
@@ -263,7 +261,7 @@
                   <h3>
                      <a href="coin?command=generic" class="link">XRP</a>
                   </h3>
-                  <p>¸®ÇÃ</p>
+                  <p>ë¦¬í”Œ</p>
                </header>
             </article>
          </section>
@@ -277,7 +275,7 @@
             style="padding: 10px !important; text-align: center; width: 60%;">
             <br>
             <ul class="copyright">
-               <li>¨Ï 2017. kData coInsight Team all rights reserved.</li>
+               <li>â“’ 2017. kData coInsight Team all rights reserved.</li>
             </ul>
          </div>
       </footer>
