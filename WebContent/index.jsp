@@ -44,6 +44,7 @@
                var petc_c;
                var pxrp_c;
                var obj;
+               var tempval;
 
             function myFun() {
                $.ajax({
@@ -66,9 +67,7 @@
                   $("#LTC").text(ltc_c);
                   $("#ETC").text(etc_c);
                   $("#XRP").text(xrp_c);
-               //   $("#PP").text(pbtc_c-pbtc1);
-                     tempval = btc_c * 10;
-                     $("#BTC_p").text(tempval + "%");
+                    
                   }
                }
             });
@@ -95,6 +94,8 @@
                      $("#PLTC").text(pltc_c);
                      $("#PETC").text(petc_c);
                      $("#PXRP").text(pxrp_c);
+                     tempval = btc_c / pbtc_c;
+                     $("#BTC_p").text(tempval + "%");
                   }
                });
             }
@@ -191,7 +192,7 @@
             <a href="https://www.bithumb.com/" class="logo"><img
                src="images/logo_bithumb.png" width="240" height="66" /></a> <br>
             <br>
-            <table>
+            <table class="alt">
                <thead>
                   <tr>
                      <th>Coin</th>
@@ -231,7 +232,7 @@
             <h2 style="margin-bottom:50px;"> Bithumb : Poloniex </h2>
             <table class="alt">
                <thead>
-                  <tr><h1>변동금액</h1></tr>
+                  <th><strong>변동금액</strong></th>
                </thead>
                <tbody style="text-align:center;">
                   <tr> 
