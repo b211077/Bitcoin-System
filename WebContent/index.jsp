@@ -80,8 +80,8 @@
          <!-- Table -->
 
          <div style="width:10%; margin:0 auto;">
-            <button style="width:100%; height:50px; background-color:white; color:navy;">
-            <i class="fa fa-refresh" style="font-size:24px"></i> 새로고침</button>
+           <!--  <button style="width:100%; height:50px; background-color:white; color:navy;">
+            <i class="fa fa-refresh" style="font-size:24px"></i> 새로고침</button> -->
          </div>
          
          <div class="table-wrapper" style="width:46%; float:left; margin-left:40px;">
