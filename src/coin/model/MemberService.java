@@ -3,9 +3,9 @@ package coin.model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import coin.exception.MessageException;
+import coin.exception.NotExistException;
 import coin.model.dto.MemberDTO;
-import member.exception.MessageException;
-import member.exception.NotExistException;
 
 
 public class MemberService {
