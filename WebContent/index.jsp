@@ -95,7 +95,7 @@
                      $("#PETC").text(petc_c);
                      $("#PXRP").text(pxrp_c);
                      tempval = btc_c / pbtc_c;
-                     $("#BTC_p").text(tempval + "%");
+                     $("#BTC_p").text(tempval.toFixed(2) + "%");
                   }
                });
             }
