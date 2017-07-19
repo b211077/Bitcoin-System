@@ -46,98 +46,6 @@
                var obj;
                var tempval;
 
-<<<<<<< HEAD
-				function myFun() {
-					$.ajax({
-					url : "bithumbUrl.jsp",
-					dataType : "html",
-					method : "GET",
-					success : function(result) {
-						result = result.replace(/(\s*)/g, "");			
-						obj = eval("(" + result + ")");
-						if (obj.message == null){
-						btc_c = obj.data.BTC.closing_price;	
-						eth_c = obj.data.ETH.closing_price;
-						dash_c = obj.data.DASH.closing_price;
-						ltc_c = obj.data.LTC.closing_price;
-						etc_c = obj.data.ETC.closing_price;
-						xrp_c = obj.data.XRP.closing_price;
-						$("#BTC").text(btc_c);
-						$("#ETH").text(eth_c);
-						$("#DASH").text(dash_c);
-						$("#LTC").text(ltc_c);
-						$("#ETC").text(etc_c);
-						$("#XRP").text(xrp_c);
-					//	$("#PP").text(pbtc_c-pbtc1);
-							tempval = btc_c * 10;
-							$("#BTC_p").text(tempval + "%");
-						}
-					}
-				});
-			}
-			   function myFun2() {
-					$.ajax({
-						url : "poloniexUrl.jsp",
-						dataType : "html",
-						method : "GET",
-						success : function(result2) {
-							console.log(result2)
-							result2 = result2.replace(/(\s*)/g, "");					
-							//obj = JSON.parse(result);
-							obj = eval("(" + result2 + ")");
-							pbtc_c = parseInt(obj.USDT_BTC.last*1121);
-							peth_c = parseInt(obj.USDT_ETH.last*1121);
-							pdash_c = parseInt(obj.USDT_DASH.last*1121);
-							pltc_c = parseInt(obj.USDT_LTC.last*1121);
-							petc_c = parseInt(obj.USDT_ETC.last*1121);
-							pxrp_c = parseInt(obj.USDT_XRP.last*1121);
-							$("#PBTC").text(pbtc_c);
-							$("#PETH").text(peth_c);
-							$("#PDASH").text(pdash_c);
-							$("#PLTC").text(pltc_c);
-							$("#PETC").text(petc_c);
-							$("#PXRP").text(pxrp_c);
-						}
-					});
-				}
-			   function delayfunc(){
-				   pbtc_c1=pbtc_c;
-			   }
-			   function myFunction2() {
-					myVar = setInterval(myFun2, 1000);
-					
-				}
-				function myFunction() {
-				myVar = setInterval(myFun, 1000);
-				myVar2 = setInterval(setTimeout(delayfunc(),1000));
-				}
-				myFunction();
-				myFunction2();
-		</script>
-		<!-- ---------------------------------- -->
-		<!-- Header -->
-		<header id="header" class="alt">
-			<a href="index.jsp" class="logo"><img src="images/coinsight.png"
-				style="width: 260px; height: 60px;"></a>
-			<nav>
-				<c:if test="${empty sessionScope.member}">
-					<p>
-						<a href="join.html">JOIN</a>
-					</p>
-					<p>
-						<a href="login.html">LOGIN</a>
-					</p>
-				</c:if>
-				<c:if test="${not empty sessionScope.member}">
-					<p>${sessionScope.member.id}(${sessionScope.member.name})</p>
-					<p>
-						<a href="coin?command=logout">logout</a>
-					</p>
-				</c:if>
-				<a href="#menu">Menu</a>
-			</nav>
-		</header>
-=======
             function myFun() {
                $.ajax({
                url : "bithumbUrl.jsp",
@@ -170,9 +78,7 @@
                   dataType : "html",
                   method : "GET",
                   success : function(result2) {
-                     console.log(result2)
                      result2 = result2.replace(/(\s*)/g, "");               
-                     //obj = JSON.parse(result);
                      obj = eval("(" + result2 + ")");
                      pbtc_c = parseInt(obj.USDT_BTC.last*1121);
                      peth_c = parseInt(obj.USDT_ETH.last*1121);
@@ -186,8 +92,55 @@
                      $("#PLTC").text(pltc_c);
                      $("#PETC").text(petc_c);
                      $("#PXRP").text(pxrp_c);
-                     tempval = btc_c / pbtc_c;
-                     $("#BTC_p").text(tempval + "%");
+                     
+                     if(btc_c>pbtc_c){
+                     tempval = (btc_c - pbtc_c)/btc_c*100;
+                     $("#BTC_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
+                     }
+                     else{
+                     tempval = (pbtc_c-btc_c)/btc_c*100;
+                     $("#BTC_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
+                     }
+                     if(eth_c>peth_c){
+                     tempval = (eth_c - peth_c)/eth_c*100;
+                     $("#ETH_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
+                     }
+                     else{
+                     tempval = (peth_c-eth_c)/eth_c*100;
+                     $("#ETH_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
+                     }
+                     if(dash_c>pdash_c){
+                     tempval = (dash_c - pdash_c)/dash_c*100;
+                     $("#DASH_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
+                     }
+                     else{
+                     tempval = (pdash_c-dash_c)/dash_c*100;
+                     $("#DASH_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
+                     }
+                     if(ltc_c>pltc_c){
+                     tempval = (ltc_c - pltc_c)/ltc_c*100;
+                     $("#LTC_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
+                     }
+                     else{
+                     tempval = (pltc_c-ltc_c)/ltc_c*100;
+                     $("#LTC_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
+                     }
+                     if(etc_c>petc_c){
+                   	 tempval = (etc_c - petc_c)/etc_c*100;
+                     $("#ETC_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
+                     }
+                     else{
+                     tempval = (petc_c-etc_c)/etc_c*100;
+                     $("#ETC_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
+                     }
+                     if(xrp_c>pxrp_c){
+                     tempval = (xrp_c - pxrp_c)/xrp_c*100;
+                     $("#XRP_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
+                     }
+                     else{
+                     tempval = (pxrp_c-xrp_c)/xrp_c*100;
+                     $("#XRP_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
+                     } 
                   }
                });
             }
@@ -200,7 +153,6 @@
             }
             function myFunction() {
             myVar = setInterval(myFun, 1000);
-            myVar2 = setInterval(setTimeout(delayfunc(),1000));
          }
             myFunction();
             myFunction2();
@@ -228,7 +180,6 @@
             <a href="#menu">Menu</a>
          </nav>
       </header>
->>>>>>> 061e869bd8f146e23e8437e8d4e0a3cd80701074
 
 
       <!-- Menu -->
@@ -325,7 +276,7 @@
             <h2 style="margin-bottom:50px;"> Bithumb : Poloniex </h2>
             <table class="alt">
                <thead>
-                  <th><strong>변동금액</strong></th>
+                  <th><strong>bithumb 대비 poloniex 시세차이(%)</strong></th>
                </thead>
                <tbody style="text-align:center;">
                   <tr> 
