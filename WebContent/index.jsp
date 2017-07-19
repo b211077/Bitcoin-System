@@ -45,7 +45,6 @@
                var pxrp_c;
                var obj;
                var tempval;
-
             function myFun() {
                $.ajax({
                url : "bithumbUrl.jsp",
@@ -62,6 +61,8 @@
                   etc_c = obj.data.ETC.closing_price;
                   xrp_c = obj.data.XRP.closing_price;
                   $("#BTC").text(btc_c);
+                  //$("#BTC").css("backgroun-color","blue");
+                  //$("#BTC").animate({fontSize: '24px'}, "slow");
                   $("#ETH").text(eth_c);
                   $("#DASH").text(dash_c);
                   $("#LTC").text(ltc_c);
@@ -92,6 +93,7 @@
                      $("#PLTC").text(pltc_c);
                      $("#PETC").text(petc_c);
                      $("#PXRP").text(pxrp_c);
+<<<<<<< HEAD
                      
                      if(btc_c>pbtc_c){
                      tempval = (btc_c - pbtc_c)/btc_c*100;
@@ -141,6 +143,10 @@
                      tempval = (pxrp_c-xrp_c)/xrp_c*100;
                      $("#XRP_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
                      } 
+=======
+                     tempval = btc_c / pbtc_c;
+                     $("#BTC_p").text(tempval.toFixed(2) + "%");
+>>>>>>> 35fb602e2f7025c1cf830ab0a31de6ba68abd675
                   }
                });
             }
@@ -165,10 +171,10 @@
          <nav>
             <c:if test="${empty sessionScope.member}">
                <p>
-                  <a href="join.html">JOIN</a>
+                  <a href="join.jsp">JOIN</a>
                </p>
                <p>
-                  <a href="login.html">LOGIN</a>
+                  <a href="login.jsp">LOGIN</a>
                </p>
             </c:if>
             <c:if test="${not empty sessionScope.member}">
@@ -185,14 +191,19 @@
       <!-- Menu -->
       <nav id="menu">
          <ul class="links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.jsp">Home</a></li>
             <li><a href="coin?command=wallet">wallet</a></li>
-            <li><a href="generic.html">Generic</a></li>
-            <li><a href="elements.html">Elements</a></li>
+            <li><a href="coin?command=generic">Generic</a></li>
+            <li><a href="elements.jsp">Elements</a></li>
          </ul>
          <ul class="actions vertical">
-            <li><a href="#" class="button special fit">Get Started</a></li>
-            <li><a href="#" class="button fit">Log In</a></li>
+			<li><a href="index.jsp#hihi" class="button special fit">Get Started</a></li>
+                   <c:if test="${empty sessionScope.member}">
+                   	<li><a href="login.jsp" class="button fit">Log In</a></li>		
+			</c:if>
+			<c:if test="${not empty sessionScope.member}">
+				<li><a href="coin?command=logout" class="button fit">Log Out</a></li>	
+			</c:if>
          </ul>
       </nav>
 
@@ -246,27 +257,27 @@
                <tbody>
                   <tr>
                      <td><strong>비트코인(BTC)</strong></td>
-                     <td><div id="BTC">로딩중입니다.</div></td>
+                     <td><div id="BTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td><strong>이더리움(ETH)</strong></td>
-                     <td><div id="ETH">로딩중입니다.</div></td>
+                     <td><div id="ETH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td><strong>대쉬 코인(DASH)</strong></td>
-                     <td><div id="DASH">로딩중입니다.</div></td>
+                     <td><div id="DASH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td><strong>라이트 코인(LTC)</strong></td>
-                     <td><div id="LTC">로딩중입니다.</div></td>
+                     <td><div id="LTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td><strong>이더리움 클래식(ETC)</strong></td>
-                     <td><div id="ETC">로딩중입니다.</div></td>
+                     <td><div id="ETC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td><strong>리플(XRP)</strong></td>
-                     <td><div id="XRP">로딩중입니다.</div></td>
+                     <td><div id="XRP" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                </tbody>
             </table>
@@ -280,22 +291,22 @@
                </thead>
                <tbody style="text-align:center;">
                   <tr> 
-                     <td><div id="BTC_p">0</div></td>
+                     <td><div id="BTC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="ETH_p">0</div></td>
+                     <td><div id="ETH_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="DASH_p">0</div></td>
+                     <td><div id="DASH_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="LTC_p">0</div></td>
+                     <td><div id="LTC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="ETC_p">0</div></td>
+                     <td><div id="ETC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="XRP_p">0</div></td>
+                     <td><div id="XRP_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                </tbody>
                <!-- <tfoot>
@@ -323,27 +334,27 @@
                <tbody>
                   <tr>
                      <td>비트코인(BTC)</td>
-                     <td><div id="PBTC"></div></td>
+                     <td><div id="PBTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td>이더리움(ETH)</td>
-                     <td><div id="PETH"></div></td>
+                     <td><div id="PETH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td>대쉬 코인(DASH)</td>
-                     <td><div id="PDASH"></div></td>
+                     <td><div id="PDASH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td>라이트 코인(LTC)</td>
-                     <td><div id="PLTC"></div></td>
+                     <td><div id="PLTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td>이더리움 클래식(ETC)</td>
-                     <td><div id="PETC"></div></td>
+                     <td><div id="PETC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
                      <td>리플(XRP)</td>
-                     <td><div id="PXRP"></div></td>
+                     <td><div id="PXRP" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                </tbody>
                <!-- <tfoot>
