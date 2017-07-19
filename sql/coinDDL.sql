@@ -18,65 +18,64 @@ DROP TABLE xrp cascade constraint;
 DROP TABLE dash cascade constraint;
 
 CREATE TABLE member (
-	   mid          			VARCHAR2(30)  PRIMARY KEY,
-	   mname               	VARCHAR2(30) NOT NULL,
-       pw         				VARCHAR2(30) NOT NULL,
-       email                	VARCHAR2(50) NOT NULL
+	mid 			VARCHAR2(30)  PRIMARY KEY,
+	mname 		VARCHAR2(30) NOT NULL,
+	pw 			VARCHAR2(30) NOT NULL,
+	email 			VARCHAR2(50) NOT NULL
 );
 
 CREATE TABLE wallet (
-       mid        				VARCHAR2(30) NOT NULL,
-       cname					VARCHAR2(30) NOT NULL,
-       amount               	NUMBER(10) NOT NULL,
-       price		          	NUMBER(15) NOT NULL
+	mid 			VARCHAR2(30) NOT NULL,
+	cname 		VARCHAR2(30) NOT NULL,
+	amount 		NUMBER(10) NOT NULL,
+	price 			NUMBER(15) NOT NULL
 );
 
-
 CREATE TABLE exchange (
-       eid			          	NUMBER(5) PRIMARY KEY,
-       ename				    VARCHAR2(20) NOT NULL
+	eid	 			NUMBER(5) PRIMARY KEY,
+	ename 		VARCHAR2(20) NOT NULL
 );
 
 CREATE TABLE btc (
-	day 						VARCHAR2(20) NOT NULL, 
-    price 						NUMBER(20) NOT NULL,
-    volume 					NUMBER(20) NOT NULL,
-	eid 						NUMBER(5) NOT NULL
+	day 			VARCHAR2(20) NOT NULL,
+	price 			NUMBER(15, 0) NOT NULL,
+	volume 		NUMBER(15) NOT NULL,
+	eid 			NUMBER(5) NOT NULL
 );
 
 CREATE TABLE eth (
-	   day						VARCHAR2(20) NOT NULL, 
-       price					NUMBER(15) NOT NULL,
-       volume				NUMBER(15) NOT NULL,
- 	   eid						NUMBER(5) NOT NULL
+	day 			VARCHAR2(20) NOT NULL,
+	price 			NUMBER(15, 0) NOT NULL,
+	volume 		NUMBER(15) NOT NULL,
+	eid 			NUMBER(5) NOT NULL
 );
 
 CREATE TABLE ltc (
-	   day						VARCHAR2(20) NOT NULL, 
-       price					NUMBER(15) NOT NULL,
-       volume				NUMBER(15) NOT NULL,
- 	   eid						NUMBER(5) NOT NULL
+	day 			VARCHAR2(20) NOT NULL,
+	price 			NUMBER(15, 0) NOT NULL,
+	volume 		NUMBER(15) NOT NULL,
+	eid 			NUMBER(5) NOT NULL
 );
 
 CREATE TABLE etc (
-	   day						VARCHAR2(20) NOT NULL, 
-       price					NUMBER(15) NOT NULL,
-       volume				NUMBER(15) NOT NULL,
- 	   eid						NUMBER(5) NOT NULL
+	day 			VARCHAR2(20) NOT NULL,
+	price 			NUMBER(15, 0) NOT NULL,
+	volume 		NUMBER(15) NOT NULL,
+	eid 			NUMBER(5) NOT NULL
 );
 
 CREATE TABLE xrp (
-	   day						VARCHAR2(20) NOT NULL, 
-       price					NUMBER(15) NOT NULL,
-       volume				NUMBER(15) NOT NULL,
- 	   eid						NUMBER(5) NOT NULL
+	day 			VARCHAR2(20) NOT NULL,
+	price 			NUMBER(15, 0) NOT NULL,
+	volume 		NUMBER(15) NOT NULL,
+	eid 			NUMBER(5) NOT NULL
 );
 
 CREATE TABLE dash (
-	   day						VARCHAR2(20) NOT NULL, 
-       price					NUMBER(15) NOT NULL,
-       volume				NUMBER(15) NOT NULL,
- 	   eid						NUMBER(5) NOT NULL
+	day 			VARCHAR2(20) NOT NULL,
+	price 			NUMBER(15, 0) NOT NULL,
+	volume 		NUMBER(15) NOT NULL,
+	eid 			NUMBER(5) NOT NULL
 );
 
 

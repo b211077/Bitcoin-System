@@ -5,8 +5,11 @@ import java.util.ArrayList;
 
 import coin.exception.NotExistException;
 import coin.model.dto.BtcDTO;
-import coin.model.dto.WalletCoinDTO;
-
+import coin.model.dto.DashDTO;
+import coin.model.dto.EtcDTO;
+import coin.model.dto.EthDTO;
+import coin.model.dto.LtcDTO;
+import coin.model.dto.XrpDTO;
 public class CoinService {
 
 	public static void notExistProbono(String date) throws NotExistException, SQLException{
@@ -30,9 +33,33 @@ public class CoinService {
 		return btc;
 	}
 	
-	// 새로운 비트코인 저장
+	// 코인정보 저장
 	public static boolean addBtc(BtcDTO btc) throws SQLException{
 		return BtcDAO.addBtc(btc);
 	}
-	
+
+	// 코인정보 저장
+	public static boolean addEth(EthDTO eth) throws SQLException {
+		return EthDAO.addEth(eth);
+	}
+
+	// 코인정보 저장
+	public static boolean addLtc(LtcDTO ltc) throws SQLException {
+		return LtcDAO.addLtc(ltc);
+	}
+
+	// 코인정보 저장
+	public static boolean addEtc(EtcDTO etc) throws SQLException {
+		return EtcDAO.addEtc(etc);
+	}
+
+	// 코인정보 저장
+	public static boolean addXrp(XrpDTO xrp) throws SQLException {
+		return XrpDAO.addXrp(xrp);
+	}
+
+	// 코인정보 저장
+	public static boolean addDash(DashDTO dash) throws SQLException {
+		return DashDAO.addDash(dash);
+	}
 }
