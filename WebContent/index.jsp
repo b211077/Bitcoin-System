@@ -19,7 +19,7 @@
 /*  * {font-family:'BM HANNA','배달의민족 한나 ' !important, sans-serif; }  */
 table { font-family:'배달의민족 한나'; }
 th {text-align:center;}
-td {text-align:center;}
+td {text-align:center; }
 </style>
 <body>
 
@@ -77,55 +77,67 @@ td {text-align:center;}
                      $("#PDASH").text(pdash_c);
                      $("#PLTC").text(pltc_c);
                      $("#PETC").text(petc_c);
-                     $("#PXRP").text(pxrp_c);                
-                     if(btc_c>pbtc_c){
-                     tempval = (btc_c - pbtc_c)/btc_c*100;
-                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
+                     $("#PXRP").text(pxrp_c); 
+                     if(btc_c != null && pbtc_c != null){
+	                     if(btc_c>pbtc_c){
+	                     tempval = (btc_c - pbtc_c)/btc_c*100;
+	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pbtc_c-btc_c)/btc_c*100;
+	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
                      }
-                     else{
-                     tempval = (pbtc_c-btc_c)/btc_c*100;
-                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
+                     if(eth_c != null && peth_c != null){
+	                     if(eth_c>peth_c){
+	                     tempval = (eth_c - peth_c)/eth_c*100;
+	                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (peth_c-eth_c)/eth_c*100;
+	                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
                      }
-                     if(eth_c>peth_c){
-                     tempval = (eth_c - peth_c)/eth_c*100;
-                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
+                     if(dash_c != null && pdash_c != null){
+	                     if(dash_c>pdash_c){
+	                     tempval = (dash_c - pdash_c)/dash_c*100;
+	                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pdash_c-dash_c)/dash_c*100;
+	                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
                      }
-                     else{
-                     tempval = (peth_c-eth_c)/eth_c*100;
-                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
+                     if(ltc_c != null && pltc_c != null){
+	                     if(ltc_c>pltc_c){
+	                     tempval = (ltc_c - pltc_c)/ltc_c*100;
+	                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pltc_c-ltc_c)/ltc_c*100;
+	                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
                      }
-                     if(dash_c>pdash_c){
-                     tempval = (dash_c - pdash_c)/dash_c*100;
-                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
+                     if(etc_c != null && petc_c != null){
+	                     if(etc_c>petc_c){
+	                   	 tempval = (etc_c - petc_c)/etc_c*100;
+	                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (petc_c-etc_c)/etc_c*100;
+	                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
                      }
-                     else{
-                     tempval = (pdash_c-dash_c)/dash_c*100;
-                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
+                     if(xrp_c != null && pxrp_c != null){
+	                     if(xrp_c>pxrp_c){
+	                     tempval = (xrp_c - pxrp_c)/xrp_c*100;
+	                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pxrp_c-xrp_c)/xrp_c*100;
+	                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     } 
                      }
-                     if(ltc_c>pltc_c){
-                     tempval = (ltc_c - pltc_c)/ltc_c*100;
-                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
-                     }
-                     else{
-                     tempval = (pltc_c-ltc_c)/ltc_c*100;
-                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
-                     }
-                     if(etc_c>petc_c){
-                   	 tempval = (etc_c - petc_c)/etc_c*100;
-                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
-                     }
-                     else{
-                     tempval = (petc_c-etc_c)/etc_c*100;
-                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
-                     }
-                     if(xrp_c>pxrp_c){
-                     tempval = (xrp_c - pxrp_c)/xrp_c*100;
-                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");   
-                     }
-                     else{
-                     tempval = (pxrp_c-xrp_c)/xrp_c*100;
-                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:27px; color:green;'></i>)");
-                     } 
                   }
                });
             }
@@ -270,22 +282,22 @@ td {text-align:center;}
                </thead>
                <tbody style="text-align:center;">
                   <tr> 
-                     <td><div id="BTC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="BTC_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="ETH_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="ETH_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="DASH_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="DASH_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="LTC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="LTC_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="ETC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="ETC_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="XRP_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="XRP_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                </tbody>
                <!-- <tfoot>
