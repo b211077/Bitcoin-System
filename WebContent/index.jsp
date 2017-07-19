@@ -145,9 +145,6 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                   }
                });
             }
-            function delayfunc(){
-               pbtc_c1=pbtc_c;
-            }
             function myFunction2() {
                myVar = setInterval(myFun2, 1000);
                
