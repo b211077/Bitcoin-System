@@ -50,32 +50,32 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                   if(BTC_bper > 0)
                 	 $("#BTC").html(btc_c +"<div style='float:right; color:#9beb97;'>(" + BTC_bper + "%" + ")</div>");
                   else 
-                	 $("#BTC").html(btc_c +"<div style='float:right; color:#f38f8f;'>(" + BTC_bper + "%" + ")</div>");
+                	 $("#BTC").html(btc_c +"<div style='float:right; color:red;'>(" + BTC_bper + "%" + ")</div>");
                   ETH_bper = ((eth_c-obj.data.ETH.opening_price)/eth_c*100).toFixed(2);
                   if(ETH_bper > 0)
                  	 $("#ETH").html(eth_c +"<div style='float:right; color:#9beb97;'>(" + ETH_bper + "%" + ")</div>");
                   else
-                	 $("#ETH").html(eth_c +"<div style='float:right; color:#f38f8f;'>(" + ETH_bper + "%" + ")</div>");
+                	 $("#ETH").html(eth_c +"<div style='float:right; color:red;'>(" + ETH_bper + "%" + ")</div>");
                   DASH_bper = ((dash_c-obj.data.DASH.opening_price)/dash_c*100).toFixed(2);
                   if(DASH_bper > 0)
                 	  $("#DASH").html(dash_c +"<div style='float:right; color:#9beb97;'>(" + DASH_bper + "%" + ")</div>");
                   else
-                 	 $("#DASH").html(dash_c +"<div style='float:right; color:#f38f8f;'>(" + DASH_bper + "%" + ")</div>");
+                 	 $("#DASH").html(dash_c +"<div style='float:right; color:red;'>(" + DASH_bper + "%" + ")</div>");
                   LTC_bper = ((ltc_c-obj.data.LTC.opening_price)/ltc_c*100).toFixed(2);
                   if(LTC_bper > 0)
                 	  $("#LTC").html(ltc_c +"<div style='float:right; color:#9beb97;'>(" + LTC_bper + "%" + ")</div>");
                   else
-                 	 $("#LTC").html(ltc_c +"<div style='float:right; color:#f38f8f;'>(" + LTC_bper + "%" + ")</div>");
+                 	 $("#LTC").html(ltc_c +"<div style='float:right; color:red;'>(" + LTC_bper + "%" + ")</div>");
                   ETC_bper = ((etc_c-obj.data.ETC.opening_price)/etc_c*100).toFixed(2);
                   if(ETC_bper > 0)
                 	  $("#ETC").html(etc_c +"<div style='float:right; color:#9beb97;'>(" + ETC_bper + "%" + ")</div>");
                   else
-                 	 $("#ETC").html(etc_c +"<div style='float:right; color:#f38f8f;'>(" + ETC_bper + "%" + ")</div>");
+                 	 $("#ETC").html(etc_c +"<div style='float:right; color:red;'>(" + ETC_bper + "%" + ")</div>");
                   XRP_bper = ((xrp_c-obj.data.XRP.opening_price)/xrp_c*100).toFixed(2);
                   if(XRP_bper > 0)
                 	  $("#XRP").html(xrp_c +"<div style='float:right; color:#9beb97;'>(" + XRP_bper + "%" + ")</div>");
                   else
-                 	 $("#XRP").html(xrp_c +"<div style='float:right; color:#f38f8f;'>(" + XRP_bper + "%" + ")</div>");
+                 	 $("#XRP").html(xrp_c +"<div style='float:right; color:red;'>(" + XRP_bper + "%" + ")</div>");
                  
                   }
                }
@@ -100,32 +100,32 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                      if(BTC_per > 0)
                     	  $("#PBTC").html(pbtc_c +"<div style='float:right; color:#9beb97;'>(" + BTC_per + "%" + ")</div>");
                      else 
-                    	 $("#PBTC").html(pbtc_c +"<div style='float:right; color:#f38f8f;'>(" + BTC_per + "%" + ")</div>");
+                    	 $("#PBTC").html(pbtc_c +"<div style='float:right; color:red;'>(" + BTC_per + "%" + ")</div>");
                      ETH_per = (obj.USDT_ETH.percentChange*100).toFixed(2);
                      if(ETH_per > 0)
                     	 $("#PETH").html(peth_c+"<div style='float:right; color:#9beb97;'>(" + ETH_per + "%" + ")</div>");
                      else
-                    	 $("#PETH").html(peth_c+"<div style='float:right; color:#f38f8f;'>(" + ETH_per + "%" + ")</div>");
+                    	 $("#PETH").html(peth_c+"<div style='float:right; color:red;'>(" + ETH_per + "%" + ")</div>");
                      DASH_per = (obj.USDT_DASH.percentChange*100).toFixed(2);
                      if(DASH_per > 0)
                     	 $("#PDASH").html(pdash_c+"<div style='float:right; color:#9beb97;'>(" + DASH_per + "%" + ")</div>");
                      else
-                    	 $("#PDASH").html(pdash_c+"<div style='float:right; color:#f38f8f;'>(" + DASH_per + "%" + ")</div>");
+                    	 $("#PDASH").html(pdash_c+"<div style='float:right; color:red;'>(" + DASH_per + "%" + ")</div>");
                      LTC_per = (obj.USDT_LTC.percentChange*100).toFixed(2);
                      if(LTC_per > 0)
                     	 $("#PLTC").html(pltc_c+"<div style='float:right; color:#9beb97;'>(" + LTC_per + "%" + ")</div>");
                      else
-                    	 $("#PLTC").html(pltc_c+"<div style='float:right; color:#f38f8f;'>(" + LTC_per + "%" + ")</div>");
+                    	 $("#PLTC").html(pltc_c+"<div style='float:right; color:red;'>(" + LTC_per + "%" + ")</div>");
                      ETC_per = (obj.USDT_ETC.percentChange*100).toFixed(2);
                      if(ETC_per > 0)
                     	 $("#PETC").html(petc_c+"<div style='float:right; color:#9beb97;'>(" + ETC_per + "%" + ")</div>");
                      else
-                    	 $("#PETC").html(petc_c+"<div style='float:right; color:#f38f8f;'>(" + ETC_per + "%" + ")</div>");
+                    	 $("#PETC").html(petc_c+"<div style='float:right; color:red;'>(" + ETC_per + "%" + ")</div>");
                      XRP_per = (obj.USDT_XRP.percentChange*100).toFixed(2);
                      if(XRP_per > 0)
                     	 $("#PXRP").html(pxrp_c+"<div style='float:right; color:#9beb97;'>(" + XRP_per + "%" + ")</div>");
                      else
-                    	 $("#PXRP").html(pxrp_c+"<div style='float:right; color:#f38f8f;'>(" + XRP_per + "%" + ")</div>");
+                    	 $("#PXRP").html(pxrp_c+"<div style='float:right; color:red;'>(" + XRP_per + "%" + ")</div>");
                      
                      if(btc_c != null && pbtc_c != null){
 	                     if(btc_c>pbtc_c){
@@ -291,7 +291,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                <thead>
                   <tr>
                      <th>Coin</th>
-                     <th  style="text-align:center;">Price(원화: KRW)</th>
+                     <th>Price(원화: KRW) <div style="float:right;">24시간 변동률</div></th>
                   </tr>
                </thead>
                <tbody>
@@ -368,7 +368,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                <thead>
                   <tr>
                      <th >Coin</th>
-                     <th style="text-align:center;">Price(원화: KRW)</th>
+                     <th>Price(원화: KRW) <div style="float:right;">24시간 변동률</div></th>
                   </tr>
                </thead>
                <tbody>
