@@ -11,12 +11,17 @@
 <link rel="stylesheet" href="assets/css/main.css" />
 <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-<!-- <link href="https://cdn.rawgit.com/YJSoft/Webfonts/0.1/BM_HANNA.css"  rel="stylesheet" type="text/css" /> -->
+<link href="https://cdn.rawgit.com/YJSoft/Webfonts/0.1/BM_HANNA.css"  rel="stylesheet" type="text/css" />
 <link rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style type="text/css">
-/*  * {font-family:'BM HANNA','배달의민족 한나 ' !important, sans-serif; } */
+/*  * {font-family:'BM HANNA','배달의민족 한나 ' !important, sans-serif; }  */
+table { font-family:'배달의민족 한나'; }
+th {text-align:center;}
+td {text-align:center; }
+tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
+
 </style>
 <body>
 
@@ -25,26 +30,8 @@
       <!-- 실시간 코인 값 받아오는 로직 -->
       <!-- <div id="BTC"></div> -->
       <script type="text/javascript">
-               var btc_c;
-               var eth_c;
-               var dash_c;
-               var ltc_c;
-               var etc_c;
-               var xrp_c;
-               var btc_c1;
-               var eth_c1;
-               var dash_c1;
-               var ltc_c1;
-               var etc_c1;
-               var xrp_c1;
-               var pbtc_c
-               var peth_c;
-               var pdash_c;
-               var pltc_c;
-               var petc_c;
-               var pxrp_c;
-               var obj;
-               var tempval;
+               var btc_c,eth_c,dash_c,ltc_c,etc_c,xrp_c,btc_c1,eth_c1,dash_c1,ltc_c1,etc_c1,xrp_c1;
+               var pbtc_c,peth_c,pdash_c,pltc_c,petc_c,pxrp_c,obj,tempval;
             function myFun() {
                $.ajax({
                url : "bithumbUrl.jsp",
@@ -60,19 +47,21 @@
                   ltc_c = obj.data.LTC.closing_price;
                   etc_c = obj.data.ETC.closing_price;
                   xrp_c = obj.data.XRP.closing_price;
-                  $("#BTC").text(btc_c);
+                  $("#BTC").text(btc_c+"    (" + ((btc_c-obj.data.BTC.opening_price)/btc_c*100).toFixed(2) + "%" + ")");
                   //$("#BTC").css("backgroun-color","blue");
                   //$("#BTC").animate({fontSize: '24px'}, "slow");
-                  $("#ETH").text(eth_c);
-                  $("#DASH").text(dash_c);
-                  $("#LTC").text(ltc_c);
-                  $("#ETC").text(etc_c);
-                  $("#XRP").text(xrp_c);
+                  $("#ETH").text(eth_c+"    (" + ((eth_c-obj.data.ETH.opening_price)/eth_c*100).toFixed(2) + "%" + ")");
+                  $("#DASH").text(dash_c+"    (" + ((dash_c-obj.data.DASH.opening_price)/dash_c*100).toFixed(2) + "%" + ")");
+                  $("#LTC").text(ltc_c+"    (" + ((ltc_c-obj.data.LTC.opening_price)/ltc_c*100).toFixed(2) + "%" + ")");
+                  $("#ETC").text(etc_c+"    (" + ((etc_c-obj.data.ETC.opening_price)/etc_c*100).toFixed(2) + "%" + ")");
+                  $("#XRP").text(xrp_c+"    (" + ((xrp_c-obj.data.XRP.opening_price)/xrp_c*100).toFixed(2) + "%" + ")");
+                  	
                     
                   }
                }
             });
          }
+            //폴로닉스 api 받아오는 함수
             function myFun2() {
                $.ajax({
                   url : "poloniexUrl.jsp",
@@ -87,60 +76,72 @@
                      pltc_c = parseInt(obj.USDT_LTC.last*1121);
                      petc_c = parseInt(obj.USDT_ETC.last*1121);
                      pxrp_c = parseInt(obj.USDT_XRP.last*1121);
-                     $("#PBTC").text(pbtc_c);
-                     $("#PETH").text(peth_c);
-                     $("#PDASH").text(pdash_c);
-                     $("#PLTC").text(pltc_c);
-                     $("#PETC").text(petc_c);
-                     $("#PXRP").text(pxrp_c);                
-                     if(btc_c>pbtc_c){
-                     tempval = (btc_c - pbtc_c)/btc_c*100;
-                     $("#BTC_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
+                     $("#PBTC").html(pbtc_c +"<div style='float:right;'>(" + (obj.USDT_BTC.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PETH").html(peth_c+"    <div style='float:right;'>(" + (obj.USDT_ETH.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PDASH").html(pdash_c+"    <div style='float:right;'>(" + (obj.USDT_DASH.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PLTC").html(pltc_c+"    <div style='float:right;'>(" + (obj.USDT_LTC.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PETC").html(petc_c+"    <div style='float:right;'>(" + (obj.USDT_ETC.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PXRP").html(pxrp_c+"    <div style='float:right;'>(" + (obj.USDT_XRP.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     if(btc_c != null && pbtc_c != null){
+	                     if(btc_c>pbtc_c){
+	                     tempval = (btc_c - pbtc_c)/btc_c*100;
+	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pbtc_c-btc_c)/btc_c*100;
+	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
                      }
-                     else{
-                     tempval = (pbtc_c-btc_c)/btc_c*100;
-                     $("#BTC_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
+                     if(eth_c != null && peth_c != null){
+	                     if(eth_c>peth_c){
+	                     tempval = (eth_c - peth_c)/eth_c*100;
+	                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (peth_c-eth_c)/eth_c*100;
+	                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
                      }
-                     if(eth_c>peth_c){
-                     tempval = (eth_c - peth_c)/eth_c*100;
-                     $("#ETH_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
+                     if(dash_c != null && pdash_c != null){
+	                     if(dash_c>pdash_c){
+	                     tempval = (dash_c - pdash_c)/dash_c*100;
+	                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pdash_c-dash_c)/dash_c*100;
+	                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
                      }
-                     else{
-                     tempval = (peth_c-eth_c)/eth_c*100;
-                     $("#ETH_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
+                     if(ltc_c != null && pltc_c != null){
+	                     if(ltc_c>pltc_c){
+	                     tempval = (ltc_c - pltc_c)/ltc_c*100;
+	                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pltc_c-ltc_c)/ltc_c*100;
+	                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
                      }
-                     if(dash_c>pdash_c){
-                     tempval = (dash_c - pdash_c)/dash_c*100;
-                     $("#DASH_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
+                     if(etc_c != null && petc_c != null){
+	                     if(etc_c>petc_c){
+	                   	 tempval = (etc_c - petc_c)/etc_c*100;
+	                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (petc_c-etc_c)/etc_c*100;
+	                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
                      }
-                     else{
-                     tempval = (pdash_c-dash_c)/dash_c*100;
-                     $("#DASH_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
+                     if(xrp_c != null && pxrp_c != null){
+	                     if(xrp_c>pxrp_c){
+	                     tempval = (xrp_c - pxrp_c)/xrp_c*100;
+	                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pxrp_c-xrp_c)/xrp_c*100;
+	                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     } 
                      }
-                     if(ltc_c>pltc_c){
-                     tempval = (ltc_c - pltc_c)/ltc_c*100;
-                     $("#LTC_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
-                     }
-                     else{
-                     tempval = (pltc_c-ltc_c)/ltc_c*100;
-                     $("#LTC_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
-                     }
-                     if(etc_c>petc_c){
-                   	 tempval = (etc_c - petc_c)/etc_c*100;
-                     $("#ETC_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
-                     }
-                     else{
-                     tempval = (petc_c-etc_c)/etc_c*100;
-                     $("#ETC_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
-                     }
-                     if(xrp_c>pxrp_c){
-                     tempval = (xrp_c - pxrp_c)/xrp_c*100;
-                     $("#XRP_p").text(tempval.toFixed(2) + "%"+ "    (bithumb ↑)");   
-                     }
-                     else{
-                     tempval = (pxrp_c-xrp_c)/xrp_c*100;
-                     $("#XRP_p").text(tempval.toFixed(2) + "%"+ "   (poloniex ↑)");
-                     } 
                   }
                });
             }
@@ -216,7 +217,7 @@
                   + insight(통찰력) 이라는 뜻을 가지고 있습니다.<br> coINsight는 가상화폐의 다양한 종류
                   별, 그리고 거래소 별 시세 비교를 한 눈에 쉽게 그래프 차트로 제공합니다.<br> 또한 사용자가 구매한
                   가상화폐의 현재 시세와 비교하여 수익률을 계산하는 기능을 추가로 제공합니다.<br> coINsight와 함께
-                  가상화폐 거래에서 더욱 뛰어난 통찰력으로 높은 수익 창출을 경험해보세요. 한글<br>
+                  가상화폐 거래에서 더욱 뛰어난 통찰력으로 높은 수익 창출을 경험해보세요. <br>
                </p>
 
                <ul class="actions">
@@ -245,62 +246,62 @@
                <thead>
                   <tr>
                      <th>Coin</th>
-                     <th>Price(원화: KRW)</th>
+                     <th  style="text-align:center;">Price(원화: KRW)</th>
                   </tr>
                </thead>
                <tbody>
                   <tr>
-                     <td><strong>비트코인(BTC)</strong></td>
-                     <td><div id="BTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">비트코인(BTC)</td>
+                     <td><div id="BTC"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><strong>이더리움(ETH)</strong></td>
-                     <td><div id="ETH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">이더리움(ETH)</td>
+                     <td><div id="ETH"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><strong>대쉬 코인(DASH)</strong></td>
-                     <td><div id="DASH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">대쉬 코인(DASH)</td>
+                     <td><div id="DASH"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><strong>라이트 코인(LTC)</strong></td>
-                     <td><div id="LTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">라이트 코인(LTC)</td>
+                     <td><div id="LTC"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><strong>이더리움 클래식(ETC)</strong></td>
-                     <td><div id="ETC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">이더리움 클래식(ETC)</td>
+                     <td><div id="ETC"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><strong>리플(XRP)</strong></td>
-                     <td><div id="XRP" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">리플(XRP)</td>
+                     <td><div id="XRP"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                </tbody>
             </table>
          </div>
 
          <div class="table-wrapper"   style="width: 20%; float: left; margin:0 35px;">
-            <h2 style="margin-bottom:50px;"> Bithumb : Poloniex </h2>
+            <h2 style="margin-bottom:50px;"> &nbsp; </h2>
             <table class="alt">
                <thead>
-                  <th><strong>bithumb 대비 poloniex 시세차이(%)</strong></th>
+                  <th style="text-align:center;"><strong>국내 외 시세차이(%)</strong></th>
                </thead>
                <tbody style="text-align:center;">
                   <tr> 
-                     <td><div id="BTC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="BTC_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="ETH_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="ETH_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="DASH_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="DASH_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="LTC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="LTC_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="ETC_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="ETC_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td><div id="XRP_p" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td><div id="XRP_p" style="text-align:center; height:30px;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                </tbody>
                <!-- <tfoot>
@@ -321,34 +322,34 @@
             <table class="alt">
                <thead>
                   <tr>
-                     <th>Coin</th>
-                     <th>Price(원화: KRW)</th>
+                     <th >Coin</th>
+                     <th style="text-align:center;">Price(원화: KRW)</th>
                   </tr>
                </thead>
                <tbody>
                   <tr>
-                     <td>비트코인(BTC)</td>
-                     <td><div id="PBTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">비트코인(BTC)</td>
+                     <td><div id="PBTC"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td>이더리움(ETH)</td>
-                     <td><div id="PETH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">이더리움(ETH)</td>
+                     <td><div id="PETH"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td>대쉬 코인(DASH)</td>
-                     <td><div id="PDASH" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">대쉬 코인(DASH)</td>
+                     <td><div id="PDASH"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td>라이트 코인(LTC)</td>
-                     <td><div id="PLTC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">라이트 코인(LTC)</td>
+                     <td><div id="PLTC"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td>이더리움 클래식(ETC)</td>
-                     <td><div id="PETC" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">이더리움 클래식(ETC)</td>
+                     <td><div id="PETC"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                   <tr>
-                     <td>리플(XRP)</td>
-                     <td><div id="PXRP" style="text-align:center;"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
+                     <td style="text-align:left;">리플(XRP)</td>
+                     <td><div id="PXRP"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                </tbody>
                <!-- <tfoot>
