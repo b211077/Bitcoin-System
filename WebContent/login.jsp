@@ -76,7 +76,31 @@ form .field.half {
 		<section id="contact">
 			<div class="inner">
 				<section>
-					<form method="post" action="coin">
+					<script src="scripts/jquery-3.1.1.js"></script>
+					<script src="scripts/jquery.validate.min.js"></script>
+					<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
+					<script type="text/javascript">
+					$(document).ready(function(){
+						$("#loginForm").validate({ // joinForm에 validate를 적용
+						    rules:{
+						        id:{required:true, rangelength:[5,10]},
+						        // required는 필수, rangelength는 글자 개수(5~10개 사이)
+						        pw:{required:true, rangelength:[5,15]}
+						    },
+						    messages:{ // rules에 해당하는 메시지를 지정하는 속성
+						        id:{
+						            required:"ID를 입력하세요", // 이와 같이 규칙이름과 메시지를 작성
+						            rangelength:"5글자 이상, 10글자 이하여야 합니다."
+						        },
+						        pw:{
+						            required:"패스워드를 입력하세요",
+						            rangelength:"5글자 이상, 15글자 이하여야 합니다"
+						        }
+						    }
+						});
+					});	
+					</script>
+					<form id="loginForm" name="loginForm" method="post" action="coin">
 						<h2
 							style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 80px; margin-top: 0px !important;">로&nbsp;&nbsp;&nbsp;그&nbsp;&nbsp;&nbsp;인</h2>
 						<div class="field half">
@@ -110,13 +134,13 @@ form .field.half {
 	</div>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
+	
 	<script src="assets/js/jquery.scrolly.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/skel.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="assets/js/main.js"></script>
-
+	
 </body>
 </html>
