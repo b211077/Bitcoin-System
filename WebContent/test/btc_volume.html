@@ -1,15 +1,63 @@
 <meta charset="euc-kr" />
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-<pre id="csv" style="display:none">DAY,BITHUMB
-2017-07-01 00:00:00,15
-2017-07-01 04:00:00,44
-2017-07-01 08:00:00,46
-</pre>
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<!-- Additional files for the Highslide popup effect -->
+<script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+<script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
 
+<pre id="csv" style="display:none">
+DAY,BITHUMB
+2017-07-01 00:00:00,300
+2017-07-01 04:00:00,880
+2017-07-01 08:00:00,920
+2017-07-01 12:00:00,2260
+2017-07-01 16:00:00,960
+2017-07-01 20:00:00,740
+2017-07-02 00:00:00,1820
+2017-07-02 04:00:00,500
+2017-07-02 08:00:00,1160
+2017-07-02 12:00:00,2320
+2017-07-02 16:00:00,960
+2017-07-02 20:00:00,740
+2017-07-03 00:00:00,1820
+2017-07-03 04:00:00,500
+2017-07-03 08:00:00,1160
+2017-07-03 12:00:00,2320
+2017-07-03 16:00:00,1700
+2017-07-03 20:00:00,1100
+2017-07-04 00:00:00,2380
+2017-07-04 04:00:00,160
+2017-07-04 08:00:00,960
+2017-07-04 12:00:00,5460
+2017-07-04 16:00:00,2380
+2017-07-04 20:00:00,860
+2017-07-05 00:00:00,1820
+2017-07-05 04:00:00,80
+2017-07-05 08:00:00,620
+2017-07-05 12:00:00,1800
+2017-07-05 16:00:00,2480
+2017-07-05 20:00:00,1140
+2017-07-06 00:00:00,1240
+2017-07-06 04:00:00,660
+2017-07-06 08:00:00,940
+2017-07-06 12:00:00,1520
+2017-07-06 16:00:00,3060
+2017-07-06 20:00:00,2400
+2017-07-07 00:00:00,1020
+2017-07-07 04:00:00,220
+2017-07-07 08:00:00,420
+2017-07-07 12:00:00,2240
+2017-07-07 16:00:00,1120
+2017-07-07 20:00:00,1500
+
+
+
+
+</pre><div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script>
 
 <!--
@@ -116,23 +164,6 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
          showFirstLabel: false
      }],
 
-     legend: {
-         align: 'left',
-         verticalAlign: 'top',
-         y: 20,
-         floating: true,
-         borderWidth: 0,
-         itemStyle: {
-             color: '#E0E0E3'
-          },
-          itemHoverStyle: {
-             color: '#FFF'
-          },
-          itemHiddenStyle: {
-             color: '#606063'
-          }
-     },
-
      tooltip: {
    	      backgroundColor: 'rgba(0, 0, 0, 0.85)',
    	      style: {
@@ -191,8 +222,6 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
          marker: {
              radius: 4
          }
-     }, {
-         name: 'Poloneix'
      }]
  });
 });
