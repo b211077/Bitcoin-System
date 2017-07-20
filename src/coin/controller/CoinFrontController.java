@@ -136,14 +136,18 @@ public class CoinFrontController extends HttpServlet {
 		String pw = request.getParameter("pw");
 		try{
 			MemberDTO member = MemberService.getMember(id);
-			HttpSession session = request.getSession();//세션 생성
-			session.setAttribute("member", member);
-			session.setAttribute("name", member.getName());
-			session.setAttribute("id", member.getId());
-			System.out.println("세션의 id값 : "+((MemberDTO)session.getAttribute("member")).getId());
-			System.out.println("세션의 이름값 : "+((MemberDTO)session.getAttribute("member")).getName());
-			request.setAttribute("successMsg", "로그인 성공");
-			url = "index.jsp";
+			if(member.getPw().equals(pw)){
+				HttpSession session = request.getSession();//세션 생성
+				session.setAttribute("member", member);
+				session.setAttribute("name", member.getName());
+				session.setAttribute("id", member.getId());
+				System.out.println("세션의 id값 : "+((MemberDTO)session.getAttribute("member")).getId());
+				System.out.println("세션의 이름값 : "+((MemberDTO)session.getAttribute("member")).getName());
+				request.setAttribute("successMsg", "로그인 성공");
+				url = "index.jsp";
+			}else{
+				request.setAttribute("errorMsg", "비밀번호가 일지하지 않습니다");
+			}
 		}catch(Exception s){
 			s.printStackTrace();
 			request.setAttribute("errorMsg", s.getMessage());

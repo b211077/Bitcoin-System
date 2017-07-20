@@ -29,6 +29,9 @@
 		
 		</style>
 		<script type="text/javascript">
+			var btc_c,eth_c,dash_c,ltc_c,etc_c,xrp_c,btc_c1,eth_c1,dash_c1,ltc_c1,etc_c1,xrp_c1;
+	        var pbtc_c,peth_c,pdash_c,pltc_c,petc_c,pxrp_c,obj,tempval;
+			var amount, price, avgPrice, currentPrice_b, currentPrice_p;
 			function coinInfo(c){
 				$.ajax({
 					url : "coin",
@@ -40,12 +43,162 @@
 					dataType: "html",
 					success : function(responseData) {
 						var data = JSON.parse(responseData);
-						$("#amount").val(data.amount);
-						$("#price").val(data.price);
+						amount = data.amount;
+						price = data.price;
+						avgPrice = (data.price/data.amount).toFixed(2);
+						$("#amount").val(amount);
+						$("#price").val(price);
+						$("#avgPrice").val(avgPrice);
+						if(c == 'BTC'){
+							currentPrice_b = btc_c*avgPrice;
+							currentPrice_p = pbtc_c*avgPrice;
+						}else if(c == 'ETH'){
+							currentPrice_b = eth_c*avgPrice;
+							currentPrice_p = peth_c*avgPrice;
+						}else if(c == 'DASH'){
+							currentPrice_b = dash_c*avgPrice;
+							currentPrice_p = pdash_c*avgPrice;
+						}else if(c == 'LTC'){
+							currentPrice_b = ltc_c*avgPrice;
+							currentPrice_p = pltc_c*avgPrice;
+						}else if(c == 'ETC'){
+							currentPrice_b = etc_c*avgPrice;
+							currentPrice_p = petc_c*avgPrice;
+						}else if(c == 'XRP'){
+							currentPrice_b = xrp_c*avgPrice;
+							currentPrice_p = pxrp_c*avgPrice;
+						}
+						$("#currentPrice_b").val(currentPrice_b.toFixed(2));
+						$("#currentPrice_p").val(currentPrice_p.toFixed(2));
 					}
 				});
 			}
 		</script>
+		<script type="text/javascript">
+               
+            function myFun() {
+               $.ajax({
+               url : "bithumbUrl.jsp",
+               dataType : "html",
+               method : "GET",
+               success : function(result) {
+                  result = result.replace(/(\s*)/g, "");         
+                  obj = eval("(" + result + ")");
+                  if (obj.message == null){
+                  btc_c = obj.data.BTC.closing_price;   
+                  eth_c = obj.data.ETH.closing_price;
+                  dash_c = obj.data.DASH.closing_price;
+                  ltc_c = obj.data.LTC.closing_price;
+                  etc_c = obj.data.ETC.closing_price;
+                  xrp_c = obj.data.XRP.closing_price;
+                  $("#BTC").text(btc_c+"    (" + ((btc_c-obj.data.BTC.opening_price)/btc_c*100).toFixed(2) + "%" + ")");
+                  //$("#BTC").css("backgroun-color","blue");
+                  //$("#BTC").animate({fontSize: '24px'}, "slow");
+                  $("#ETH").text(eth_c+"    (" + ((eth_c-obj.data.ETH.opening_price)/eth_c*100).toFixed(2) + "%" + ")");
+                  $("#DASH").text(dash_c+"    (" + ((dash_c-obj.data.DASH.opening_price)/dash_c*100).toFixed(2) + "%" + ")");
+                  $("#LTC").text(ltc_c+"    (" + ((ltc_c-obj.data.LTC.opening_price)/ltc_c*100).toFixed(2) + "%" + ")");
+                  $("#ETC").text(etc_c+"    (" + ((etc_c-obj.data.ETC.opening_price)/etc_c*100).toFixed(2) + "%" + ")");
+                  $("#XRP").text(xrp_c+"    (" + ((xrp_c-obj.data.XRP.opening_price)/xrp_c*100).toFixed(2) + "%" + ")");
+                  	
+                    
+                  }
+               }
+            });
+         }
+            //폴로닉스 api 받아오는 함수
+            function myFun2() {
+               $.ajax({
+                  url : "poloniexUrl.jsp",
+                  dataType : "html",
+                  method : "GET",
+                  success : function(result2) {
+                     result2 = result2.replace(/(\s*)/g, "");               
+                     obj = eval("(" + result2 + ")");
+                     pbtc_c = parseInt(obj.USDT_BTC.last*1121);
+                     peth_c = parseInt(obj.USDT_ETH.last*1121);
+                     pdash_c = parseInt(obj.USDT_DASH.last*1121);
+                     pltc_c = parseInt(obj.USDT_LTC.last*1121);
+                     petc_c = parseInt(obj.USDT_ETC.last*1121);
+                     pxrp_c = parseInt(obj.USDT_XRP.last*1121);
+                     $("#PBTC").html(pbtc_c +"<div style='float:right;'>(" + (obj.USDT_BTC.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PETH").html(peth_c+"    <div style='float:right;'>(" + (obj.USDT_ETH.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PDASH").html(pdash_c+"    <div style='float:right;'>(" + (obj.USDT_DASH.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PLTC").html(pltc_c+"    <div style='float:right;'>(" + (obj.USDT_LTC.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PETC").html(petc_c+"    <div style='float:right;'>(" + (obj.USDT_ETC.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     $("#PXRP").html(pxrp_c+"    <div style='float:right;'>(" + (obj.USDT_XRP.percentChange*100).toFixed(2) + "%" + ")</div>");
+                     if(btc_c != null && pbtc_c != null){
+	                     if(btc_c>pbtc_c){
+	                     tempval = (btc_c - pbtc_c)/btc_c*100;
+	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pbtc_c-btc_c)/btc_c*100;
+	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
+                     }
+                     if(eth_c != null && peth_c != null){
+	                     if(eth_c>peth_c){
+	                     tempval = (eth_c - peth_c)/eth_c*100;
+	                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (peth_c-eth_c)/eth_c*100;
+	                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
+                     }
+                     if(dash_c != null && pdash_c != null){
+	                     if(dash_c>pdash_c){
+	                     tempval = (dash_c - pdash_c)/dash_c*100;
+	                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pdash_c-dash_c)/dash_c*100;
+	                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
+                     }
+                     if(ltc_c != null && pltc_c != null){
+	                     if(ltc_c>pltc_c){
+	                     tempval = (ltc_c - pltc_c)/ltc_c*100;
+	                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pltc_c-ltc_c)/ltc_c*100;
+	                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
+                     }
+                     if(etc_c != null && petc_c != null){
+	                     if(etc_c>petc_c){
+	                   	 tempval = (etc_c - petc_c)/etc_c*100;
+	                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (petc_c-etc_c)/etc_c*100;
+	                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     }
+                     }
+                     if(xrp_c != null && pxrp_c != null){
+	                     if(xrp_c>pxrp_c){
+	                     tempval = (xrp_c - pxrp_c)/xrp_c*100;
+	                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");   
+	                     }
+	                     else{
+	                     tempval = (pxrp_c-xrp_c)/xrp_c*100;
+	                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:green;'></i>)");
+	                     } 
+                     }
+                  }
+               });
+            }
+            function myFunction2() {
+               myVar = setInterval(myFun2, 1000);
+               
+            }
+            function myFunction() {
+            myVar = setInterval(myFun, 1000);
+         }
+            myFunction();
+            myFunction2();
+      </script>
 	</head>
 	<body>
 
@@ -118,9 +271,22 @@
 										<input type="text" name="amount" id="amount" readonly />
 									</div>
 									<div class="field half">
-										<label for="pw">금액</label>
+										<label for="pw">총 구매 금액</label>
 										<input type="text" name="price" id="price" readonly />
 									</div>
+									<div class="field half">
+										<label for="pw">평균 코인 구매 단가[총구매금액/코인개수]</label>
+										<input type="text" name="avgPrice" id="avgPrice" readonly />
+									</div>
+									<div class="field half">
+										<label for="pw">현재 평가 금액[현재가(빗섬)*코인개수]</label>
+										<input type="text" name="currentPrice_b" id="currentPrice_b" readonly />
+									</div>
+									<div class="field half">
+										<label for="pw">현재 평가 금액[현재가(플로닉스)*코인개수]</label>
+										<input type="text" name="currentPrice_p" id="currentPrice_p" readonly />
+									</div>
+									
 									
 									<h3 style="text-align:center; border-bottom:1px dashed; border-bottom-color:white;">지갑 정보 수정</h3>
 									<div class="field half">
