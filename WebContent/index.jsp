@@ -18,6 +18,7 @@
 <style type="text/css">
 /*  * {font-family:'BM HANNA','배달의민족 한나 ' !important, sans-serif; }  */
 table { font-family:'배달의민족 한나'; }
+
 th {text-align:center;}
 td {text-align:center; }
 tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
