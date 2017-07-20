@@ -9,75 +9,141 @@
 <script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
 
-<pre id="csv" style="display:none">DAY,BITHUMB,POLONEIX
-2017-07-01 00:00:00,15,2388807
-2017-07-01 04:00:00,44,7133275
-2017-07-01 08:00:00,46,4832446
-2017-07-01 12:00:00,113,4069918
-2017-07-01 16:00:00,48,2709491
-2017-07-01 20:00:00,37,2595581
-2017-07-02 00:00:00,91,7412609
-2017-07-02 04:00:00,25,4338390
-2017-07-02 08:00:00,58,3731813
-2017-07-02 12:00:00,116,2532833
-2017-07-02 16:00:00,48,6275422
-2017-07-02 20:00:00,37,2900072
-2017-07-03 00:00:00,91,7163532
-2017-07-03 04:00:00,25,4522024
-2017-07-03 08:00:00,58,3012086
-2017-07-03 12:00:00,116,1638010
-2017-07-03 16:00:00,85,1503711
-2017-07-03 20:00:00,55,7237248
-2017-07-04 00:00:00,119,2135323
-2017-07-04 04:00:00,8,1563199
-2017-07-04 08:00:00,48,2999939
-2017-07-04 12:00:00,273,679325
-2017-07-04 16:00:00,119,1085775
-2017-07-04 20:00:00,43,3338221
-2017-07-05 00:00:00,91,4048316
-2017-07-05 04:00:00,4,863168
-2017-07-05 08:00:00,31,2090206
-2017-07-05 12:00:00,90,1450988
-2017-07-05 16:00:00,124,2202786
-2017-07-05 20:00:00,57,3048068
-2017-07-06 00:00:00,62,3766664
-2017-07-06 04:00:00,33,1194707
-2017-07-06 08:00:00,47,793480
-2017-07-06 12:00:00,76,1853700
-2017-07-06 16:00:00,153,1633447
-2017-07-06 20:00:00,120,1134724
-2017-07-07 00:00:00,51,1288712
-2017-07-07 04:00:00,11,676874
-2017-07-07 08:00:00,21,431843
-2017-07-07 12:00:00,112,2007534
-2017-07-07 16:00:00,56,1965539
-2017-07-07 20:00:00,75,4241093
+<pre id="csv" style="display:none">
+DAY,BITHUMB
+2017-07-01 00:00:00,73720
+2017-07-01 04:00:00,5760
+2017-07-01 08:00:00,84100
+2017-07-01 12:00:00,174300
+2017-07-01 16:00:00,121020
+2017-07-01 20:00:00,51960
+2017-07-02 00:00:00,43040
+2017-07-02 04:00:00,65020
+2017-07-02 08:00:00,53760
+2017-07-02 12:00:00,114380
+2017-07-02 16:00:00,83000
+2017-07-02 20:00:00,46760
+2017-07-03 00:00:00,25400
+2017-07-03 04:00:00,47040
+2017-07-03 08:00:00,107320
+2017-07-03 12:00:00,73500
+2017-07-03 16:00:00,34860
+2017-07-03 20:00:00,28340
+2017-07-04 00:00:00,65120
+2017-07-04 04:00:00,4900
+2017-07-04 08:00:00,22020
+2017-07-04 12:00:00,60620
+2017-07-04 16:00:00,14060
+2017-07-04 20:00:00,8960
+2017-07-05 00:00:00,44520
+2017-07-05 04:00:00,3480
+2017-07-05 08:00:00,27640
+2017-07-05 12:00:00,32480
+2017-07-05 16:00:00,18780
+2017-07-05 20:00:00,89140
+2017-07-06 00:00:00,54440
+2017-07-06 04:00:00,87860
+2017-07-06 08:00:00,35820
+2017-07-06 12:00:00,12100
+2017-07-06 16:00:00,196420
+2017-07-06 20:00:00,69980
+2017-07-07 00:00:00,12700
+2017-07-07 04:00:00,7420
+2017-07-07 08:00:00,17200
+2017-07-07 12:00:00,38660
+2017-07-07 16:00:00,85060
+2017-07-07 20:00:00,17220
+
+
 
 
 </pre><div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script>
 
+<!--
+function handleFiles() {
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "D:\Docs\Desktop\csvfile.csv",
+            dataType: "csv",
+            success: function (data) { processData(data); }
+        });
+    });
+}
+-->
+
+$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
  Highcharts.chart('container', {
+	 colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
+	      '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+	   chart: {
+	      backgroundColor: {
+	         linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+	         stops: [
+	            [0, '#242943'],
+	            [1, '#242943']
+	         ]
+	      },
+	      style: {
+	         fontFamily: '\'Unica One\', sans-serif'
+	      },
+	      plotBorderColor: '#242943'
+	   },
 
      data: {
          csv: document.getElementById('csv').innerHTML
      },
 
      title: {
-         text: '시세 정보'
+         text: '시세 정보',
+         style: {
+             color: '#E0E0E3',
+             textTransform: 'uppercase',
+             fontSize: '20px'
+          }
      },
 
      subtitle: {
-         text: '일주일간 시세'
+         text: '일주일간 시세',
+         style: {
+             color: '#E0E0E3',
+             textTransform: 'uppercase'
+          }
      },
 
      xAxis: {
          tickInterval: 4 * 3600 * 1000, // 4시간 단위
          tickWidth: 0,
+         gridLineColor: '#707073',
+         labels: {
+            style: {
+               color: '#E0E0E3'
+            }
+         },
+         lineColor: '#707073',
+         minorGridLineColor: '#505053',
+         tickColor: '#707073',
+         title: {
+            style: {
+               color: '#A0A0A3'
+            }
+         }
      },
 
      yAxis: [{ // left y axis
-         title: {
+    	 gridLineColor: '#707073',
+         labels: {
+            style: {
+               color: '#E0E0E3'
+            }
+         },
+         lineColor: '#707073',
+         minorGridLineColor: '#505053',
+         tickColor: '#707073',
+         tickWidth: 1,
+    	 title: {
              text: null
          },
          gridLineWidth: 3,
@@ -98,27 +164,65 @@
          showFirstLabel: false
      }],
 
-     legend: {
-         align: 'left',
-         verticalAlign: 'top',
-         y: 20,
-         floating: true,
-         borderWidth: 0
-     },
-
      tooltip: {
-         shared: true,
-         crosshairs: true
+   	      backgroundColor: 'rgba(0, 0, 0, 0.85)',
+   	      style: {
+   	         color: '#F0F0F0'
+   	      }
      },
+     plotOptions: {
+         series: {
+            dataLabels: {
+               color: '#B0B0B3'
+            },
+            marker: {
+               lineColor: '#333'
+            }
+         },
+         boxplot: {
+            fillColor: '#505053'
+         },
+         candlestick: {
+            lineColor: 'white'
+         },
+         errorbar: {
+            color: 'white'
+         }
+      },
+      drilldown: {
+          activeAxisLabelStyle: {
+             color: '#F0F0F3'
+          },
+          activeDataLabelStyle: {
+             color: '#F0F0F3'
+          }
+       },
 
+       navigation: {
+          buttonOptions: {
+             symbolStroke: '#DDDDDD',
+             theme: {
+                fill: '#505053'
+             }
+          }
+       },
+      credits: {
+          style: {
+             color: '#666'
+          }
+       },
+       labels: {
+          style: {
+             color: '#707073'
+          }
+       },
      series: [{
          name: 'Bithumb',
          lineWidth: 4,
          marker: {
              radius: 4
          }
-     }, {
-         name: 'Poloneix'
      }]
  });
+});
 </script>
