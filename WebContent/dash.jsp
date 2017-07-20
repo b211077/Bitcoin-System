@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Generic - Forty by HTML5 UP</title>
+<title>대쉬코인 시세정보</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
