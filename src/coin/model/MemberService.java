@@ -82,6 +82,11 @@ public class MemberService {
 		}
 		return coinInfo;
 	}
+	// 코인이름으로 내코인 모든 정보 조회
+	public static ArrayList<Integer> getAllCoinInfo(String memberId) throws SQLException{
+		ArrayList<Integer> allCoinInfo = MemberDAO.getAllWalletData(memberId);
+		return allCoinInfo;
+	}
 	
 	// 내 코인 정보 업데이트
 	public static boolean updateCoin(String memberId, String cName, String updateType,int updateAmount, int updatePrice) throws SQLException, NotExistException{		
