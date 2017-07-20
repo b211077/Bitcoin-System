@@ -77,7 +77,7 @@
 					<span class="image main">
 						<p id="areaText"></p> <script>
 							$.ajax({
-								  url: "test/xrp_price.html",
+								  url: "graph/xrp_price.html",
 								  cache: false
 								})
 								  .done(function( html ) {
@@ -102,7 +102,7 @@
 			
 			if (count == 1) {
 					$.ajax({
-						url : "test/xrp_volume.html",
+						url : "graph/xrp_volume.html",
 						cache : false
 					}).done(function(html) {
 						$("#areaText").html(html);
@@ -112,7 +112,7 @@
 					count = 0;
 				} else {
 					$.ajax({
-						url : "test/xrp_price.html",
+						url : "graph/xrp_price.html",
 						cache : false
 					}).done(function(html) {
 						$("#areaText").html(html);
