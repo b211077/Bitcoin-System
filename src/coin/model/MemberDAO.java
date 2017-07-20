@@ -173,14 +173,19 @@ public class MemberDAO {
 		ArrayList<Integer> allWalletData = null;
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(sql.getString("getAllWalletData"));
+			pstmt = con.prepareStatement(sql.getString("getAllWalletAmount"));
 			pstmt.setString(1, memberId);
 			rset = pstmt.executeQuery();
 			allWalletData = new ArrayList<Integer>();
 			rset.next();
-			for(int i = 0; i<rset.getFetchSize() ; i++){
-				allWalletData.add(rset.getInt(i));
+			allWalletData.add(rset.getInt(1));
+			pstmt = con.prepareStatement(sql.getString("getEachWalletAmount"));
+			pstmt.setString(1, memberId);
+			rset = pstmt.executeQuery();
+			while (rset.next()) {
+				allWalletData.add(rset.getInt(1));
 			}
+			
 		} finally {
 			DBUtil.close(con, pstmt, rset);
 		}

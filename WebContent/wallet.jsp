@@ -30,6 +30,7 @@ form .field.half {
 	var btc_c, eth_c, dash_c, ltc_c, etc_c, xrp_c, btc_c1, eth_c1, dash_c1, ltc_c1, etc_c1, xrp_c1;
 	var pbtc_c, peth_c, pdash_c, pltc_c, petc_c, pxrp_c, obj, tempval;
 	var amount, price, avgPrice, currentPrice_b, currentPrice_p;
+	var amountAll, amountBTC, amountETH, amountDASH, amountLTC, amountETC, amountXRP;
 	function coinChart() {
 		$.ajax({
 			url : "test/coin.html",
@@ -52,6 +53,14 @@ form .field.half {
 				amount = data.amount;
 				price = data.price;
 				avgPrice = (data.price / data.amount).toFixed(2);
+				amountAll = data.amountAll;
+				amountBTC = data.amountBTC;
+				amountETH = data.amountETH; 
+				amountDASH = data.amountDASH; 
+				amountLTC = data.amountLTC; 
+				amountETC = data.amountETC; 
+				amountXRP = data.amountXRP;
+				
 				$("#amount").val(amount);
 				$("#price").val(price);
 				$("#avgPrice").val(avgPrice);
@@ -97,45 +106,7 @@ form .field.half {
 					ltc_c = obj.data.LTC.closing_price;
 					etc_c = obj.data.ETC.closing_price;
 					xrp_c = obj.data.XRP.closing_price;
-					$("#BTC").text(
-							btc_c
-									+ "    ("
-									+ ((btc_c - obj.data.BTC.opening_price)
-											/ btc_c * 100).toFixed(2) + "%"
-									+ ")");
-					//$("#BTC").css("backgroun-color","blue");
-					//$("#BTC").animate({fontSize: '24px'}, "slow");
-					$("#ETH").text(
-							eth_c
-									+ "    ("
-									+ ((eth_c - obj.data.ETH.opening_price)
-											/ eth_c * 100).toFixed(2) + "%"
-									+ ")");
-					$("#DASH").text(
-							dash_c
-									+ "    ("
-									+ ((dash_c - obj.data.DASH.opening_price)
-											/ dash_c * 100).toFixed(2) + "%"
-									+ ")");
-					$("#LTC").text(
-							ltc_c
-									+ "    ("
-									+ ((ltc_c - obj.data.LTC.opening_price)
-											/ ltc_c * 100).toFixed(2) + "%"
-									+ ")");
-					$("#ETC").text(
-							etc_c
-									+ "    ("
-									+ ((etc_c - obj.data.ETC.opening_price)
-											/ etc_c * 100).toFixed(2) + "%"
-									+ ")");
-					$("#XRP").text(
-							xrp_c
-									+ "    ("
-									+ ((xrp_c - obj.data.XRP.opening_price)
-											/ xrp_c * 100).toFixed(2) + "%"
-									+ ")");
-
+					
 				}
 			}
 		});
@@ -156,95 +127,6 @@ form .field.half {
              petc_c = parseInt(obj.USDT_ETC.last*1121);
              pxrp_c = parseInt(obj.USDT_XRP.last*1121);
              BTC_per = (obj.USDT_BTC.percentChange*100).toFixed(2);
-             if(BTC_per > 0)
-            	 $("#PBTC").html(number_format(pbtc_c) +"<div style='float:right; color:#9beb97;'>(" + BTC_per + "%" + ")</div>");
-             else 
-            	 $("#PBTC").html(number_format(pbtc_c) +"<div style='float:right; color:red;'>(" + BTC_per + "%" + ")</div>");
-             ETH_per = (obj.USDT_ETH.percentChange*100).toFixed(2);
-             if(ETH_per > 0)
-            	 $("#PETH").html(number_format(peth_c)+"<div style='float:right; color:#9beb97;'>(" + ETH_per + "%" + ")</div>");
-             else
-            	 $("#PETH").html(number_format(peth_c)+"<div style='float:right; color:red;'>(" + ETH_per + "%" + ")</div>");
-             DASH_per = (obj.USDT_DASH.percentChange*100).toFixed(2);
-             if(DASH_per > 0)
-            	 $("#PDASH").html(number_format(pdash_c)+"<div style='float:right; color:#9beb97;'>(" + DASH_per + "%" + ")</div>");
-             else
-            	 $("#PDASH").html(number_format(pdash_c)+"<div style='float:right; color:red;'>(" + DASH_per + "%" + ")</div>");
-             LTC_per = (obj.USDT_LTC.percentChange*100).toFixed(2);
-             if(LTC_per > 0)
-            	 $("#PLTC").html(number_format(pltc_c)+"<div style='float:right; color:#9beb97;'>(" + LTC_per + "%" + ")</div>");
-             else
-            	 $("#PLTC").html(number_format(pltc_c)+"<div style='float:right; color:red;'>(" + LTC_per + "%" + ")</div>");
-             ETC_per = (obj.USDT_ETC.percentChange*100).toFixed(2);
-             if(ETC_per > 0)
-            	 $("#PETC").html(number_format(petc_c)+"<div style='float:right; color:#9beb97;'>(" + ETC_per + "%" + ")</div>");
-             else
-            	 $("#PETC").html(number_format(petc_c)+"<div style='float:right; color:red;'>(" + ETC_per + "%" + ")</div>");
-             XRP_per = (obj.USDT_XRP.percentChange*100).toFixed(2);
-             if(XRP_per > 0)
-            	 $("#PXRP").html(number_format(pxrp_c)+"<div style='float:right; color:#9beb97;'>(" + XRP_per + "%" + ")</div>");
-             else
-            	 $("#PXRP").html(number_format(pxrp_c)+"<div style='float:right; color:red;'>(" + XRP_per + "%" + ")</div>");
-             if(btc_c != null && pbtc_c != null){
-                 if(btc_c>pbtc_c){
-                 tempval = (btc_c - pbtc_c)/btc_c*100;
-                 $("#BTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
-                 }
-                 else{
-                 tempval = (pbtc_c-btc_c)/btc_c*100;
-                 $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
-                 }
-             }
-             if(eth_c != null && peth_c != null){
-                 if(eth_c>peth_c){
-                 tempval = (eth_c - peth_c)/eth_c*100;
-                 $("#ETH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
-                 }
-                 else{
-                 tempval = (peth_c-eth_c)/eth_c*100;
-                 $("#ETH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
-                 }
-             }
-             if(dash_c != null && pdash_c != null){
-                 if(dash_c>pdash_c){
-                 tempval = (dash_c - pdash_c)/dash_c*100;
-                 $("#DASH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
-                 }
-                 else{
-                 tempval = (pdash_c-dash_c)/dash_c*100;
-                 $("#DASH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
-                 }
-             }
-             if(ltc_c != null && pltc_c != null){
-                 if(ltc_c>pltc_c){
-                 tempval = (ltc_c - pltc_c)/ltc_c*100;
-                 $("#LTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
-                 }
-                 else{
-                 tempval = (pltc_c-ltc_c)/ltc_c*100;
-                 $("#LTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
-                 }
-             }
-             if(etc_c != null && petc_c != null){
-                 if(etc_c>petc_c){
-               	 tempval = (etc_c - petc_c)/etc_c*100;
-                 $("#ETC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
-                 }
-                 else{
-                 tempval = (petc_c-etc_c)/etc_c*100;
-                 $("#ETC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
-                 }
-             }
-             if(xrp_c != null && pxrp_c != null){
-                 if(xrp_c>pxrp_c){
-                 tempval = (xrp_c - pxrp_c)/xrp_c*100;
-                 $("#XRP_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
-                 }
-                 else{
-                 tempval = (pxrp_c-xrp_c)/xrp_c*100;
-                 $("#XRP_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
-                 } 
-             }
           }
        });
     }

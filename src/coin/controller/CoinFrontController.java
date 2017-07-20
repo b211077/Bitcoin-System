@@ -1,6 +1,7 @@
 package coin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -88,9 +89,19 @@ public class CoinFrontController extends HttpServlet {
 		try{
 			HttpSession session = request.getSession();
 			WalletCoinDTO coinInfo = MemberService.getCoinInfo((String)session.getAttribute("id"), coinName);
+			ArrayList<Integer> allCoinInfo =  MemberService.getAllCoinInfo((String)session.getAttribute("id"));
 		    String coinInfoJson = "{\"name\":\""+coinInfo.getCoinName()
 		                    +"\",\"amount\":\""+coinInfo.getAmount()
-		                    +"\",\"price\":\""+coinInfo.getPrice()+"\"}";
+		                    +"\",\"price\":\""+coinInfo.getPrice()
+		                    +"\",\"amountAll\":\""+allCoinInfo.get(0)
+		                    +"\",\"amountBTC\":\""+allCoinInfo.get(1)
+		                    +"\",\"amountETH\":\""+allCoinInfo.get(2)
+		                    +"\",\"amountDASH\":\""+allCoinInfo.get(3)
+		                    +"\",\"amountLTC\":\""+allCoinInfo.get(4)
+		                    +"\",\"amountETC\":\""+allCoinInfo.get(5)
+		                    +"\",\"amountXRP\":\""+allCoinInfo.get(6)
+		                    +"\"}";
+System.out.println(coinInfoJson);
 		    response.getWriter().print(coinInfoJson);
 		}catch(Exception s){
 			s.printStackTrace();
