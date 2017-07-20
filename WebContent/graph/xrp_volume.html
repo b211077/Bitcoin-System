@@ -9,70 +9,8 @@
 <script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
 
-<pre id="csv" style="display:none">
-DAY,BITHUMB
-2017-07-01 00:00:00,1708380
-2017-07-01 04:00:00,520540
-2017-07-01 08:00:00,13057460
-2017-07-01 12:00:00,3799300
-2017-07-01 16:00:00,27931380
-2017-07-01 20:00:00,9150640
-2017-07-02 00:00:00,3413160
-2017-07-02 04:00:00,1397120
-2017-07-02 08:00:00,2387400
-2017-07-02 12:00:00,7444140
-2017-07-02 16:00:00,1484720
-2017-07-02 20:00:00,4639880
-2017-07-03 00:00:00,1045040
-2017-07-03 04:00:00,1499240
-2017-07-03 08:00:00,11376740
-2017-07-03 12:00:00,2782040
-2017-07-03 16:00:00,10213700
-2017-07-03 20:00:00,6258180
-2017-07-04 00:00:00,7769660
-2017-07-04 04:00:00,303980
-2017-07-04 08:00:00,9042560
-2017-07-04 12:00:00,20107040
-2017-07-04 16:00:00,9526620
-2017-07-04 20:00:00,234920
-2017-07-05 00:00:00,4588220
-2017-07-05 04:00:00,1249940
-2017-07-05 08:00:00,12523060
-2017-07-05 12:00:00,8034220
-2017-07-05 16:00:00,7100340
-2017-07-05 20:00:00,6625580
-2017-07-06 00:00:00,14475400
-2017-07-06 04:00:00,2126600
-2017-07-06 08:00:00,6589720
-2017-07-06 12:00:00,4473040
-2017-07-06 16:00:00,38016380
-2017-07-06 20:00:00,7461240
-2017-07-07 00:00:00,4764340
-2017-07-07 04:00:00,747620
-2017-07-07 08:00:00,1247720
-2017-07-07 12:00:00,4093820
-2017-07-07 16:00:00,17107080
-2017-07-07 20:00:00,13745980
-
-
-
-
-</pre><div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script>
-
-<!--
-function handleFiles() {
-
-    $(document).ready(function () {
-        $.ajax({
-            type: "GET",
-            url: "D:\Docs\Desktop\csvfile.csv",
-            dataType: "csv",
-            success: function (data) { processData(data); }
-        });
-    });
-}
--->
 
 Highcharts.setOptions({
     lang: {
@@ -80,7 +18,7 @@ Highcharts.setOptions({
     }
 });
 
-$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
+$.get('./file/XRP_volume.csv', function(data) {
  Highcharts.chart('container', {
 	 colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
 	      '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
@@ -99,7 +37,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
 	   },
 
      data: {
-         csv: document.getElementById('csv').innerHTML
+         csv : data
      },
 
      title: {
@@ -224,16 +162,16 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
           }
        },
        legend: {
- 	      itemStyle: {
- 	         color: '#FFFFFF'
- 	      },
- 	      itemHoverStyle: {
- 	         color: '#FFFFFF'
- 	      },
- 	      itemHiddenStyle: {
- 	         color: '#FFFFFF'
- 	      }
- 	   },
+    	      itemStyle: {
+    	         color: '#FFFFFF'
+    	      },
+    	      itemHoverStyle: {
+    	         color: '#FFFFFF'
+    	      },
+    	      itemHiddenStyle: {
+    	         color: '#FFFFFF'
+    	      }
+    	   },
      series: [{
          name: 'Bithumb',
          lineWidth: 4,

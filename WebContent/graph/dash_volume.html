@@ -9,70 +9,8 @@
 <script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
 
-<pre id="csv" style="display:none">
-DAY,BITHUMB
-2017-07-01 00:00:00,340
-2017-07-01 04:00:00,20
-2017-07-01 08:00:00,3980
-2017-07-01 12:00:00,6700
-2017-07-01 16:00:00,640
-2017-07-01 20:00:00,520
-2017-07-02 00:00:00,20
-2017-07-02 04:00:00,420
-2017-07-02 08:00:00,2640
-2017-07-02 12:00:00,240
-2017-07-02 16:00:00,700
-2017-07-02 20:00:00,2880
-2017-07-03 00:00:00,0
-2017-07-03 04:00:00,2480
-2017-07-03 08:00:00,3220
-2017-07-03 12:00:00,200
-2017-07-03 16:00:00,780
-2017-07-03 20:00:00,1320
-2017-07-04 00:00:00,2060
-2017-07-04 04:00:00,300
-2017-07-04 08:00:00,2360
-2017-07-04 12:00:00,2660
-2017-07-04 16:00:00,400
-2017-07-04 20:00:00,600
-2017-07-05 00:00:00,3740
-2017-07-05 04:00:00,800
-2017-07-05 08:00:00,1000
-2017-07-05 12:00:00,1500
-2017-07-05 16:00:00,3980
-2017-07-05 20:00:00,4200
-2017-07-06 00:00:00,28740
-2017-07-06 04:00:00,5760
-2017-07-06 08:00:00,9220
-2017-07-06 12:00:00,36540
-2017-07-06 16:00:00,57220
-2017-07-06 20:00:00,3360
-2017-07-07 00:00:00,11980
-2017-07-07 04:00:00,2040
-2017-07-07 08:00:00,4820
-2017-07-07 12:00:00,12860
-2017-07-07 16:00:00,12500
-2017-07-07 20:00:00,15240
-
-
-
-
-</pre><div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script>
-
-<!--
-function handleFiles() {
-
-    $(document).ready(function () {
-        $.ajax({
-            type: "GET",
-            url: "D:\Docs\Desktop\csvfile.csv",
-            dataType: "csv",
-            success: function (data) { processData(data); }
-        });
-    });
-}
--->
 
 Highcharts.setOptions({
     lang: {
@@ -80,7 +18,7 @@ Highcharts.setOptions({
     }
 });
 
-$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
+$.get('./file/DASH_volume.csv', function(data) {
  Highcharts.chart('container', {
 	 colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
 	      '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
@@ -99,7 +37,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
 	   },
 
      data: {
-         csv: document.getElementById('csv').innerHTML
+         csv : data
      },
 
      title: {
@@ -163,7 +101,10 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
              text: null
          },
          labels: {
-             format: '{value:.,0f}'
+             format: '{value:.,0f}',
+             style: {
+                 color: '#FFFFFF'
+              }
          },
          showFirstLabel: false
      }],
@@ -221,16 +162,16 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
           }
        },
        legend: {
- 	      itemStyle: {
- 	         color: '#FFFFFF'
- 	      },
- 	      itemHoverStyle: {
- 	         color: '#FFFFFF'
- 	      },
- 	      itemHiddenStyle: {
- 	         color: '#FFFFFF'
- 	      }
- 	   },
+    	      itemStyle: {
+    	         color: '#FFFFFF'
+    	      },
+    	      itemHoverStyle: {
+    	         color: '#FFFFFF'
+    	      },
+    	      itemHiddenStyle: {
+    	         color: '#FFFFFF'
+    	      }
+    	   },
      series: [{
          name: 'Bithumb',
          lineWidth: 4,

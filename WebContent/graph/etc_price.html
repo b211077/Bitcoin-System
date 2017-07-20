@@ -9,68 +9,8 @@
 <script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
 
-<pre id="csv" style="display:none">
-DAY,BITHUMB,POLONEIX
-2017-07-01 00:00:00,22295,19894
-2017-07-01 04:00:00,22195,19242
-2017-07-01 08:00:00,22020,18900
-2017-07-01 12:00:00,21890,19051
-2017-07-01 16:00:00,21210,18951
-2017-07-01 20:00:00,21645,18705
-2017-07-02 00:00:00,21150,17741
-2017-07-02 04:00:00,21060,18090
-2017-07-02 08:00:00,20890,17798
-2017-07-02 12:00:00,20650,18370
-2017-07-02 16:00:00,20675,18188
-2017-07-02 20:00:00,20850,18294
-2017-07-03 00:00:00,20670,18872
-2017-07-03 04:00:00,20770,19183
-2017-07-03 08:00:00,21075,18620
-2017-07-03 12:00:00,20890,18653
-2017-07-03 16:00:00,20930,18917
-2017-07-03 20:00:00,20775,19635
-2017-07-04 00:00:00,21185,19366
-2017-07-04 04:00:00,21060,19204
-2017-07-04 08:00:00,21195,19771
-2017-07-04 12:00:00,21165,19725
-2017-07-04 16:00:00,21600,20073
-2017-07-04 20:00:00,21440,19399
-2017-07-05 00:00:00,21325,19209
-2017-07-05 04:00:00,21200,19416
-2017-07-05 08:00:00,21165,19388
-2017-07-05 12:00:00,21070,18925
-2017-07-05 16:00:00,20985,18753
-2017-07-05 20:00:00,20500,19135
-2017-07-06 00:00:00,20600,19523
-2017-07-06 04:00:00,20800,19452
-2017-07-06 08:00:00,20855,19227
-2017-07-06 12:00:00,20610,19545
-2017-07-06 16:00:00,22490,19545
-2017-07-06 20:00:00,21180,19411
-2017-07-07 00:00:00,20900,19130
-2017-07-07 04:00:00,20960,19526
-2017-07-07 08:00:00,20980,19411
-2017-07-07 12:00:00,21060,19074
-2017-07-07 16:00:00,20720,18558
-2017-07-07 20:00:00,20700,18132
-
-
-</pre><div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script>
-
-<!--
-function handleFiles() {
-
-    $(document).ready(function () {
-        $.ajax({
-            type: "GET",
-            url: "D:\Docs\Desktop\csvfile.csv",
-            dataType: "csv",
-            success: function (data) { processData(data); }
-        });
-    });
-}
--->
 
 Highcharts.setOptions({
     lang: {
@@ -78,7 +18,7 @@ Highcharts.setOptions({
     }
 });
 
-$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
+$.get('./file/ETC_price.csv', function(data) {
  Highcharts.chart('container', {
 	 colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
 	      '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
@@ -96,9 +36,9 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
 	      plotBorderColor: '#242943'
 	   },
 
-     data: {
-         csv: document.getElementById('csv').innerHTML
-     },
+	   data: {
+	         csv : data
+	     },
 
      title: {
          text: '시세 정보',
@@ -168,7 +108,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
          },
          showFirstLabel: false
      }],
-
+     
      legend: {
          align: 'left',
          verticalAlign: 'top',
