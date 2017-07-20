@@ -98,6 +98,9 @@ public class MemberService {
 		}else if(updateType.equals("sell")){
 			amount -= updateAmount;
 			price -= updatePrice;
+			if(price<0){
+				price = 0;
+			}
 		}
 		
 		boolean result = MemberDAO.updateCoin(memberId, cName, amount, price); 
