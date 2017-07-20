@@ -30,8 +30,18 @@ public class CoinFrontController extends HttpServlet {
 				}else if(command.equals("login")){//로그인
 					memberLogin(request, response);
 				}else if(request.getSession().getAttribute("name") != null){//로그인 상태에서만 가능
-					if(command.equals("generic")){//미등록
-						response.sendRedirect("generic.jsp");
+					if(command.equals("btc")){//미등록
+						response.sendRedirect("btc.jsp");
+					}else if(command.equals("eth")){//미등록
+						response.sendRedirect("eth.jsp");
+					}else if(command.equals("ltc")){//미등록
+						response.sendRedirect("ltc.jsp");
+					}else if(command.equals("etc")){//미등록
+						response.sendRedirect("etc.jsp");
+					}else if(command.equals("xrp")){//미등록
+						response.sendRedirect("xrp.jsp");
+					}else if(command.equals("dash")){//미등록
+						response.sendRedirect("dash.jsp");
 					}else if(command.equals("logout")){//로그아웃
 						memberLogout(request, response);
 					}else if(command.equals("wallet")){//내지갑
