@@ -111,7 +111,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
      },
 
      xAxis: {
-         tickInterval: 4 * 3600 * 1000, // 4시간 단위
+         tickInterval: 2 * 4 * 3600 * 1000, // 4시간 단위
          tickWidth: 0,
          gridLineColor: '#707073',
          labels: {
@@ -146,8 +146,22 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
               }
          },
          showFirstLabel: false
+     }, { // right y axis
+         linkedTo: 0,
+         gridLineWidth: 0,
+         opposite: true,
+         title: {
+             text: null
+         },
+         labels: {
+             format: '{value:.,0f}',
+             style: {
+                 color: '#FFFFFF'
+              }
+         },
+         showFirstLabel: false
      }],
-
+     
      legend: {
          align: 'left',
          verticalAlign: 'top',
