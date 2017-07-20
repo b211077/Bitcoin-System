@@ -416,7 +416,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                </span>
                <header class="major">
                   <h3>
-                     <a href="coin?command=generic" class="link">ETH</a>
+                     <a href="coin?command=eth" class="link">ETH</a>
                   </h3>
                   <p>이더리움</p>
                </header>
@@ -427,7 +427,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                </span>
                <header class="major">
                   <h3>
-                     <a href="coin?command=generic" class="link">BTC</a>
+                     <a href="coin?command=btc" class="link">BTC</a>
                   </h3>
                   <p>비트코인</p>
                </header>
@@ -438,7 +438,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                </span>
                <header class="major">
                   <h3>
-                     <a href="coin?command=generic" class="link">DASH</a>
+                     <a href="coin?command=dash" class="link">DASH</a>
                   </h3>
                   <p>대쉬코인</p>
                </header>
@@ -449,7 +449,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                </span>
                <header class="major">
                   <h3>
-                     <a href="coin?command=generic" class="link">LTC</a>
+                     <a href="coin?command=ltc" class="link">LTC</a>
                   </h3>
                   <p>라이트코인</p>
                </header>
@@ -460,7 +460,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                </span>
                <header class="major">
                   <h3>
-                     <a href="coin?command=generic" class="link">ETC</a>
+                     <a href="coin?command=etc" class="link">ETC</a>
                   </h3>
                   <p>이더리움 클래식</p>
                </header>
@@ -471,7 +471,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                </span>
                <header class="major">
                   <h3>
-                     <a href="coin?command=generic" class="link">XRP</a>
+                     <a href="coin?command=xrp" class="link">XRP</a>
                   </h3>
                   <p>리플</p>
                </header>
