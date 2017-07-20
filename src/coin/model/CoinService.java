@@ -12,13 +12,6 @@ import coin.model.dto.LtcDTO;
 import coin.model.dto.XrpDTO;
 public class CoinService {
 
-	public static void notExistProbono(String date) throws NotExistException, SQLException{
-		BtcDTO btc = BtcDAO.getBtc(date);
-		if(btc == null){
-			throw new NotExistException("검색하진 재능기부 정보가 없습니다.");
-		}
-	}
-	
 	// 모든 비트코인 정보 반환
 	public static ArrayList<BtcDTO> getAllBtc() throws SQLException{
 		return BtcDAO.getAllBtc();
@@ -28,7 +21,7 @@ public class CoinService {
 	public static BtcDTO getBtc(String date) throws SQLException, NotExistException{
 		BtcDTO btc = BtcDAO.getBtc(date);
 		if(btc == null){
-			throw new NotExistException("검색하신 재능기부 정보가 없습니다.");
+			throw new NotExistException("선택하신 날짜의 코인이 없습니다.");
 		}
 		return btc;
 	}
