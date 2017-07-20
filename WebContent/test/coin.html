@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
 <script>
+var data1 = 2;
 Highcharts.chart('container', {
     chart: {
         plotBorderWidth: null,
@@ -21,10 +22,10 @@ Highcharts.chart('container', {
          type: 'pie'
     },
     title: {
-        text: 'MyWallet Coin Having Percent(%)',
+        text: '코인 종류 별 보유 비율(%)',
         style: {
         	color: '#FFFFFF',
-            fontSize: '20px'
+            fontSize: '25px',
         }
     },
     tooltip: {
@@ -48,21 +49,21 @@ Highcharts.chart('container', {
         colorByPoint: true,
         data: [{
             name: '',
-            y: 56.33
+            y: data1
         }, {
             name: '이더리움(ETH)',
-            y: 24.03,
+            y: 2,
             sliced: true,
             selected: true
         }, {
             name: '대쉬코인(DASH)',
-            y: 10.38
+            y: 2
         }, {
             name: '라이트코인(LTC)',
-            y: 4.77
+            y: 2
         }, {
             name: '이더리움클래식(ETC)',
-            y: 1.1
+            y: 2
         }, {
             name: '리플(XRP)',
             y: 0

@@ -1,0 +1,124 @@
+<meta charset="euc-kr" />
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<!-- Additional files for the Highslide popup effect -->
+<script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+<script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
+
+<pre id="csv" style="display:none">DAY,BITHUMB,POLONEIX
+2017-07-01 00:00:00,15,590319
+2017-07-01 04:00:00,44,418440
+2017-07-01 08:00:00,46,422091
+2017-07-01 12:00:00,113,568456
+2017-07-01 16:00:00,48,118529
+2017-07-01 20:00:00,37,449581
+2017-07-02 00:00:00,91,197423
+2017-07-02 04:00:00,25,259886
+2017-07-02 08:00:00,58,149209
+2017-07-02 12:00:00,116,223997
+2017-07-02 16:00:00,48,117773
+2017-07-02 20:00:00,37,65101
+2017-07-03 00:00:00,91,273469
+2017-07-03 04:00:00,25,297172
+2017-07-03 08:00:00,58,135613
+2017-07-03 12:00:00,116,139916
+2017-07-03 16:00:00,85,127467
+2017-07-03 20:00:00,55,858525
+2017-07-04 00:00:00,119,344135
+2017-07-04 04:00:00,8,131781
+2017-07-04 08:00:00,48,319136
+2017-07-04 12:00:00,273,91807
+2017-07-04 16:00:00,119,216917
+2017-07-04 20:00:00,43,406734
+2017-07-05 00:00:00,91,295264
+2017-07-05 04:00:00,4,81581
+2017-07-05 08:00:00,31,126071
+2017-07-05 12:00:00,90,444485
+2017-07-05 16:00:00,124,194126
+2017-07-05 20:00:00,57,123311
+2017-07-06 00:00:00,62,162714
+2017-07-06 04:00:00,33,294002
+2017-07-06 08:00:00,47,191224
+2017-07-06 12:00:00,76,69825
+2017-07-06 16:00:00,153,209070
+2017-07-06 20:00:00,120,154923
+2017-07-07 00:00:00,51,173860
+2017-07-07 04:00:00,11,161057
+2017-07-07 08:00:00,21,163515
+2017-07-07 12:00:00,112,254082
+2017-07-07 16:00:00,56,241034
+2017-07-07 20:00:00,75,340993
+
+
+</pre><div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<script>
+
+ Highcharts.chart('container', {
+
+     data: {
+         csv: document.getElementById('csv').innerHTML
+     },
+
+     title: {
+         text: '시세 정보'
+     },
+
+     subtitle: {
+         text: '일주일간 시세'
+     },
+
+     xAxis: {
+         tickInterval: 4 * 3600 * 1000, // 4시간 단위
+         tickWidth: 0,
+     },
+
+     yAxis: [{ // left y axis
+         title: {
+             text: null
+         },
+         gridLineWidth: 3,
+         labels: {
+             format: '{value:.,0f}'
+         },
+         showFirstLabel: false
+     }, { // right y axis
+         linkedTo: 0,
+         gridLineWidth: 0,
+         opposite: true,
+         title: {
+             text: null
+         },
+         labels: {
+             format: '{value:.,0f}'
+         },
+         showFirstLabel: false
+     }],
+
+     legend: {
+         align: 'left',
+         verticalAlign: 'top',
+         y: 20,
+         floating: true,
+         borderWidth: 0
+     },
+
+     tooltip: {
+         shared: true,
+         crosshairs: true
+     },
+
+     series: [{
+         name: 'Bithumb',
+         lineWidth: 4,
+         marker: {
+             radius: 4
+         }
+     }, {
+         name: 'Poloneix'
+     }]
+ });
+</script>
