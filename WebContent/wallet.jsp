@@ -56,47 +56,30 @@ form .field.half {
 				$("#price").val(price);
 				$("#avgPrice").val(avgPrice);
 				if (c == 'BTC') {
-					currentPrice_b = btc_c * avgPrice;
-					currentPrice_p = pbtc_c * avgPrice;
+					currentPrice_b = btc_c * amount;
+					currentPrice_p = pbtc_c * amount;
 				} else if (c == 'ETH') {
-					currentPrice_b = eth_c * avgPrice;
-					currentPrice_p = peth_c * avgPrice;
+					currentPrice_b = eth_c * amount;
+					currentPrice_p = peth_c * amount;
 				} else if (c == 'DASH') {
-					currentPrice_b = dash_c * avgPrice;
-					currentPrice_p = pdash_c * avgPrice;
+					currentPrice_b = dash_c * amount;
+					currentPrice_p = pdash_c * amount;
 				} else if (c == 'LTC') {
-					currentPrice_b = ltc_c * avgPrice;
-					currentPrice_p = pltc_c * avgPrice;
+					currentPrice_b = ltc_c * amount;
+					currentPrice_p = pltc_c * amount;
 				} else if (c == 'ETC') {
-					currentPrice_b = etc_c * avgPrice;
-					currentPrice_p = petc_c * avgPrice;
+					currentPrice_b = etc_c * amount;
+					currentPrice_p = petc_c * amount;
 				} else if (c == 'XRP') {
-					currentPrice_b = xrp_c * avgPrice;
-					currentPrice_p = pxrp_c * avgPrice;
+					currentPrice_b = xrp_c * amount;
+					currentPrice_p = pxrp_c * amount;
 				}
 				$("#currentPrice_b").val(currentPrice_b.toFixed(2));
 				$("#currentPrice_p").val(currentPrice_p.toFixed(2));
 			}
 		});
 	}
-	function coinInfo(c) {
-		$.ajax({
-			url : "coin",
-			data : {
-				command : "coinInfo",
-				coinName : c
-			},
-			method : "post",
-			dataType : "html",
-			success : function(responseData) {
-				var data = JSON.parse(responseData);
-				amount = data.amount;
-				price = data.price;
-				avgPrice = (data.price / data.amount).toFixed(2);
-				
-			}
-		});
-	}
+
 </script>
 <script type="text/javascript">
 	function myFun() {
@@ -157,6 +140,114 @@ form .field.half {
 			}
 		});
 	}
+	//폴로닉스 api 받아오는 함수
+    function myFun2() {
+       $.ajax({
+          url : "poloniexUrl.jsp",
+          dataType : "html",
+          method : "GET",
+          success : function(result2) {
+             result2 = result2.replace(/(\s*)/g, "");               
+             obj = eval("(" + result2 + ")");
+             pbtc_c = parseInt(obj.USDT_BTC.last*1121);
+             peth_c = parseInt(obj.USDT_ETH.last*1121);
+             pdash_c = parseInt(obj.USDT_DASH.last*1121);
+             pltc_c = parseInt(obj.USDT_LTC.last*1121);
+             petc_c = parseInt(obj.USDT_ETC.last*1121);
+             pxrp_c = parseInt(obj.USDT_XRP.last*1121);
+             BTC_per = (obj.USDT_BTC.percentChange*100).toFixed(2);
+             if(BTC_per > 0)
+            	 $("#PBTC").html(number_format(pbtc_c) +"<div style='float:right; color:#9beb97;'>(" + BTC_per + "%" + ")</div>");
+             else 
+            	 $("#PBTC").html(number_format(pbtc_c) +"<div style='float:right; color:red;'>(" + BTC_per + "%" + ")</div>");
+             ETH_per = (obj.USDT_ETH.percentChange*100).toFixed(2);
+             if(ETH_per > 0)
+            	 $("#PETH").html(number_format(peth_c)+"<div style='float:right; color:#9beb97;'>(" + ETH_per + "%" + ")</div>");
+             else
+            	 $("#PETH").html(number_format(peth_c)+"<div style='float:right; color:red;'>(" + ETH_per + "%" + ")</div>");
+             DASH_per = (obj.USDT_DASH.percentChange*100).toFixed(2);
+             if(DASH_per > 0)
+            	 $("#PDASH").html(number_format(pdash_c)+"<div style='float:right; color:#9beb97;'>(" + DASH_per + "%" + ")</div>");
+             else
+            	 $("#PDASH").html(number_format(pdash_c)+"<div style='float:right; color:red;'>(" + DASH_per + "%" + ")</div>");
+             LTC_per = (obj.USDT_LTC.percentChange*100).toFixed(2);
+             if(LTC_per > 0)
+            	 $("#PLTC").html(number_format(pltc_c)+"<div style='float:right; color:#9beb97;'>(" + LTC_per + "%" + ")</div>");
+             else
+            	 $("#PLTC").html(number_format(pltc_c)+"<div style='float:right; color:red;'>(" + LTC_per + "%" + ")</div>");
+             ETC_per = (obj.USDT_ETC.percentChange*100).toFixed(2);
+             if(ETC_per > 0)
+            	 $("#PETC").html(number_format(petc_c)+"<div style='float:right; color:#9beb97;'>(" + ETC_per + "%" + ")</div>");
+             else
+            	 $("#PETC").html(number_format(petc_c)+"<div style='float:right; color:red;'>(" + ETC_per + "%" + ")</div>");
+             XRP_per = (obj.USDT_XRP.percentChange*100).toFixed(2);
+             if(XRP_per > 0)
+            	 $("#PXRP").html(number_format(pxrp_c)+"<div style='float:right; color:#9beb97;'>(" + XRP_per + "%" + ")</div>");
+             else
+            	 $("#PXRP").html(number_format(pxrp_c)+"<div style='float:right; color:red;'>(" + XRP_per + "%" + ")</div>");
+             if(btc_c != null && pbtc_c != null){
+                 if(btc_c>pbtc_c){
+                 tempval = (btc_c - pbtc_c)/btc_c*100;
+                 $("#BTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+                 }
+                 else{
+                 tempval = (pbtc_c-btc_c)/btc_c*100;
+                 $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+                 }
+             }
+             if(eth_c != null && peth_c != null){
+                 if(eth_c>peth_c){
+                 tempval = (eth_c - peth_c)/eth_c*100;
+                 $("#ETH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+                 }
+                 else{
+                 tempval = (peth_c-eth_c)/eth_c*100;
+                 $("#ETH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+                 }
+             }
+             if(dash_c != null && pdash_c != null){
+                 if(dash_c>pdash_c){
+                 tempval = (dash_c - pdash_c)/dash_c*100;
+                 $("#DASH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+                 }
+                 else{
+                 tempval = (pdash_c-dash_c)/dash_c*100;
+                 $("#DASH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+                 }
+             }
+             if(ltc_c != null && pltc_c != null){
+                 if(ltc_c>pltc_c){
+                 tempval = (ltc_c - pltc_c)/ltc_c*100;
+                 $("#LTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+                 }
+                 else{
+                 tempval = (pltc_c-ltc_c)/ltc_c*100;
+                 $("#LTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+                 }
+             }
+             if(etc_c != null && petc_c != null){
+                 if(etc_c>petc_c){
+               	 tempval = (etc_c - petc_c)/etc_c*100;
+                 $("#ETC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+                 }
+                 else{
+                 tempval = (petc_c-etc_c)/etc_c*100;
+                 $("#ETC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+                 }
+             }
+             if(xrp_c != null && pxrp_c != null){
+                 if(xrp_c>pxrp_c){
+                 tempval = (xrp_c - pxrp_c)/xrp_c*100;
+                 $("#XRP_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+                 }
+                 else{
+                 tempval = (pxrp_c-xrp_c)/xrp_c*100;
+                 $("#XRP_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+                 } 
+             }
+          }
+       });
+    }
 	function myFunction2() {
 		myVar = setInterval(myFun2, 1000);
 

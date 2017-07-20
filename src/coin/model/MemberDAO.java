@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import coin.model.dto.MemberDTO;
@@ -163,6 +164,27 @@ public class MemberDAO {
 			DBUtil.close(con, pstmt, rset);
 		}
 		return list;
+	}
+	// 지갑 차트 데이터 조회
+	public static ArrayList<Integer> getAllWalletData(String memberId) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Integer> allWalletData = null;
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getAllWalletData"));
+			pstmt.setString(1, memberId);
+			rset = pstmt.executeQuery();
+			allWalletData = new ArrayList<Integer>();
+			rset.next();
+			for(int i = 0; i<rset.getFetchSize() ; i++){
+				allWalletData.add(rset.getInt(i));
+			}
+		} finally {
+			DBUtil.close(con, pstmt, rset);
+		}
+		return allWalletData;
 	}
 	
 	// 코인 정보 수정
