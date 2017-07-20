@@ -67,34 +67,42 @@ form .field.half {
          dataType : "html",
          success : function(responseData) {
             var data = JSON.parse(responseData);
-            amount = data.amount;
-            price = data.price;
-            avgPrice = (data.price / data.amount).toFixed(2);
+            amount = data.amount *1;
+            price = data.price *1;
+            avgPrice = (data.price / data.amount).toFixed(2) *1;
          
             $("#amount").val(amount);
             $("#price").val(price);
             $("#avgPrice").val(avgPrice);
             if (c == 'BTC') {
-               currentPrice_b = btc_c * amount;
-               currentPrice_p = pbtc_c * amount;
+               currentPrice_b = btc_c * amount *1;
+               currentPrice_p = pbtc_c * amount *1;
             } else if (c == 'ETH') {
-               currentPrice_b = eth_c * amount;
-               currentPrice_p = peth_c * amount;
+               currentPrice_b = eth_c * amount *1;
+               currentPrice_p = peth_c * amount *1;
             } else if (c == 'DASH') {
-               currentPrice_b = dash_c * amount;
-               currentPrice_p = pdash_c * amount;
+               currentPrice_b = dash_c * amount *1;
+               currentPrice_p = pdash_c * amount *1;
             } else if (c == 'LTC') {
-               currentPrice_b = ltc_c * amount;
-               currentPrice_p = pltc_c * amount;
+               currentPrice_b = ltc_c * amount *1;
+               currentPrice_p = pltc_c * amount *1;
             } else if (c == 'ETC') {
-               currentPrice_b = etc_c * amount;
-               currentPrice_p = petc_c * amount;
+               currentPrice_b = etc_c * amount *1;
+               currentPrice_p = petc_c * amount *1;
             } else if (c == 'XRP') {
-               currentPrice_b = xrp_c * amount;
-               currentPrice_p = pxrp_c * amount;
+               currentPrice_b = xrp_c * amount *1;
+               currentPrice_p = pxrp_c * amount *1;
             }
-            $("#currentPrice_b").val(currentPrice_b.toFixed(2));
-            $("#currentPrice_p").val(currentPrice_p.toFixed(2));
+            if(currentPrice_b.toFixed(2) == 'NaN'){
+            	$("#currentPrice_b").val("서버에서 데이터를 받아오지 못했습니다.");
+            }else{
+            	$("#currentPrice_b").val(currentPrice_b.toFixed(2));
+            }
+            if(currentPrice_p.toFixed(2) == 'NaN'){
+            	$("#currentPrice_p").val("서버에서 데이터를 받아오지 못했습니다.");
+            }else{
+            	$("#currentPrice_p").val(currentPrice_p.toFixed(2));
+            }
          }
       });
    }
@@ -107,12 +115,12 @@ form .field.half {
             result = result.replace(/(\s*)/g, "");
             obj = eval("(" + result + ")");
             if (obj.message == null) {
-               btc_c = obj.data.BTC.closing_price;
-               eth_c = obj.data.ETH.closing_price;
-               dash_c = obj.data.DASH.closing_price;
-               ltc_c = obj.data.LTC.closing_price;
-               etc_c = obj.data.ETC.closing_price;
-               xrp_c = obj.data.XRP.closing_price;
+               btc_c = obj.data.BTC.closing_price*1;
+               eth_c = obj.data.ETH.closing_price*1;
+               dash_c = obj.data.DASH.closing_price*1;
+               ltc_c = obj.data.LTC.closing_price*1;
+               etc_c = obj.data.ETC.closing_price*1;
+               xrp_c = obj.data.XRP.closing_price*1;
                
             }
          }
@@ -202,7 +210,45 @@ form .field.half {
 					<script src="scripts/jquery-3.1.1.js"></script>
 						<script src="scripts/jquery.validate.min.js"></script>
 						<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
-						
+					<script type="text/javascript">
+						  $(document).ready(function(){
+					      jQuery.validator.addMethod('cnameSelectCheck', function (value) {
+					             return (value != 'empty');
+					      }, "<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 코인 종류를 선택하세요.");
+					      jQuery.validator.addMethod(
+					            'amountCheck', 
+					            function (value) {
+					              console.log($("#updateType").val());
+					              console.log(value);
+					              console.log(amount);
+					              if($("#updateType").val()=='sell'){
+					                 return (value*1 <= amount*1);
+					              }else{
+					                 return true;
+					              }
+					            }, 
+					           "<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 코인이 부족합니다."
+					     );
+					      
+					     $("#walletForm").validate({ 
+					         rules:{
+					            cname:{cnameSelectCheck:true},
+					            updateAmount:{required:true, digits:true, amountCheck:true},
+					            updatePrice:{required:true, digits:true}
+					         },
+					         messages:{ 
+					            updateAmount:{
+					                 required:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 수량을 입력하세요.", 
+					                 digits:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 올바른 숫자를 입력하세요."
+					             },
+					             updatePrice:{
+					                 required:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 금액을 입력하세요.",
+					                 digits:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 올바른 숫자를 입력하세요."
+					             }
+					         }
+					     });
+					  });   
+					</script>
 					<form id="walletForm" name="walletForm" method="post" action="coin">
 						<div id="part1"
 							style="width: 40%; float: left; margin-left: 80px;">
@@ -311,9 +357,7 @@ form .field.half {
                                 }]
                             }]
                         });
-                     </script>
-                     
-                     </div>
+                     </script></div>
                      <h2
                         style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 80px; margin-top: 0px !important;">
                         지&nbsp;갑&nbsp;정&nbsp;보&nbsp;수&nbsp;정</h2>
