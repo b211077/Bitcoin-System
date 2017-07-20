@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
    pageEncoding="EUC-KR"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:include page="sessionCheck.jsp" flush="false" />
 <html>
 <head>
 <title>Generic - Forty by HTML5 UP</title>
