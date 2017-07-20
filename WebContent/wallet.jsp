@@ -30,18 +30,31 @@ form .field.half {
    var btc_c, eth_c, dash_c, ltc_c, etc_c, xrp_c, btc_c1, eth_c1, dash_c1, ltc_c1, etc_c1, xrp_c1;
    var pbtc_c, peth_c, pdash_c, pltc_c, petc_c, pxrp_c, obj, tempval;
    var amount, price, avgPrice, currentPrice_b, currentPrice_p;
-   var btc_data ;
-   var eth_data ;
+   var btc_data;
+   var eth_data;
    var dash_data;
    var ltc_data;
    var etc_data;
-   var xrp_data ;
-   var pbtc_data ;
-   var peth_data ;
-   var pdash_data;
-   var pltc_data;
-   var petc_data;
-   var pxrp_data ;
+   var xrp_data;
+
+   $.ajax({
+       url : "coin",
+       data : {
+          command : "coinAmount",
+       },
+       method : "post",
+       dataType : "html",
+       success : function(responseData) {
+          var data = JSON.parse(responseData);
+          btc_data = data.amountBTC*1;
+			eth_data = data.amountETH*1;
+			dash_data = data.amountDASH*1;
+			ltc_data = data.amountLTC*1;
+			etc_data = data.amountETC*1;
+			xrp_data = data.amountXRP*1;
+       }
+    });
+   
    function coinInfo(c) {
       $.ajax({
          url : "coin",
@@ -84,9 +97,6 @@ form .field.half {
          }
       });
    }
-
-</script>
-<script type="text/javascript">
 	function myFun() {
 		$.ajax({
 			url : "bithumbUrl.jsp",
@@ -194,26 +204,7 @@ form .field.half {
 						<script src="scripts/jquery.validate.min.js"></script>
 						<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
 						<script type="text/javascript">
-						pbtc_data = btc_data;
 						$(document).ready(function(){
-						      $.ajax({
-						         url : "coin",
-						         data : {
-						            command : "coinAmount",
-						         },
-						         method : "post",
-						         dataType : "html",
-						         success : function(responseData) {
-						            var data = JSON.parse(responseData);
-						            btc_data = data.amountBTC;
-									eth_data = data.amountETH;
-									dash_data = data.amountDASH;
-									ltc_data = data.amountLTC;
-									etc_data = data.amountETC;
-									xrp_data = data.amountXRP;
-						         }
-						      });
-							
 							 jQuery.validator.addMethod('cnameSelectCheck', function (value) {
 							        return (value != 'empty');
 							 }, "코인 종류를 선택 하세요");
