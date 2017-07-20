@@ -90,7 +90,7 @@ form .field.half {
 						    messages:{ // rules에 해당하는 메시지를 지정하는 속성
 						        id:{
 						            required:"ID를 입력하세요", // 이와 같이 규칙이름과 메시지를 작성
-						            rangelength:"5글자 이상, 10글자 이하여야 합니다."
+						            rangelength:"5글자 이상, 10글자 이하여야 합니다"
 						        },
 						        pw:{
 						            required:"패스워드를 입력하세요",
