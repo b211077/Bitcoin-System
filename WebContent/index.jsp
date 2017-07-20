@@ -35,7 +35,24 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                function number_format(num){
             		return String(num).replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
             	}
-            	
+               
+              var currency;
+            	 window.onload = function(){
+            		getCurrencyData();
+            	}
+            	   function getCurrencyData() {
+                   $.ajax({
+                   url : "http://api.fixer.io/latest?base=USD",
+                   dataType : "html",
+                   method : "GET",
+                   success : function(result) {
+                      result = result.replace(/(\s*)/g, "");         
+                      obj = eval("(" + result + ")");
+                      currency = obj.rates.KRW;
+                   }
+                });
+             }
+            		   
                function myFun() {
                $.ajax({
                url : "bithumbUrl.jsp",
@@ -95,12 +112,12 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                   success : function(result2) {
                      result2 = result2.replace(/(\s*)/g, "");               
                      obj = eval("(" + result2 + ")");
-                     pbtc_c = parseInt(obj.USDT_BTC.last*1121);
-                     peth_c = parseInt(obj.USDT_ETH.last*1121);
-                     pdash_c = parseInt(obj.USDT_DASH.last*1121);
-                     pltc_c = parseInt(obj.USDT_LTC.last*1121);
-                     petc_c = parseInt(obj.USDT_ETC.last*1121);
-                     pxrp_c = parseInt(obj.USDT_XRP.last*1121);
+                     pbtc_c = parseInt(obj.USDT_BTC.last*currency);
+                     peth_c = parseInt(obj.USDT_ETH.last*currency);
+                     pdash_c = parseInt(obj.USDT_DASH.last*currency);
+                     pltc_c = parseInt(obj.USDT_LTC.last*currency);
+                     petc_c = parseInt(obj.USDT_ETC.last*currency);
+                     pxrp_c = parseInt(obj.USDT_XRP.last*currency);
                      BTC_per = (obj.USDT_BTC.percentChange*100).toFixed(2);
                      if(BTC_per > 0)
                     	 $("#PBTC").html(number_format(pbtc_c) +"<div style='float:right; color:#9beb97;'>(" + BTC_per + "%" + ")</div>");
