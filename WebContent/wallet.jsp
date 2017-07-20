@@ -27,67 +27,63 @@ form .field.half {
 }
 </style>
 <script type="text/javascript">
-	var btc_c, eth_c, dash_c, ltc_c, etc_c, xrp_c, btc_c1, eth_c1, dash_c1, ltc_c1, etc_c1, xrp_c1;
-	var pbtc_c, peth_c, pdash_c, pltc_c, petc_c, pxrp_c, obj, tempval;
-	var amount, price, avgPrice, currentPrice_b, currentPrice_p;
-	var amountAll, amountBTC, amountETH, amountDASH, amountLTC, amountETC, amountXRP;
-	function coinChart() {
-		$.ajax({
-			url : "test/coin.html",
-		}).done(function(html) {
-			$("#areaText").append(html);
-		});
-	}
-	coinChart();
-	function coinInfo(c) {
-		$.ajax({
-			url : "coin",
-			data : {
-				command : "coinInfo",
-				coinName : c
-			},
-			method : "post",
-			dataType : "html",
-			success : function(responseData) {
-				var data = JSON.parse(responseData);
-				amount = data.amount;
-				price = data.price;
-				avgPrice = (data.price / data.amount).toFixed(2);
-				amountAll = data.amountAll;
-				amountBTC = data.amountBTC;
-				amountETH = data.amountETH; 
-				amountDASH = data.amountDASH; 
-				amountLTC = data.amountLTC; 
-				amountETC = data.amountETC; 
-				amountXRP = data.amountXRP;
-				
-				$("#amount").val(amount);
-				$("#price").val(price);
-				$("#avgPrice").val(avgPrice);
-				if (c == 'BTC') {
-					currentPrice_b = btc_c * amount;
-					currentPrice_p = pbtc_c * amount;
-				} else if (c == 'ETH') {
-					currentPrice_b = eth_c * amount;
-					currentPrice_p = peth_c * amount;
-				} else if (c == 'DASH') {
-					currentPrice_b = dash_c * amount;
-					currentPrice_p = pdash_c * amount;
-				} else if (c == 'LTC') {
-					currentPrice_b = ltc_c * amount;
-					currentPrice_p = pltc_c * amount;
-				} else if (c == 'ETC') {
-					currentPrice_b = etc_c * amount;
-					currentPrice_p = petc_c * amount;
-				} else if (c == 'XRP') {
-					currentPrice_b = xrp_c * amount;
-					currentPrice_p = pxrp_c * amount;
-				}
-				$("#currentPrice_b").val(currentPrice_b.toFixed(2));
-				$("#currentPrice_p").val(currentPrice_p.toFixed(2));
-			}
-		});
-	}
+   var btc_c, eth_c, dash_c, ltc_c, etc_c, xrp_c, btc_c1, eth_c1, dash_c1, ltc_c1, etc_c1, xrp_c1;
+   var pbtc_c, peth_c, pdash_c, pltc_c, petc_c, pxrp_c, obj, tempval;
+   var amount, price, avgPrice, currentPrice_b, currentPrice_p;
+   var btc_data ;
+   var eth_data ;
+   var dash_data;
+   var ltc_data;
+   var etc_data;
+   var xrp_data ;
+   var pbtc_data ;
+   var peth_data ;
+   var pdash_data;
+   var pltc_data;
+   var petc_data;
+   var pxrp_data ;
+   function coinInfo(c) {
+      $.ajax({
+         url : "coin",
+         data : {
+            command : "coinInfo",
+            coinName : c
+         },
+         method : "post",
+         dataType : "html",
+         success : function(responseData) {
+            var data = JSON.parse(responseData);
+            amount = data.amount;
+            price = data.price;
+            avgPrice = (data.price / data.amount).toFixed(2);
+			
+            $("#amount").val(amount);
+            $("#price").val(price);
+            $("#avgPrice").val(avgPrice);
+            if (c == 'BTC') {
+               currentPrice_b = btc_c * amount;
+               currentPrice_p = pbtc_c * amount;
+            } else if (c == 'ETH') {
+               currentPrice_b = eth_c * amount;
+               currentPrice_p = peth_c * amount;
+            } else if (c == 'DASH') {
+               currentPrice_b = dash_c * amount;
+               currentPrice_p = pdash_c * amount;
+            } else if (c == 'LTC') {
+               currentPrice_b = ltc_c * amount;
+               currentPrice_p = pltc_c * amount;
+            } else if (c == 'ETC') {
+               currentPrice_b = etc_c * amount;
+               currentPrice_p = petc_c * amount;
+            } else if (c == 'XRP') {
+               currentPrice_b = xrp_c * amount;
+               currentPrice_p = pxrp_c * amount;
+            }
+            $("#currentPrice_b").val(currentPrice_b.toFixed(2));
+            $("#currentPrice_p").val(currentPrice_p.toFixed(2));
+         }
+      });
+   }
 
 </script>
 <script type="text/javascript">
@@ -198,7 +194,26 @@ form .field.half {
 						<script src="scripts/jquery.validate.min.js"></script>
 						<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
 						<script type="text/javascript">
+						pbtc_data = btc_data;
 						$(document).ready(function(){
+						      $.ajax({
+						         url : "coin",
+						         data : {
+						            command : "coinAmount",
+						         },
+						         method : "post",
+						         dataType : "html",
+						         success : function(responseData) {
+						            var data = JSON.parse(responseData);
+						            btc_data = data.amountBTC;
+									eth_data = data.amountETH;
+									dash_data = data.amountDASH;
+									ltc_data = data.amountLTC;
+									etc_data = data.amountETC;
+									xrp_data = data.amountXRP;
+						         }
+						      });
+							
 							 jQuery.validator.addMethod('cnameSelectCheck', function (value) {
 							        return (value != 'empty');
 							 }, "코인 종류를 선택 하세요");
@@ -265,7 +280,76 @@ form .field.half {
 
 						<div id="part2"
 							style="width: 40%; float: right; margin-right: 80px;">
-							<p id="areaText"></p>
+							<div id="areaText" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
+							<script>
+								Highcharts.chart('areaText', {
+								    chart: {
+								        plotBorderWidth: null,
+								        plotShadow: false,
+								        backgroundColor: {
+								            linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+								            stops: [
+								               [0, '#242943'],
+								               [1, '#242943']
+								            ]
+								         },
+								         style: {
+								            fontFamily: '\'Unica One\', sans-serif'
+								         },
+								         plotBorderColor: '#606063',
+								         type: 'pie'
+								    },
+								    title: {
+								        text: '코인 종류 별 보유 비율(%)',
+								        style: {
+								        	color: '#FFFFFF',
+								            fontSize: '25px',
+								        }
+								    },
+								    tooltip: {
+								        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+								    },
+								    plotOptions: {
+								        pie: {
+								            allowPointSelect: true,
+								            cursor: 'pointer',
+								            dataLabels: {
+								                enabled: true,
+								                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+								                style: {
+								                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'white'
+								                }
+								            }
+								        }
+								    },
+								    series: [{
+								        colorByPoint: true,
+								        data: [{
+								            name: '비트코인(BTC)',
+								            y: btc_data,
+								            sliced: true,
+								            selected: true
+								        }, {
+								            name: '이더리움(ETH)',
+								            y: eth_data
+								        }, {
+								            name: '대쉬코인(DASH)',
+								            y: dash_data
+								        }, {
+								            name: '라이트코인(LTC)',
+								            y: ltc_data
+								        }, {
+								            name: '이더리움클래식(ETC)',
+								            y: etc_data
+								        }, {
+								            name: '리플(XRP)',
+								            y: xrp_data
+								        }]
+								    }]
+								});
+							</script>
+							
+							</div>
 							<h2
 								style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 80px; margin-top: 0px !important;">
 								지&nbsp;갑&nbsp;정&nbsp;보&nbsp;수&nbsp;정</h2>
