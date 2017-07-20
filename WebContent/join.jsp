@@ -79,7 +79,39 @@
 					<section id="contact">
 						<div class="inner">
 							<section>
-								<form method="post" action="coin">
+								<script src="scripts/jquery-3.1.1.js"></script>
+								<script src="scripts/jquery.validate.min.js"></script>
+								<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
+								<script>
+								$(document).ready(function(){
+								    $('#joinForm').validate({
+								        onfocusout: false,
+								        rules: {
+								        	id:{required:true, rangelength:[5,10]},
+									        pw:{required:true, rangelength:[5,15]},
+								            name: {required: true, rangelength:[1,15]}, 
+								            email: { required: true, email: true}
+								        }, messages: {
+								        	id:{
+									            required:"ID를 입력하세요", // 이와 같이 규칙이름과 메시지를 작성
+									            rangelength:"5글자 이상, 10글자 이하여야 합니다"
+									        },
+									        pw:{
+									            required:"패스워드를 입력하세요",
+									            rangelength:"5글자 이상, 15글자 이하여야 합니다"
+									        }, 
+									        name: {
+								                required: "이름을 입력하세요",
+								            }, 
+								            email: {
+								                required: "이메일을 입력하세요",
+								                email: "올바른 이메일 주소가 아닙니다"
+								            }
+								        }
+								    });
+								});
+								</script>
+								<form id="joinForm" name="joinForm" method="post" action="coin">
 								<h2 style="text-align:center; border-bottom:2px solid; border-bottom-color:white; margin-bottom:80px;
 								margin-top:0px !important;">회&nbsp;&nbsp;&nbsp;원&nbsp;&nbsp;&nbsp;가&nbsp;&nbsp;&nbsp;입</h2>
 									<div class="field half">
@@ -127,7 +159,6 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>

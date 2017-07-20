@@ -79,6 +79,24 @@ form .field.half {
 			}
 		});
 	}
+	function coinInfo(c) {
+		$.ajax({
+			url : "coin",
+			data : {
+				command : "coinInfo",
+				coinName : c
+			},
+			method : "post",
+			dataType : "html",
+			success : function(responseData) {
+				var data = JSON.parse(responseData);
+				amount = data.amount;
+				price = data.price;
+				avgPrice = (data.price / data.amount).toFixed(2);
+				
+			}
+		});
+	}
 </script>
 <script type="text/javascript">
 	function myFun() {
@@ -203,7 +221,36 @@ form .field.half {
 		<section id="contact">
 			<div>
 				<section>
-					<form method="post" action="coin">
+					<script src="scripts/jquery-3.1.1.js"></script>
+						<script src="scripts/jquery.validate.min.js"></script>
+						<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
+						<script type="text/javascript">
+						$(document).ready(function(){
+							 jQuery.validator.addMethod('cnameSelectCheck', function (value) {
+							        return (value != 'empty');
+							 }, "코인 종류를 선택 하세요");
+							
+							$("#walletForm").validate({ // joinForm에 validate를 적용
+							    rules:{
+							    	cname:{cnameSelectCheck:true},
+							    	updateAmount:{required:true, digits:true},
+							        // required는 필수, rangelength는 글자 개수(5~10개 사이)
+							    	updatePrice:{required:true, digits:true}
+							    },
+							    messages:{ // rules에 해당하는 메시지를 지정하는 속성
+							    	updateAmount:{
+							            required:"수량을 입력하세요", // 이와 같이 규칙이름과 메시지를 작성
+							            digits:"양의 정수를 입력하세요"
+							        },
+							        updatePrice:{
+							            required:"금액을 입력하세요",
+							            digits:"양의 정수를 입력하세요"
+							        }
+							    }
+							});
+						});	
+					</script>
+					<form id="walletForm" name="walletForm" method="post" action="coin">
 						<div id="part1"
 							style="width: 40%; float: left; margin-left: 80px;">
 							<h2
@@ -211,8 +258,7 @@ form .field.half {
 							<div class="field half">
 								<label for="cname">코인 종류</label> <select name="cname" id="cname"
 									onChange="coinInfo(this.value)">
-									<option value="empty" style="color: navy !important;">(
-										코인 종류 선택 )</option>
+									<option value="empty" style="color: navy !important;">코인 종류를 선택하세요</option>
 									<option value="BTC" style="color: navy !important;">비트코인</option>
 									<option value="ETH" style="color: navy !important;">이더리움</option>
 									<option value="DASH" style="color: navy !important;">대쉬코인</option>
@@ -294,7 +340,6 @@ form .field.half {
 
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/skel.min.js"></script>

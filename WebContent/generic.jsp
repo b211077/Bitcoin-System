@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="EUC-KR"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -16,10 +16,8 @@
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
-
 </head>
 <body>
- 
 	<!-- Wrapper -->
 	<div id="wrapper">
 
@@ -51,16 +49,18 @@
 			<ul class="links">
 				<li><a href="index.jsp">Home</a></li>
 				<li><a href="coin?command=wallet">wallet</a></li>
-                <li><a href="coin?command=generic">Generic</a></li>
+				<li><a href="coin?command=generic">Generic</a></li>
 				<li><a href="elements.jsp">Elements</a></li>
 			</ul>
 			<ul class="actions vertical">
-				<li><a href="index.jsp#hihi" class="button special fit">Get Started</a></li>
-                    <c:if test="${empty sessionScope.member}">
-                    	<li><a href="login.jsp" class="button fit">Log In</a></li>		
+				<li><a href="index.jsp#hihi" class="button special fit">Get
+						Started</a></li>
+				<c:if test="${empty sessionScope.member}">
+					<li><a href="login.jsp" class="button fit">Log In</a></li>
 				</c:if>
 				<c:if test="${not empty sessionScope.member}">
-					<li><a href="coin?command=logout" class="button fit">Log Out</a></li>	
+					<li><a href="coin?command=logout" class="button fit">Log
+							Out</a></li>
 				</c:if>
 			</ul>
 		</nav>
@@ -75,8 +75,7 @@
 						<h1>BTC _ 비트코인</h1>
 					</header>
 					<span class="image main">
-						<p id="areaText"></p>
-						<script>
+						<p id="areaText"></p> <script>
 							$.ajax({
 								  url: "test/demo.html",
 								  cache: false
@@ -89,7 +88,8 @@
 					</span>
 				</div>
 			</section>
-			<ul class="actions"	style="width: 100px; margin: 20px auto; margin-bottom: 100px;">
+			<ul class="actions"
+				style="width: 100px; margin: 20px auto; margin-bottom: 100px;">
 				<li style="width: 100px;">
 					<button id="clickButton" onclick="openVolume()">거래량보기</button>
 					<button id="clickButton2" onclick="openVolume()">시세보기</button>
@@ -102,7 +102,7 @@
 			
 			if (count == 1) {
 					$.ajax({
-						url : "test/demo2.html",
+						url : "test/demo4.html",
 						cache : false
 					}).done(function(html) {
 						$("#areaText").html(html);
@@ -132,7 +132,7 @@
 					<li>ⓒ 2017. kData Bitcoin Viewer Team all rights reserved.</li>
 				</ul>
 			</div>
-		</footer> 
+		</footer>
 
 	</div>
 
