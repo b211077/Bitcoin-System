@@ -233,23 +233,22 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
       <nav id="menu">
          <ul class="links">
             <li><a href="index.jsp">Home</a></li>
-            <li><a href="coin?command=wallet">wallet</a></li>
-            <li><a href="coin?command=generic">Generic</a></li>
-            <li><a href="elements.jsp">Elements</a></li>
+            <li><a href="coin?command=wallet">Wallet</a></li>
+            <li><a href="index.jsp#hidden">Real Time Chart</a></li>
+            <li><a href="index.jsp#one">Coin Graph</a></li>
          </ul>
          <ul class="actions vertical">
-			<li><a href="index.jsp#hihi" class="button special fit">Get Started</a></li>
-                   <c:if test="${empty sessionScope.member}">
-                   	<li><a href="login.jsp" class="button fit">Log In</a></li>		
+            <c:if test="${empty sessionScope.member}">
+            	<li><a href="login.jsp" class="button special fit">Log In</a></li>		
 			</c:if>
 			<c:if test="${not empty sessionScope.member}">
-				<li><a href="coin?command=logout" class="button fit">Log Out</a></li>	
+				<li><a href="coin?command=logout" class="button special fit">Log Out</a></li>	
 			</c:if>
          </ul>
       </nav>
 
       <!-- Banner -->
-      <section id="banner" class="major" style="height: 740px;">
+      <section id="banner" class="major" style="height: 710px;">
          <div class="inner">
             <header class="major">
                <h1>
@@ -272,8 +271,8 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
             </div>
          </div>
       </section>
-
-      <div id="hihi" style="height: 600px">
+      <div id="hidden" style="height:50px;"></div>
+      <div id="hihi" style="height: 600px;">
          <!-- Table -->
 
          <div style="width: 10%; margin: 0 auto;">
