@@ -131,11 +131,6 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
 
      yAxis: [{ // left y axis
     	 gridLineColor: '#707073',
-         labels: {
-            style: {
-               color: '#E0E0E3'
-            }
-         },
          lineColor: '#707073',
          minorGridLineColor: '#505053',
          tickColor: '#707073',
@@ -145,7 +140,10 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
          },
          gridLineWidth: 3,
          labels: {
-             format: '{value:.,0f}'
+             format: '{value:.,0f}',
+             style: {
+                 color: '#FFFFFF'
+              }
          },
          showFirstLabel: false
      }],
