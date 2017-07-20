@@ -8,3 +8,6 @@ Insert into EXCHANGE (EID, ENAME) Values (2, 'poloniex');
 COMMIT;
 
 select * from btc;
+
+
+select amount from wallet where mid=?;

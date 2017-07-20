@@ -1,6 +1,7 @@
 package coin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -50,6 +51,8 @@ public class CoinFrontController extends HttpServlet {
 						coinInfo(request, response);
 					}else if(command.equals("coinInfoUpdate")){//내지갑
 						coinInfoUpdate(request, response);
+					}else if(command.equals("coinAmount")){//내지갑
+						coinAmount(request, response);
 					}
 				}else if(command.equals("btcAll")){// 모든 비트코인 정보 검색
 					btcAll(request, response);
@@ -88,15 +91,39 @@ public class CoinFrontController extends HttpServlet {
 		try{
 			HttpSession session = request.getSession();
 			WalletCoinDTO coinInfo = MemberService.getCoinInfo((String)session.getAttribute("id"), coinName);
+			ArrayList<Integer> allCoinInfo =  MemberService.getAllCoinInfo((String)session.getAttribute("id"));
 		    String coinInfoJson = "{\"name\":\""+coinInfo.getCoinName()
 		                    +"\",\"amount\":\""+coinInfo.getAmount()
-		                    +"\",\"price\":\""+coinInfo.getPrice()+"\"}";
+		                    +"\",\"price\":\""+coinInfo.getPrice()
+		                    +"\"}";
 		    response.getWriter().print(coinInfoJson);
 		}catch(Exception s){
 			s.printStackTrace();
 			request.setAttribute("errorMsg", s.getMessage());
 		}
 	}
+	
+	//코인 정보 조회 메소드
+		protected void coinAmount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			try{
+				HttpSession session = request.getSession();
+				ArrayList<Integer> allCoinInfo =  MemberService.getAllCoinInfo((String)session.getAttribute("id"));
+			    String coinAmountJson = "{"
+			                    +"\"amountAll\":\""+allCoinInfo.get(0)
+			                    +"\",\"amountBTC\":\""+allCoinInfo.get(1)
+			                    +"\",\"amountETH\":\""+allCoinInfo.get(2)
+			                    +"\",\"amountDASH\":\""+allCoinInfo.get(3)
+			                    +"\",\"amountLTC\":\""+allCoinInfo.get(4)
+			                    +"\",\"amountETC\":\""+allCoinInfo.get(5)
+			                    +"\",\"amountXRP\":\""+allCoinInfo.get(6)
+			                    +"\"}";
+	System.out.println(coinAmountJson);
+			    response.getWriter().print(coinAmountJson);
+			}catch(Exception s){
+				s.printStackTrace();
+				request.setAttribute("errorMsg", s.getMessage());
+			}
+		}
 	
 	//내지갑 수정 
 	public void coinInfoUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -114,6 +141,7 @@ public class CoinFrontController extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
+	
 
 	//회원 가입 메소드
 	protected void memberInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
