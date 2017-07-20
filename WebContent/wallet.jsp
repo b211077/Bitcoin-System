@@ -153,7 +153,7 @@ form .field.half {
    <div id="wrapper">
 
       <!-- Header -->
-      <header id="header">
+      <header id="header" class="alt">
          <a href="index.jsp" class="logo"><img src="images/coinsight.png"
             style="width: 260px; height: 60px;"></a>
          <nav>
@@ -175,24 +175,22 @@ form .field.half {
          </nav>
       </header>
 
+
       <!-- Menu -->
       <nav id="menu">
          <ul class="links">
             <li><a href="index.jsp">Home</a></li>
-            <li><a href="coin?command=wallet">wallet</a></li>
-            <li><a href="coin?command=generic">Generic</a></li>
-            <li><a href="elements.jsp">Elements</a></li>
+            <li><a href="coin?command=wallet">Wallet</a></li>
+            <li><a href="index.jsp#hidden">Real Time Chart</a></li>
+            <li><a href="index.jsp#one">Coin Graph</a></li>
          </ul>
          <ul class="actions vertical">
-            <li><a href="index.jsp#hihi" class="button special fit">Get
-                  Started</a></li>
             <c:if test="${empty sessionScope.member}">
-               <li><a href="login.jsp" class="button fit">Log In</a></li>
-            </c:if>
-            <c:if test="${not empty sessionScope.member}">
-               <li><a href="coin?command=logout" class="button fit">Log
-                     Out</a></li>
-            </c:if>
+            	<li><a href="login.jsp" class="button special fit">Log In</a></li>		
+			</c:if>
+			<c:if test="${not empty sessionScope.member}">
+				<li><a href="coin?command=logout" class="button special fit">Log Out</a></li>	
+			</c:if>
          </ul>
       </nav>
 
