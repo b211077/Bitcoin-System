@@ -75,7 +75,7 @@
 					<span class="image main">
 						<p id="areaText"></p> <script>
 							$.ajax({
-								  url: "test/dash_price.html",
+								  url: "graph/dash_price.html",
 								  cache: false
 								})
 								  .done(function( html ) {
@@ -100,7 +100,7 @@
 			
 			if (count == 1) {
 					$.ajax({
-						url : "test/dash_volume.html",
+						url : "graph/dash_volume.html",
 						cache : false
 					}).done(function(html) {
 						$("#areaText").html(html);
@@ -110,7 +110,7 @@
 					count = 0;
 				} else {
 					$.ajax({
-						url : "test/dash_price.html",
+						url : "graph/dash_price.html",
 						cache : false
 					}).done(function(html) {
 						$("#areaText").html(html);

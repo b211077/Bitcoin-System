@@ -117,7 +117,6 @@ public class CoinFrontController extends HttpServlet {
 			                    +"\",\"amountETC\":\""+allCoinInfo.get(5)
 			                    +"\",\"amountXRP\":\""+allCoinInfo.get(6)
 			                    +"\"}";
-	System.out.println(coinAmountJson);
 			    response.getWriter().print(coinAmountJson);
 			}catch(Exception s){
 				s.printStackTrace();
