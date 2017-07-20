@@ -10,6 +10,7 @@
 	content="width=device-width, initial-scale=1, user-scalable=no" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
 form .field.half {
 	width: 100% !important;
@@ -89,13 +90,21 @@ form .field.half {
 						    },
 						    messages:{ // rules에 해당하는 메시지를 지정하는 속성
 						        id:{
-						            required:"ID를 입력하세요", // 이와 같이 규칙이름과 메시지를 작성
-						            rangelength:"5글자 이상, 10글자 이하여야 합니다."
+						            required:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> ID를 입력하세요", // 이와 같이 규칙이름과 메시지를 작성
+						            rangelength:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 5글자 이상, 10글자 이하여야 합니다."
 						        },
 						        pw:{
-						            required:"패스워드를 입력하세요",
-						            rangelength:"5글자 이상, 15글자 이하여야 합니다"
+						            required:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 패스워드를 입력하세요",
+						            rangelength:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 5글자 이상, 15글자 이하여야 합니다"
 						        }
+						    },
+						    errorPlacement: function(error, element) {
+						        if (element.attr("name") == "id" )
+						            error.insertAfter("#id");
+						        else if  (element.attr("name") == "pw" )
+						            error.insertAfter("#pw");
+						        else
+						            error.insertAfter(element);
 						    }
 						});
 					});	
@@ -103,12 +112,12 @@ form .field.half {
 					<form id="loginForm" name="loginForm" method="post" action="coin">
 						<h2
 							style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 80px; margin-top: 0px !important;">로&nbsp;&nbsp;&nbsp;그&nbsp;&nbsp;&nbsp;인</h2>
-						<div class="field half">
-							<label for="id">아이디</label> <input type="text" name="id" id="id" />
-						</div>
 						<div>
-							<label for="pw">비밀번호</label> <input type="password" name="pw"
-								id="pw" />
+							<label for="id">아이디</label> <input type="text" name="id" id="id"/>
+						</div>
+						<br>
+						<div>
+							<label for="pw">비밀번호</label> <input type="password" name="pw" id="pw"/>
 						</div>
 						<br> <input type="hidden" name="command" value="login" />
 						<ul class="actions" style="margin: 0 auto !important; width: 44%;">
