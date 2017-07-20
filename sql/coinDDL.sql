@@ -38,42 +38,42 @@ CREATE TABLE exchange (
 
 CREATE TABLE btc (
 	day 			VARCHAR2(20) NOT NULL,
-	price 			NUMBER(15, 0) NOT NULL,
+	last_price 	NUMBER(15, 0) NOT NULL,
 	volume 		NUMBER(15) NOT NULL,
 	eid 			NUMBER(5) NOT NULL
 );
 
 CREATE TABLE eth (
 	day 			VARCHAR2(20) NOT NULL,
-	price 			NUMBER(15, 0) NOT NULL,
+	last_price 	NUMBER(15, 0) NOT NULL,
 	volume 		NUMBER(15) NOT NULL,
 	eid 			NUMBER(5) NOT NULL
 );
 
 CREATE TABLE ltc (
 	day 			VARCHAR2(20) NOT NULL,
-	price 			NUMBER(15, 0) NOT NULL,
+	last_price 	NUMBER(15, 0) NOT NULL,
 	volume 		NUMBER(15) NOT NULL,
 	eid 			NUMBER(5) NOT NULL
 );
 
 CREATE TABLE etc (
 	day 			VARCHAR2(20) NOT NULL,
-	price 			NUMBER(15, 0) NOT NULL,
+	last_price 	NUMBER(15, 0) NOT NULL,
 	volume 		NUMBER(15) NOT NULL,
 	eid 			NUMBER(5) NOT NULL
 );
 
 CREATE TABLE xrp (
 	day 			VARCHAR2(20) NOT NULL,
-	price 			NUMBER(15, 0) NOT NULL,
+	last_price 	NUMBER(15, 0) NOT NULL,
 	volume 		NUMBER(15) NOT NULL,
 	eid 			NUMBER(5) NOT NULL
 );
 
 CREATE TABLE dash (
 	day 			VARCHAR2(20) NOT NULL,
-	price 			NUMBER(15, 0) NOT NULL,
+	last_price 	NUMBER(15, 0) NOT NULL,
 	volume 		NUMBER(15) NOT NULL,
 	eid 			NUMBER(5) NOT NULL
 );
