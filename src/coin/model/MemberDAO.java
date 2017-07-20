@@ -84,24 +84,6 @@ public class MemberDAO {
 		return false;
 	}
 
-	// ??? 삭제
-	// sql - delete from member where member_id=?
-	public static boolean deleteMember(String memberId) throws SQLException {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		try {
-			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("delete from member where member_id=?");
-			pstmt.setString(1, memberId);
-			int result = pstmt.executeUpdate();
-			if (result == 1) {
-				return true;
-			}
-		} finally {
-			DBUtil.close(con, pstmt);
-		}
-		return false;
-	}
 
 	// id로 해당 기부자의 모든 정보 반환
 	public static MemberDTO getMember(String memberId) throws SQLException {
@@ -124,27 +106,6 @@ public class MemberDAO {
 		return member;
 	}
 
-	// ???모든 기부자 검색해서 반환
-	// sql - select * from member
-	public static ArrayList<MemberDTO> getAllMembers() throws SQLException {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		ArrayList<MemberDTO> list = null;
-		try {
-			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select * from member");
-			rset = pstmt.executeQuery();
-
-			list = new ArrayList<MemberDTO>();
-			while (rset.next()) {
-				list.add(new MemberDTO(rset.getString(1), rset.getString(2), rset.getString(3), rset.getString(4)));
-			}
-		} finally {
-			DBUtil.close(con, pstmt, rset);
-		}
-		return list;
-	}
 	// 모든 코인 정보 조회
 	public static ArrayList<WalletCoinDTO> getWalletCoin(String memberId) throws SQLException {
 		Connection con = null;

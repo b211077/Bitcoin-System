@@ -194,93 +194,53 @@ form .field.half {
          </ul>
       </nav>
 
-      <!-- Contact -->
-      <section id="contact">
-         <div>
-            <section>
-               <script src="scripts/jquery-3.1.1.js"></script>
-                  <script src="scripts/jquery.validate.min.js"></script>
-                  <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
-                  <script type="text/javascript">
-                  $(document).ready(function(){
-                      jQuery.validator.addMethod('cnameSelectCheck', function (value) {
-                             return (value != 'empty');
-                      }, "코인 종류를 선택 하세요");
-                      $("#updateAmount").val(0);
-                      $("#updatePrice").val(0);
-                      jQuery.validator.addMethod(
-                            'amountCheck', 
-                            function (value) {
-                              console.log($("#updateType").val());
-                              console.log(value);
-                              console.log(amount);
-                              if($("#updateType").val()=='sell'){
-                                 return (value*1 <= amount*1);
-                              }else{
-                                 return true;
-                              }
-                            }, 
-                           "보유 코인 개수 부족"
-                     );
-                      
-                     $("#walletForm").validate({ 
-                         rules:{
-                            cname:{cnameSelectCheck:true},
-                            updateAmount:{required:true, digits:true, amountCheck:true},
-                            updatePrice:{required:true, digits:true}
-                         },
-                         messages:{ 
-                            updateAmount:{
-                                 required:"수량을 입력하세요", 
-                                 digits:"양의 정수를 입력하세요"
-                             },
-                             updatePrice:{
-                                 required:"금액을 입력하세요",
-                                 digits:"양의 정수를 입력하세요"
-                             }
-                         }
-                     });
-                  });   
-               </script>
-               <form id="walletForm" name="walletForm" method="post" action="coin">
-                  <div id="part1"
-                     style="width: 40%; float: left; margin-left: 80px;">
-                     <h2
-                        style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 80px; margin-top: 0px !important;">지&nbsp;&nbsp;&nbsp;갑&nbsp;&nbsp;&nbsp;관&nbsp;&nbsp;&nbsp;리</h2>
-                     <div class="field half">
-                        <label for="cname">코인 종류</label> <select name="cname" id="cname"
-                           onChange="coinInfo(this.value)">
-                           <option value="empty" style="color: navy !important;">코인 종류를 선택하세요</option>
-                           <option value="BTC" style="color: navy !important;">비트코인</option>
-                           <option value="ETH" style="color: navy !important;">이더리움</option>
-                           <option value="DASH" style="color: navy !important;">대쉬코인</option>
-                           <option value="LTC" style="color: navy !important;">라이트코인</option>
-                           <option value="ETC" style="color: navy !important;">이더리움
-                              클래식</option>
-                           <option value="XRP" style="color: navy !important;">리플</option>
-                        </select>
-                     </div>
-                     <div class="field half">
-                        <label for="id">수량</label> <input type="text" name="amount"
-                           id="amount" readonly />
-                     </div>
-                     <div class="field half">
-                        <label for="pw">총 구매 금액</label> <input type="text" name="price"
-                           id="price" readonly />
-                     </div>
-                     <div class="field half">
-                        <label for="pw">평균 코인 구매 단가[총구매금액/코인개수]</label> <input
-                           type="text" name="avgPrice" id="avgPrice" readonly />
-                     </div>
-                     <div class="field half">
-                        <label for="pw">현재 평가 금액[현재가(빗섬)*코인개수]</label> <input
-                           type="text" name="currentPrice_b" id="currentPrice_b" readonly />
-                     </div>
-                     <div class="field half">
-                        <label for="pw">현재 평가 금액[현재가(플로닉스)*코인개수]</label> <input
-                           type="text" name="currentPrice_p" id="currentPrice_p" readonly />
-                     </div>
-                  </div>
+		<!-- Contact -->
+		<section id="contact">
+			<div>
+				<section>
+					<script src="scripts/jquery-3.1.1.js"></script>
+						<script src="scripts/jquery.validate.min.js"></script>
+						<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
+						
+					<form id="walletForm" name="walletForm" method="post" action="coin">
+						<div id="part1"
+							style="width: 40%; float: left; margin-left: 80px;">
+							<h2
+								style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 80px; margin-top: 0px !important;">지&nbsp;&nbsp;&nbsp;갑&nbsp;&nbsp;&nbsp;관&nbsp;&nbsp;&nbsp;리</h2>
+							<div class="field half">
+								<label for="cname">코인 종류</label> <select name="cname" id="cname"
+									onChange="coinInfo(this.value)">
+									<option value="empty" style="color: navy !important;">코인 종류를 선택하세요</option>
+									<option value="BTC" style="color: navy !important;">비트코인</option>
+									<option value="ETH" style="color: navy !important;">이더리움</option>
+									<option value="DASH" style="color: navy !important;">대쉬코인</option>
+									<option value="LTC" style="color: navy !important;">라이트코인</option>
+									<option value="ETC" style="color: navy !important;">이더리움
+										클래식</option>
+									<option value="XRP" style="color: navy !important;">리플</option>
+								</select>
+							</div>
+							<div class="field half">
+								<label for="id">수량</label> <input type="text" name="amount"
+									id="amount" readonly />
+							</div>
+							<div class="field half">
+								<label for="pw">총 구매 금액</label> <input type="text" name="price"
+									id="price" readonly />
+							</div>
+							<div class="field half">
+								<label for="pw">평균 코인 구매 단가[총구매금액/코인개수]</label> <input
+									type="text" name="avgPrice" id="avgPrice" readonly />
+							</div>
+							<div class="field half">
+								<label for="pw">현재 평가 금액[현재가(빗섬)*코인개수]</label> <input
+									type="text" name="currentPrice_b" id="currentPrice_b" readonly />
+							</div>
+							<div class="field half">
+								<label for="pw">현재 평가 금액[현재가(플로닉스)*코인개수]</label> <input
+									type="text" name="currentPrice_p" id="currentPrice_p" readonly />
+							</div>
+						</div>
                   <div id="part2"
                      style="width: 40%; float: right; margin-right: 80px;">
                      <div id="areaText" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
@@ -376,6 +336,7 @@ form .field.half {
 
                      <br> <br> <br> <br> <br> <input
                         type="hidden" name="command" value="coinInfoUpdate" />
+
                      <ul class="actions"
                         style="margin: 0 auto !important; width: 58%;">
                         <li><input type="submit" value="지갑에 등록" class="special" /></li>
@@ -386,6 +347,7 @@ form .field.half {
             </section>
          </div>
       </section>
+
       <!-- Footer -->
       <footer id="footer">
          <div class="inner"
