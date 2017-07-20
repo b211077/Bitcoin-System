@@ -78,7 +78,7 @@
 						<p id="areaText"></p>
 						<script>
 							$.ajax({
-								  url: "test/demo3.html",
+								  url: "test/demo.html",
 								  cache: false
 								})
 								  .done(function( html ) {
@@ -112,7 +112,7 @@
 					count = 0;
 				} else {
 					$.ajax({
-						url : "test/demo3.html",
+						url : "test/demo.html",
 						cache : false
 					}).done(function(html) {
 						$("#areaText").html(html);
