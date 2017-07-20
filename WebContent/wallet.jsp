@@ -50,6 +50,13 @@ form .field.half {
             amount = data.amount;
             price = data.price;
             avgPrice = (data.price / data.amount).toFixed(2);
+            btc_data = data.amountBTC;
+			eth_data = data.amountETH;
+			dash_data = data.amountDASH;
+			ltc_data = data.amountLTC;
+			etc_data = data.amountETC;
+			xrp_data = data.amountXRP;
+			
             $("#amount").val(amount);
             $("#price").val(price);
             $("#avgPrice").val(avgPrice);
