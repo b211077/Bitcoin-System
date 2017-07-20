@@ -74,6 +74,12 @@ function handleFiles() {
 }
 -->
 
+Highcharts.setOptions({
+    lang: {
+        thousandsSep: ','
+    }
+});
+
 $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
  Highcharts.chart('container', {
 	 colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
@@ -97,7 +103,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
      },
 
      title: {
-         text: '시세 정보',
+         text: '거래량-Volum',
          style: {
              color: '#E0E0E3',
              textTransform: 'uppercase',
@@ -106,7 +112,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
      },
 
      subtitle: {
-         text: '일주일간 시세',
+         text: '일주일 거래량',
          style: {
              color: '#E0E0E3',
              textTransform: 'uppercase'
@@ -114,7 +120,7 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
      },
 
      xAxis: {
-         tickInterval: 4 * 3600 * 1000, // 4시간 단위
+         tickInterval: 2 * 4 * 3600 * 1000, // 4시간 단위
          tickWidth: 0,
          gridLineColor: '#707073',
          labels: {
@@ -134,11 +140,6 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
 
      yAxis: [{ // left y axis
     	 gridLineColor: '#707073',
-         labels: {
-            style: {
-               color: '#E0E0E3'
-            }
-         },
          lineColor: '#707073',
          minorGridLineColor: '#505053',
          tickColor: '#707073',
@@ -146,9 +147,12 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
     	 title: {
              text: null
          },
-         gridLineWidth: 3,
+         gridLineWidth: 1,
          labels: {
-             format: '{value:.,0f}'
+             format: '{value:.,0f}',
+             style: {
+                 color: '#FFFFFF'
+              }
          },
          showFirstLabel: false
      }, { // right y axis
@@ -216,6 +220,17 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
              color: '#707073'
           }
        },
+       legend: {
+ 	      itemStyle: {
+ 	         color: '#FFFFFF'
+ 	      },
+ 	      itemHoverStyle: {
+ 	         color: '#FFFFFF'
+ 	      },
+ 	      itemHiddenStyle: {
+ 	         color: '#FFFFFF'
+ 	      }
+ 	   },
      series: [{
          name: 'Bithumb',
          lineWidth: 4,

@@ -56,8 +56,8 @@ public class CoinFrontController extends HttpServlet {
 					}
 				}else if(command.equals("btcAll")){// 모든 비트코인 정보 검색
 					btcAll(request, response);
-				}else if(command.equals("btc")){// 날짜별 비트코인 검색
-					btc(request, response);
+				}else if(command.equals("getbtc")){// 날짜별 비트코인 검색
+					getbtc(request, response);
 				}else if(command.equals("btcInsert")){// 비트코인 추가 등록
 					btcInsert(request, response);   
 				}else if(command.equals("ethInsert")){	// 비트코인 추가 등록
@@ -219,7 +219,7 @@ public class CoinFrontController extends HttpServlet {
 	}
 
 	// 날짜에 따른 비트코인 검색
-	public void btc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void getbtc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 		try {
 			request.setAttribute("btc", CoinService.getBtc(request.getParameter("btcDay")));
