@@ -1,0 +1,124 @@
+<meta charset="euc-kr" />
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<!-- Additional files for the Highslide popup effect -->
+<script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+<script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
+
+<pre id="csv" style="display:none">DAY,BITHUMB,POLONEIX
+2017-07-01 00:00:00,15,164571
+2017-07-01 04:00:00,44,264223
+2017-07-01 08:00:00,46,68130
+2017-07-01 12:00:00,113,83660
+2017-07-01 16:00:00,48,39950
+2017-07-01 20:00:00,37,86243
+2017-07-02 00:00:00,91,77313
+2017-07-02 04:00:00,25,102325
+2017-07-02 08:00:00,58,36258
+2017-07-02 12:00:00,116,67428
+2017-07-02 16:00:00,48,333158
+2017-07-02 20:00:00,37,124636
+2017-07-03 00:00:00,91,108798
+2017-07-03 04:00:00,25,63808
+2017-07-03 08:00:00,58,91481
+2017-07-03 12:00:00,116,242939
+2017-07-03 16:00:00,85,126854
+2017-07-03 20:00:00,55,290521
+2017-07-04 00:00:00,119,226759
+2017-07-04 04:00:00,8,201739
+2017-07-04 08:00:00,48,27193
+2017-07-04 12:00:00,273,11333
+2017-07-04 16:00:00,119,96542
+2017-07-04 20:00:00,43,106248
+2017-07-05 00:00:00,91,79297
+2017-07-05 04:00:00,4,56375
+2017-07-05 08:00:00,31,22904
+2017-07-05 12:00:00,90,205360
+2017-07-05 16:00:00,124,335744
+2017-07-05 20:00:00,57,285478
+2017-07-06 00:00:00,62,750667
+2017-07-06 04:00:00,33,1316622
+2017-07-06 08:00:00,47,1248890
+2017-07-06 12:00:00,76,604205
+2017-07-06 16:00:00,153,382686
+2017-07-06 20:00:00,120,367788
+2017-07-07 00:00:00,51,483160
+2017-07-07 04:00:00,11,199694
+2017-07-07 08:00:00,21,321615
+2017-07-07 12:00:00,112,546292
+2017-07-07 16:00:00,56,283326
+2017-07-07 20:00:00,75,319494
+
+
+</pre><div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<script>
+
+ Highcharts.chart('container', {
+
+     data: {
+         csv: document.getElementById('csv').innerHTML
+     },
+
+     title: {
+         text: '시세 정보'
+     },
+
+     subtitle: {
+         text: '일주일간 시세'
+     },
+
+     xAxis: {
+         tickInterval: 4 * 3600 * 1000, // 4시간 단위
+         tickWidth: 0,
+     },
+
+     yAxis: [{ // left y axis
+         title: {
+             text: null
+         },
+         gridLineWidth: 3,
+         labels: {
+             format: '{value:.,0f}'
+         },
+         showFirstLabel: false
+     }, { // right y axis
+         linkedTo: 0,
+         gridLineWidth: 0,
+         opposite: true,
+         title: {
+             text: null
+         },
+         labels: {
+             format: '{value:.,0f}'
+         },
+         showFirstLabel: false
+     }],
+
+     legend: {
+         align: 'left',
+         verticalAlign: 'top',
+         y: 20,
+         floating: true,
+         borderWidth: 0
+     },
+
+     tooltip: {
+         shared: true,
+         crosshairs: true
+     },
+
+     series: [{
+         name: 'Bithumb',
+         lineWidth: 4,
+         marker: {
+             radius: 4
+         }
+     }, {
+         name: 'Poloneix'
+     }]
+ });
+</script>
