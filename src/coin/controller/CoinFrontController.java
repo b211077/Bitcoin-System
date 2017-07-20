@@ -21,7 +21,7 @@ import coin.model.dto.XrpDTO;
 
 public class CoinFrontController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("euc-kr");
 		String command = request.getParameter("command");
 		try{
 			if(command != null){
