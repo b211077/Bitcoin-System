@@ -135,7 +135,7 @@ public class CoinFrontController extends HttpServlet {
 			int updateAmount = Integer.parseInt(request.getParameter("updateAmount"));
 			int updatePrice = Integer.parseInt(request.getParameter("updatePrice"));
 			MemberService.updateCoin((String)session.getAttribute("id"), cname, updateType, updateAmount, updatePrice);
-			url = "wallet.jsp";
+			url = "wallet.jsp?command=wallet";
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
 		}
