@@ -330,7 +330,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
             <h2 style="margin-bottom:50px;"> &nbsp; </h2>
             <table class="alt">
                <thead>
-                  <th style="text-align:center;"><strong>국내 외 시세차이(%)</strong></th>
+                  <th style="text-align:center;"><strong>국내외 시세차이(%)</strong></th>
                </thead>
                <tbody style="text-align:center;">
                   <tr> 
@@ -400,12 +400,6 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                      <td><div id="PXRP"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i></div></td>
                   </tr>
                </tbody>
-               <!-- <tfoot>
-                  <tr>
-                     <td colspan="2"></td>
-                     <td>100.00</td>
-                  </tr>
-               </tfoot> -->
             </table>
          </div>
       </div>
