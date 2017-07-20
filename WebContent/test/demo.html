@@ -56,6 +56,20 @@
 </pre><div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <script>
 
+<!--
+function handleFiles() {
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "D:\Docs\Desktop\csvfile.csv",
+            dataType: "csv",
+            success: function (data) { processData(data); }
+        });
+    });
+}
+-->
+
 $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
  Highcharts.chart('container', {
 
@@ -68,17 +82,12 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
      },
 
      subtitle: {
-         text: '일주인간 시세'
+         text: '일주일간 시세'
      },
 
      xAxis: {
          tickInterval: 4 * 3600 * 1000, // 4시간 단위
          tickWidth: 0,
-         labels: {
-             align: 'left',
-             x: 3,
-             y: -3
-         }
      },
 
      yAxis: [{ // left y axis
@@ -87,9 +96,6 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
          },
          gridLineWidth: 3,
          labels: {
-             align: 'left',
-             x: 3,
-             y: 16,
              format: '{value:.,0f}'
          },
          showFirstLabel: false
@@ -101,9 +107,6 @@ $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=analytics.
              text: null
          },
          labels: {
-             align: 'right',
-             x: -3,
-             y: 16,
              format: '{value:.,0f}'
          },
          showFirstLabel: false
