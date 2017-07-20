@@ -4,7 +4,6 @@
 	String url = application.getContextPath() + "/";
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="sessionCheck.jsp" flush="false" />
 <!DOCTYPE HTML>
 <!--
 	Forty by HTML5 UP
