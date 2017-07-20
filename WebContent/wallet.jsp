@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="sessionCheck.jsp" flush="false" />
 <html>
@@ -7,7 +7,7 @@
 <title>Generic - Forty by HTML5 UP</title>
 <meta charset="utf-8" />
 <meta name="viewport"
-   content="width=device-width, initial-scale=1, user-scalable=no" />
+	content="width=device-width, initial-scale=1, user-scalable=no" />
 <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 <link rel="stylesheet" href="assets/css/main.css" />
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -15,16 +15,16 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <style type="text/css">
 form .field.half {
-   width: 100% !important;
-   float: none;
-   padding: 0;
+	width: 100% !important;
+	float: none;
+	padding: 0;
 }
 
 #contact>.inner>:nth-child(2n - 1) {
-   width: 55% !important;
-   margin: 0 auto;
-   padding-right: 0px !important;
-   border-right: 0px !important;
+	width: 55% !important;
+	margin: 0 auto;
+	padding-right: 0px !important;
+	border-right: 0px !important;
 }
 </style>
 <script type="text/javascript">
@@ -150,59 +150,61 @@ form .field.half {
 </head>
 <body>
 
-   <!-- Wrapper -->
-   <div id="wrapper">
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-      <!-- Header -->
-      <header id="header" class="alt">
-         <a href="index.jsp" class="logo"><img src="images/coinsight.png"
-            style="width: 260px; height: 60px;"></a>
-         <nav>
-            <c:if test="${empty sessionScope.member}">
-               <p>
-                  <a href="join.jsp">JOIN</a>
-               </p>
-               <p>
-                  <a href="login.jsp">LOGIN</a>
-               </p>
-            </c:if>
-            <c:if test="${not empty sessionScope.member}">
-               <p>${sessionScope.member.id}(${sessionScope.member.name})</p>
-               <p>
-                  <a href="coin?command=logout">logout</a>
-               </p>
-            </c:if>
-            <a href="#menu">Menu</a>
-         </nav>
-      </header>
+		<!-- Header -->
+		<header id="header">
+			<a href="index.jsp" class="logo"><img src="images/coinsight.png"
+				style="width: 260px; height: 60px;"></a>
+			<nav>
+				<c:if test="${empty sessionScope.member}">
+					<p>
+						<a href="join.jsp">JOIN</a>
+					</p>
+					<p>
+						<a href="login.jsp">LOGIN</a>
+					</p>
+				</c:if>
+				<c:if test="${not empty sessionScope.member}">
+					<p>${sessionScope.member.id}(${sessionScope.member.name})</p>
+					<p>
+						<a href="coin?command=logout">logout</a>
+					</p>
+				</c:if>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
 
 
-      <!-- Menu -->
-      <nav id="menu">
-         <ul class="links">
-            <li><a href="index.jsp">Home</a></li>
-            <li><a href="coin?command=wallet">Wallet</a></li>
-            <li><a href="index.jsp#hidden">Real Time Chart</a></li>
-            <li><a href="index.jsp#one">Coin Graph</a></li>
-         </ul>
-         <ul class="actions vertical">
-            <c:if test="${empty sessionScope.member}">
-            	<li><a href="login.jsp" class="button special fit">Log In</a></li>		
-			</c:if>
-			<c:if test="${not empty sessionScope.member}">
-				<li><a href="coin?command=logout" class="button special fit">Log Out</a></li>	
-			</c:if>
-         </ul>
-      </nav>
+		<!-- Menu -->
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="index.jsp">Home</a></li>
+				<li><a href="coin?command=wallet">Wallet</a></li>
+				<li><a href="index.jsp#hidden">Real Time Chart</a></li>
+				<li><a href="index.jsp#one">Coin Graph</a></li>
+			</ul>
+			<ul class="actions vertical">
+				<c:if test="${empty sessionScope.member}">
+					<li><a href="login.jsp" class="button special fit">Log In</a></li>
+				</c:if>
+				<c:if test="${not empty sessionScope.member}">
+					<li><a href="coin?command=logout" class="button special fit">Log
+							Out</a></li>
+				</c:if>
+			</ul>
+		</nav>
 
 		<!-- Contact -->
 		<section id="contact">
 			<div>
 				<section>
 					<script src="scripts/jquery-3.1.1.js"></script>
-						<script src="scripts/jquery.validate.min.js"></script>
-						<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
-						
+					<script src="scripts/jquery.validate.min.js"></script>
+					<script
+						src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
+
 					<form id="walletForm" name="walletForm" method="post" action="coin">
 						<div id="part1"
 							style="width: 40%; float: left; margin-left: 80px;">
@@ -211,7 +213,8 @@ form .field.half {
 							<div class="field half">
 								<label for="cname">코인 종류</label> <select name="cname" id="cname"
 									onChange="coinInfo(this.value)">
-									<option value="empty" style="color: navy !important;">코인 종류를 선택하세요</option>
+									<option value="empty" style="color: navy !important;">코인
+										종류를 선택하세요</option>
 									<option value="BTC" style="color: navy !important;">비트코인</option>
 									<option value="ETH" style="color: navy !important;">이더리움</option>
 									<option value="DASH" style="color: navy !important;">대쉬코인</option>
@@ -242,10 +245,11 @@ form .field.half {
 									type="text" name="currentPrice_p" id="currentPrice_p" readonly />
 							</div>
 						</div>
-                  <div id="part2"
-                     style="width: 40%; float: right; margin-right: 80px;">
-                     <div id="areaText" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
-                     <script>
+						<div id="part2"
+							style="width: 40%; float: right; margin-right: 80px;">
+							<div id="areaText"
+								style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
+								<script>
                         Highcharts.chart('areaText', {
                             chart: {
                                 plotBorderWidth: null,
@@ -312,61 +316,62 @@ form .field.half {
                             }]
                         });
                      </script>
-                     
-                     </div>
-                     <h2
-                        style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 80px; margin-top: 0px !important;">
-                        지&nbsp;갑&nbsp;정&nbsp;보&nbsp;수&nbsp;정</h2>
-                     <div class="field half">
-                        <div style="width: 24%; float: left; margin-right: 21px;">
-                           <label for="cname">분류</label> <select name="updateType"
-                              id="updateType">
-                              <option value="buy" style="color: navy !important;">구입</option>
-                              <option value="sell" style="color: navy !important;">판매</option>
-                           </select>
-                        </div>
-                        <div style="width: 35%; float: left; margin: 0 auto;">
-                           <label for="pw">수량</label> <input type="text"
-                              name="updateAmount" id="updateAmount" />
-                        </div>
-                        <div style="width: 35%; float: right;">
-                           <label for="pw">금액</label> <input type="text"
-                              name="updatePrice" id="updatePrice" />
-                        </div>
-                     </div>
 
-                     <br> <br> <br> <br> <br> <input
-                        type="hidden" name="command" value="coinInfoUpdate" />
+							</div>
+							<h2
+								style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 80px; margin-top: 0px !important;">
+								지&nbsp;갑&nbsp;정&nbsp;보&nbsp;수&nbsp;정</h2>
+							<div class="field half">
+								<div style="width: 24%; float: left; margin-right: 21px;">
+									<label for="cname">분류</label> <select name="updateType"
+										id="updateType">
+										<option value="buy" style="color: navy !important;">구입</option>
+										<option value="sell" style="color: navy !important;">판매</option>
+									</select>
+								</div>
+								<div style="width: 35%; float: left; margin: 0 auto;">
+									<label for="pw">수량</label> <input type="text"
+										name="updateAmount" id="updateAmount" />
+								</div>
+								<div style="width: 35%; float: right;">
+									<label for="pw">금액</label> <input type="text"
+										name="updatePrice" id="updatePrice" />
+								</div>
+							</div>
 
-                     <ul class="actions"
-                        style="margin: 0 auto !important; width: 58%;">
-                        <li><input type="submit" value="지갑에 등록" class="special" /></li>
-                        <li><input type="reset" value="다시 작성" /></li>
-                     </ul>
-                  </div>
-               </form>
-            </section>
-         </div>
-      </section>
+							<br> <br> <br> <br> <br> <input
+								type="hidden" name="command" value="coinInfoUpdate" />
 
-      <!-- Footer -->
-      <footer id="footer">
-         <div class="inner"
-            style="padding: 10px !important; text-align: center; width: 60%;">
-            <ul class="copyright">
-               <li>ⓒ 2017. kData Bitcoin Viewer Team all rights reserved.</li>
-            </ul>
-         </div>
-   </div>
+							<ul class="actions"
+								style="margin: 0 auto !important; width: 58%;">
+								<li><input type="submit" value="지갑에 등록" class="special" /></li>
+								<li><input type="reset" value="다시 작성" /></li>
+							</ul>
+						</div>
+					</form>
+				</section>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner"
+				style="padding: 10px !important; text-align: center; width: 60%;">
+				<ul class="copyright">
+					<li>ⓒ 2017. kData Bitcoin Viewer Team all rights reserved.</li>
+				</ul>
+			</div>
+		</footer>
+	</div>
 
 
-   <!-- Scripts -->
-   <script src="assets/js/jquery.scrolly.min.js"></script>
-   <script src="assets/js/jquery.scrollex.min.js"></script>
-   <script src="assets/js/skel.min.js"></script>
-   <script src="assets/js/util.js"></script>
-   <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-   <script src="assets/js/main.js"></script>
+	<!-- Scripts -->
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
 
 
 </body>

@@ -31,7 +31,7 @@ form .field.half {
 	<div id="wrapper">
 
 		<!-- Header -->
-		<header id="header" class="alt">
+		<header id="header">
 			<a href="index.jsp" class="logo"><img src="images/coinsight.png"
 				style="width: 260px; height: 60px;"></a>
 			<nav>
