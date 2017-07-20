@@ -218,12 +218,12 @@ form .field.half {
                          },
                          messages:{ // rules에 해당하는 메시지를 지정하는 속성
                             updateAmount:{
-                                 required:"수량을 입력하세요", // 이와 같이 규칙이름과 메시지를 작성
-                                 digits:"양의 정수를 입력하세요"
+                                 required:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 수량을 입력하세요", // 이와 같이 규칙이름과 메시지를 작성
+                                 digits:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 양의 정수를 입력하세요"
                              },
                              updatePrice:{
-                                 required:"금액을 입력하세요",
-                                 digits:"양의 정수를 입력하세요"
+                                 required:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 금액을 입력하세요",
+                                 digits:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 양의 정수를 입력하세요"
                              }
                          }
                      });

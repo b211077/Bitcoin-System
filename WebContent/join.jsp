@@ -93,12 +93,12 @@
 								            email: { required: true, email: true}
 								        }, messages: {
 								        	id:{
-									            required:"ID를 입력하세요", // 이와 같이 규칙이름과 메시지를 작성
-									            rangelength:"5글자 이상, 10글자 이하여야 합니다"
+									            required:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> ID를 입력하세요", // 이와 같이 규칙이름과 메시지를 작성
+									            rangelength:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 5글자 이상, 10글자 이하여야 합니다"
 									        },
 									        pw:{
-									            required:"패스워드를 입력하세요",
-									            rangelength:"5글자 이상, 15글자 이하여야 합니다"
+									            required:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 패스워드를 입력하세요",
+									            rangelength:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 5글자 이상, 15글자 이하여야 합니다"
 									        }, 
 									        name: {
 								                required: "이름을 입력하세요",
