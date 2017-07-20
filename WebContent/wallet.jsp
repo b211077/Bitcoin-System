@@ -208,17 +208,32 @@ form .field.half {
                       jQuery.validator.addMethod('cnameSelectCheck', function (value) {
                              return (value != 'empty');
                       }, "코인 종류를 선택 하세요");
-                     
-                     $("#walletForm").validate({ // joinForm에 validate를 적용
+                      $("#updateAmount").val(0);
+                      $("#updatePrice").val(0);
+                      jQuery.validator.addMethod(
+                            'amountCheck', 
+                            function (value) {
+                              console.log($("#updateType").val());
+                              console.log(value);
+                              console.log(amount);
+                              if($("#updateType").val()=='sell'){
+                                 return (value*1 <= amount*1);
+                              }else{
+                                 return true;
+                              }
+                            }, 
+                           "보유 코인 개수 부족"
+                     );
+                      
+                     $("#walletForm").validate({ 
                          rules:{
                             cname:{cnameSelectCheck:true},
-                            updateAmount:{required:true, digits:true},
-                             // required는 필수, rangelength는 글자 개수(5~10개 사이)
+                            updateAmount:{required:true, digits:true, amountCheck:true},
                             updatePrice:{required:true, digits:true}
                          },
-                         messages:{ // rules에 해당하는 메시지를 지정하는 속성
+                         messages:{ 
                             updateAmount:{
-                                 required:"수량을 입력하세요", // 이와 같이 규칙이름과 메시지를 작성
+                                 required:"수량을 입력하세요", 
                                  digits:"양의 정수를 입력하세요"
                              },
                              updatePrice:{
@@ -268,7 +283,6 @@ form .field.half {
                            type="text" name="currentPrice_p" id="currentPrice_p" readonly />
                      </div>
                   </div>
-
                   <div id="part2"
                      style="width: 40%; float: right; margin-right: 80px;">
                      <div id="areaText" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
@@ -364,7 +378,6 @@ form .field.half {
 
                      <br> <br> <br> <br> <br> <input
                         type="hidden" name="command" value="coinInfoUpdate" />
-
                      <ul class="actions"
                         style="margin: 0 auto !important; width: 58%;">
                         <li><input type="submit" value="지갑에 등록" class="special" /></li>
@@ -375,7 +388,6 @@ form .field.half {
             </section>
          </div>
       </section>
-
       <!-- Footer -->
       <footer id="footer">
          <div class="inner"
