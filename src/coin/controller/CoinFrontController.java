@@ -179,12 +179,10 @@ public class CoinFrontController extends HttpServlet {
 				session.setAttribute("member", member);
 				session.setAttribute("name", member.getName());
 				session.setAttribute("id", member.getId());
-				System.out.println("세션의 id값 : "+((MemberDTO)session.getAttribute("member")).getId());
-				System.out.println("세션의 이름값 : "+((MemberDTO)session.getAttribute("member")).getName());
 				request.setAttribute("successMsg", "로그인 성공");
 				url = "index.jsp";
 			}else{
-				request.setAttribute("errorMsg", "비밀번호가 일지하지 않습니다");
+				request.setAttribute("errorMsg", "비밀번호가 일치하지 않습니다.");
 			}
 		}catch(Exception s){
 			s.printStackTrace();
@@ -252,7 +250,7 @@ public class CoinFrontController extends HttpServlet {
 				request.setAttribute("errorMsg", "삽입 완료");
 				url = "showError.jsp";
 			} else {
-				request.setAttribute("errorMsg", "다시 시도하세요");
+				request.setAttribute("errorMsg", "다시 시도하세요.");
 			}
 		} catch (Exception s) {
 			s.printStackTrace();
@@ -283,7 +281,7 @@ public class CoinFrontController extends HttpServlet {
 				request.setAttribute("errorMsg", "삽입 완료");
 				url = "showError.jsp";
 			} else {
-				request.setAttribute("errorMsg", "다시 시도하세요");
+				request.setAttribute("errorMsg", "다시 시도하세요.");
 			}
 		} catch (Exception s) {
 			s.printStackTrace();
@@ -314,7 +312,7 @@ public class CoinFrontController extends HttpServlet {
 					request.setAttribute("errorMsg", "삽입 완료");
 					url = "showError.jsp";
 				} else {
-					request.setAttribute("errorMsg", "다시 시도하세요");
+					request.setAttribute("errorMsg", "다시 시도하세요.");
 				}
 			} catch (Exception s) {
 				s.printStackTrace();
@@ -344,7 +342,7 @@ public class CoinFrontController extends HttpServlet {
 				request.setAttribute("errorMsg", "삽입 완료");
 				url = "showError.jsp";
 			} else {
-				request.setAttribute("errorMsg", "다시 시도하세요");
+				request.setAttribute("errorMsg", "다시 시도하세요.");
 			}
 		} catch (Exception s) {
 			s.printStackTrace();
@@ -375,7 +373,7 @@ public class CoinFrontController extends HttpServlet {
 				request.setAttribute("errorMsg", "삽입 완료");
 				url = "showError.jsp";
 			} else {
-				request.setAttribute("errorMsg", "다시 시도하세요");
+				request.setAttribute("errorMsg", "다시 시도하세요.");
 			}
 		} catch (Exception s) {
 			s.printStackTrace();
@@ -406,7 +404,7 @@ public class CoinFrontController extends HttpServlet {
 				request.setAttribute("errorMsg", "삽입 완료");
 				url = "showError.jsp";
 			} else {
-				request.setAttribute("errorMsg", "다시 시도하세요");
+				request.setAttribute("errorMsg", "다시 시도하세요.");
 			}
 		} catch (Exception s) {
 			s.printStackTrace();
@@ -414,121 +412,4 @@ public class CoinFrontController extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
-		
-//		else if(command.equals("activistAll")){//모든 재능 기부자 검색
-//		activistAll(request, response);
-//	}else if(command.equals("activist")){//특정 재능 기부자 정보 검색
-//		activist(request, response);
-//	}else if(command.equals("activistInsert")){//재능 기부자 추가 등록
-//		activistInsert(request, response);
-//	}else if(command.equals("activistUpdateReq")){//재능 기부자 정보 수정요청
-//		activistUpdateReq(request, response);
-//	}else if(command.equals("activistUpdate")){//재능 기부자 정보 수정
-//		activistUpdate(request, response);
-//	}else if(command.equals("activistDelete")){//재능 기부자 탈퇴[삭제]
-//		activistDelete(request, response);
-//	}
-
-
-//		//모두 ProbonoProject 검색 메소드
-//		public void probonoProjectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//			String url = "showError.jsp";
-//			try {
-//				request.setAttribute("probonoProjectAll", ProbonoService.getAllProbonoProjects());
-//				url = "probonoProjectList.jsp";
-//			}catch(Exception s){
-//				request.setAttribute("errorMsg", s.getMessage());
-//			}
-//			request.getRequestDispatcher(url).forward(request, response);
-//		}
-//	
-//		//내지갑 수정 
-//		public void activistUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//			String url = "showError.jsp";
-//			try {
-//				String activistId = request.getParameter("activistId");
-//				String major = request.getParameter("major");
-//				ProbonoService.updateActivist(activistId, major);
-	//	
-//		//???
-//		//모든 재능 기부자 검색 - 검색된 데이터 출력 화면[activistList.jsp]
-//		public void activistAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//			String url = "showError.jsp";
-//			try {
-//				request.setAttribute("activistAll", ProbonoService.getAllActivists());
-//				url = "activistList.jsp";
-//			}catch(Exception s){
-//				request.setAttribute("errorMsg", s.getMessage());
-//			}
-//			request.getRequestDispatcher(url).forward(request, response);
-//		}
-	//	
-//		//재능 기부자 검색 
-//		public void activist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//			String url = "showError.jsp";
-//			try {
-//				request.setAttribute("activist", ProbonoService.getActivist(request.getParameter("activistId")));
-//				url = "activistDetail.jsp";
-//			}catch(Exception s){
-//				request.setAttribute("errorMsg", s.getMessage());
-//			}
-//			request.getRequestDispatcher(url).forward(request, response);
-//		}
-		
-//		//모두 ProbonoProject 검색 메소드
-//		public void probonoProjectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//			String url = "showError.jsp";
-//			try {
-//				request.setAttribute("probonoProjectAll", ProbonoService.getAllProbonoProjects());
-//				url = "probonoProjectList.jsp";
-//			}catch(Exception s){
-//				request.setAttribute("errorMsg", s.getMessage());
-//			}
-//			request.getRequestDispatcher(url).forward(request, response);
-//		}
-		
-//		//???
-//		//모든 재능 기부자 검색 - 검색된 데이터 출력 화면[activistList.jsp]
-//		public void activistAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//			String url = "showError.jsp";
-//			try {
-//				request.setAttribute("activistAll", ProbonoService.getAllActivists());
-//				url = "activistList.jsp";
-//			}catch(Exception s){
-//				request.setAttribute("errorMsg", s.getMessage());
-//			}
-//			request.getRequestDispatcher(url).forward(request, response);
-//		}
-		
-//		//재능 기부자 검색 
-//		public void activist(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//			String url = "showError.jsp";
-//			try {
-//				request.setAttribute("activist", ProbonoService.getActivist(request.getParameter("activistId")));
-//				url = "activistDetail.jsp";
-//			}catch(Exception s){
-//				request.setAttribute("errorMsg", s.getMessage());
-//			}
-//			request.getRequestDispatcher(url).forward(request, response);
-//		}
-	
-//	
-//	//???
-//	//재능 기부자 삭제
-//	public void activistDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String url = "showError.jsp";
-//		try {
-//			String activistId = request.getParameter("activistId");
-//			if(ProbonoService.deleteActivist(activistId)){
-//				request.setAttribute("activistAll", ProbonoService.getAllActivists());
-//				url = "activistList.jsp";
-//			}else{
-//				request.setAttribute("errorMsg", "재 실행 해 주세요");
-//			}
-//		}catch(Exception s){
-//			request.setAttribute("errorMsg", "진행중인 Probono Project가 있어 지금은 탈퇴가 불가합니다");
-//		}
-//		request.getRequestDispatcher(url).forward(request, response);
-//	}
-//
 }

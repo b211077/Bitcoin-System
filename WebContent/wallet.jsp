@@ -203,47 +203,7 @@ form .field.half {
 					<script src="scripts/jquery-3.1.1.js"></script>
 						<script src="scripts/jquery.validate.min.js"></script>
 						<script src="http://ajax.microsoft.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
-						<script type="text/javascript">
-						$(document).ready(function(){
-							 jQuery.validator.addMethod('cnameSelectCheck', function (value) {
-							        return (value != 'empty');
-							 }, "코인 종류를 선택 하세요");
-							 $("#updateAmount").val(0);
-							 $("#updatePrice").val(0);
-							 jQuery.validator.addMethod(
-									 'amountCheck', 
-									 function (value) {
-										console.log($("#updateType").val());
-										console.log(value);
-										console.log(amount);
-										if($("#updateType").val()=='sell'){
-											return (value*1 <= amount*1);
-										}else{
-											return true;
-										}
-									 }, 
-									"보유 코인 개수 부족"
-							);
-							 
-							$("#walletForm").validate({ 
-							    rules:{
-							    	cname:{cnameSelectCheck:true},
-							    	updateAmount:{required:true, digits:true, amountCheck:true},
-							    	updatePrice:{required:true, digits:true}
-							    },
-							    messages:{ 
-							    	updateAmount:{
-							            required:"수량을 입력하세요", 
-							            digits:"양의 정수를 입력하세요"
-							        },
-							        updatePrice:{
-							            required:"금액을 입력하세요",
-							            digits:"양의 정수를 입력하세요"
-							        }
-							    }
-							});
-						});	
-					</script>
+						
 					<form id="walletForm" name="walletForm" method="post" action="coin">
 						<div id="part1"
 							style="width: 40%; float: left; margin-left: 80px;">

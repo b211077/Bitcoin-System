@@ -16,7 +16,7 @@ public class MemberService {
 	public static void notExistMember(String memberId) throws NotExistException, SQLException{
 		MemberDTO member = MemberDAO.getMember(memberId);
 		if(member == null){
-			throw new NotExistException("검색하는회원이 미 존재합니다.");
+			throw new NotExistException("검색하는 회원이 미 존재합니다.");
 		}
 	}
 	public static boolean addMember(MemberDTO member) throws MessageException{
@@ -25,28 +25,7 @@ public class MemberService {
 			result = MemberDAO.addMember(member);
 			MemberDAO.getMember(member.getId()).setWallet(new WalletDTO(member.getId(), getWalletCoin(member.getId())));
 		}catch(SQLException s){
-			throw new MessageException("이미 존재하는 ID입니다 다시 시도 하세요");
-		}
-		return result;
-	}
-	
-	//회원 수정 메소드[MemberDAO의 updateMember()]
-	public static boolean updateMember(String memberId, String major) throws SQLException, NotExistException{		
-		notExistMember(memberId);
-		boolean result = MemberDAO.updateMember(memberId, major);
-		if(!result){
-			throw new NotExistException("회원 정보 갱신 실패");
-		}
-		return result;
-	}
-	
-	
-	//회원 삭제 메소드[ MemberDAO.deleteMember()]
-	public static boolean deleteMember(String memberId) throws SQLException, NotExistException{
-		notExistMember(memberId);
-		boolean result = MemberDAO.deleteMember(memberId);
-		if(!result){
-			throw new NotExistException("회원 정보 삭제 실패");
+			throw new MessageException("이미 존재하는 ID입니다. 다시 시도 하세요.");
 		}
 		return result;
 	}
@@ -55,14 +34,9 @@ public class MemberService {
 	public static MemberDTO getMember(String memberId) throws SQLException, NotExistException{
 		MemberDTO member = MemberDAO.getMember(memberId);
 		if(member == null){
-			throw new NotExistException("검색하는 회원이 미 존재합니다.");
+			throw new NotExistException("존재하지 않는 ID 입니다.");
 		}
 		return member;
-	}
-	
-	// 모든 회원 조회
-	public static ArrayList<MemberDTO> getAllMembers() throws SQLException{
-		return MemberDAO.getAllMembers();
 	}
 	
 	// 모든 내코인 정보 조회
