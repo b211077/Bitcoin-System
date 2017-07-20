@@ -99,11 +99,11 @@ form .field.half {
                                        rangelength:"<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 5글자 이상, 15글자 이하여야 합니다"
                                    }, 
                                    name: {
-                                        required: "이름을 입력하세요",
+                                        required: "<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 이름을 입력하세요",
                                     }, 
                                     email: {
-                                        required: "이메일을 입력하세요",
-                                        email: "올바른 이메일 주소가 아닙니다"
+                                        required: "<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 이메일을 입력하세요",
+                                        email: "<i class='fa fa-warning' style='font-size:24px; color:yellow;'></i> 올바른 이메일 주소가 아닙니다"
                                     }
                                 }
                             });
