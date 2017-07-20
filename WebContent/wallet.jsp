@@ -196,7 +196,6 @@ form .field.half {
          </ul>
       </nav>
 
-<<<<<<< HEAD
 		<!-- Contact -->
 		<section id="contact">
 			<div>
