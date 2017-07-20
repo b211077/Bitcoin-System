@@ -196,6 +196,7 @@ form .field.half {
          </ul>
       </nav>
 
+<<<<<<< HEAD
 		<!-- Contact -->
 		<section id="contact">
 			<div>
@@ -336,18 +337,20 @@ form .field.half {
                         </div>
                      </div>
 
-							<br> <br> <br> <br> <br> <input
-								type="hidden" name="command" value="coinInfoUpdate" />
-							<ul class="actions"
-								style="margin: 0 auto !important; width: 58%;">
-								<li><input type="submit" value="지갑에 등록" class="special" /></li>
-								<li><input type="reset" value="다시 작성" /></li>
-							</ul>
-						</div>
-					</form>
-				</section>
-			</div>
-		</section>
+                     <br> <br> <br> <br> <br> <input
+                        type="hidden" name="command" value="coinInfoUpdate" />
+
+                     <ul class="actions"
+                        style="margin: 0 auto !important; width: 58%;">
+                        <li><input type="submit" value="지갑에 등록" class="special" /></li>
+                        <li><input type="reset" value="다시 작성" /></li>
+                     </ul>
+                  </div>
+               </form>
+            </section>
+         </div>
+      </section>
+
       <!-- Footer -->
       <footer id="footer">
          <div class="inner"
