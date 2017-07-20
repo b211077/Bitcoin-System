@@ -72,7 +72,7 @@
 			<section id="one">
 				<div class="inner">
 					<header class="major">
-						<h1>BTC _ 비트코인</h1>
+						<h1>ETH _ 이더리움</h1>
 					</header>
 					<span class="image main">
 						<p id="areaText"></p> <script>
