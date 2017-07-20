@@ -50,23 +50,23 @@
 						$("#price").val(price);
 						$("#avgPrice").val(avgPrice);
 						if(c == 'BTC'){
-							currentPrice_b = btc_c*avgPrice;
-							currentPrice_p = pbtc_c*avgPrice;
+							currentPrice_b = btc_c*amount;
+							currentPrice_p = pbtc_c*amount;
 						}else if(c == 'ETH'){
-							currentPrice_b = eth_c*avgPrice;
-							currentPrice_p = peth_c*avgPrice;
+							currentPrice_b = eth_c*amount;
+							currentPrice_p = peth_c*amount;
 						}else if(c == 'DASH'){
-							currentPrice_b = dash_c*avgPrice;
-							currentPrice_p = pdash_c*avgPrice;
+							currentPrice_b = dash_c*amount;
+							currentPrice_p = pdash_c*amount;
 						}else if(c == 'LTC'){
-							currentPrice_b = ltc_c*avgPrice;
-							currentPrice_p = pltc_c*avgPrice;
+							currentPrice_b = ltc_c*amount;
+							currentPrice_p = pltc_c*amount;
 						}else if(c == 'ETC'){
-							currentPrice_b = etc_c*avgPrice;
-							currentPrice_p = petc_c*avgPrice;
+							currentPrice_b = etc_c*amount;
+							currentPrice_p = petc_c*amount;
 						}else if(c == 'XRP'){
-							currentPrice_b = xrp_c*avgPrice;
-							currentPrice_p = pxrp_c*avgPrice;
+							currentPrice_b = xrp_c*amount;
+							currentPrice_p = pxrp_c*amount;
 						}
 						$("#currentPrice_b").val(currentPrice_b.toFixed(2));
 						$("#currentPrice_p").val(currentPrice_p.toFixed(2));
