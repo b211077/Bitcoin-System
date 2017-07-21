@@ -4,7 +4,7 @@
 <jsp:include page="sessionCheck.jsp" flush="false" />
 <html>
 <head>
-<title>Generic - Forty by HTML5 UP</title>
+<title>coINsight - Áö°©°ü¸®</title>
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
