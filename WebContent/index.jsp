@@ -40,7 +40,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
             	 window.onload = function(){
             		getCurrencyData();
             	}
-            	   function getCurrencyData() {
+             function getCurrencyData() {
                    $.ajax({
                    url : "http://api.fixer.io/latest?base=USD",
                    dataType : "html",
@@ -50,7 +50,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                       obj = eval("(" + result + ")");
                       currency = obj.rates.KRW;
                    }
-                });
+               });
              }
             		   
                function myFun() {
