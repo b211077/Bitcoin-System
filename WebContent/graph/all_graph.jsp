@@ -43,18 +43,18 @@ $.get(url, function(data) {
 	     },
 
      title: {
-         text: '矫技 沥焊',
+         text: 'f',
          style: {
-             color: '#E0E0E3',
+             color: '#242943',
              textTransform: 'uppercase',
              fontSize: '20px'
           }
      },
 
      subtitle: {
-         text: '老林老埃 矫技',
+         text: 'f',
          style: {
-             color: '#E0E0E3',
+             color: '#242943',
              textTransform: 'uppercase'
           }
      },

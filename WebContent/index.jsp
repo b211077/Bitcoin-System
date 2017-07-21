@@ -21,7 +21,7 @@
 <style type="text/css">
 /*  * {font-family:'BM HANNA','배달의민족 한나 ' !important, sans-serif; }  */
 table { font-family:'BM HANNA'; }
-
+.table-wrapper { font-family:'BM HANNA'; }
 th {text-align:center;}
 tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
 </style>
@@ -52,6 +52,8 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                       result = result.replace(/(\s*)/g, "");         
                       obj = eval("(" + result + ")");
                       currency = obj.rates.KRW;
+                      $("#krw").text(currency);
+                      $("#krw2").text(currency);
                    }
                });
              }
@@ -158,7 +160,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
 	                     }
 	                     else{
 	                     tempval = (pbtc_c-btc_c)/btc_c*100;
-	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (<img src='images/poloniex.png' width='85' height='19'>  <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (<img src='images/poloniex.png' width='80' height='19' style='padding-top:5px;'>  <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
 	                     }
                      }
                      if(eth_c != null && peth_c != null){
@@ -345,7 +347,8 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
          </div>
 
          <div class="table-wrapper"   style="width: 20%; float: left; margin:0 35px;">
-            <h2 style="margin-bottom:50px;"> &nbsp; </h2>
+            <h4 style="margin-bottom:37px; text-align:center; color:#959ab3;"> [ 오늘의 환율 ] <br>
+            							1KRW/USD : <span id="krw"></span> </h4>
             <table class="alt">
                <thead>
                   <th style="text-align:center;"><strong>국내외 시세차이(%)</strong></th>
@@ -384,7 +387,7 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
             style="width: 35%; float: right; margin-right: 40px;">
             <a href="https://poloniex.com/" class="logo"><img
                src="images/poloniex.png" width="250" height="40"
-               style="margin-top: 24px;" /></a> <br> <br>
+               style="margin-top: 24px;" /></a>  <br> <br>
             <table class="alt">
                <thead>
                   <tr>
