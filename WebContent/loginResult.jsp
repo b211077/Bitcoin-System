@@ -76,9 +76,8 @@
 		<section id="contact">
 			<div class="inner">
 				<center>
-				<img src="images/warning.png" style="width:250px; height:250px; margin-bottom:50px;">
-					<h2>coINsight에 회원가입을 성공했습니다.</h2>
-					<h3>로그인 후 이용해주세요.</h3>
+				<img src="images/success.png" style="width:250px; height:250px; margin-bottom:50px;">
+					<h2>coINsight의 회원이 되신 것을 환영합니다.</h2>
 					<br> <a class="button special default" href="<%=url%>login.jsp">로그인 화면으로 이동하기</a>
 					<br><br>
 				</center>
