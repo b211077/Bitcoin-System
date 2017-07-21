@@ -12,12 +12,11 @@
 <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 <link href="https://cdn.rawgit.com/YJSoft/Webfonts/0.1/BM_HANNA.css"  rel="stylesheet" type="text/css" />
-<link rel="stylesheet"
-   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style type="text/css">
 /*  * {font-family:'BM HANNA','배달의민족 한나 ' !important, sans-serif; }  */
-table { font-family:'배달의민족 한나'; }
+table { font-family:'BM HANNA'; }
 
 th {text-align:center;}
 tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
@@ -151,61 +150,61 @@ tr:nth-child(even){background-color: rgba(183, 191, 233, 0.34);}
                      if(btc_c != null && pbtc_c != null){
 	                     if(btc_c>pbtc_c){
 	                     tempval = (btc_c - pbtc_c)/btc_c*100;
-	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "    (<img src='images/logo_bithumb.png' width='80' height='28' style='padding-top:5px;'> <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
 	                     }
 	                     else{
 	                     tempval = (pbtc_c-btc_c)/btc_c*100;
-	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+	                     $("#BTC_p").html(tempval.toFixed(2) + "%"+ "   (<img src='images/poloniex.png' width='85' height='19'>  <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
 	                     }
                      }
                      if(eth_c != null && peth_c != null){
 	                     if(eth_c>peth_c){
 	                     tempval = (eth_c - peth_c)/eth_c*100;
-	                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+	                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "    (<img src='images/logo_bithumb.png' width='80' height='28' style='padding-top:5px;'> <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
 	                     }
 	                     else{
 	                     tempval = (peth_c-eth_c)/eth_c*100;
-	                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+	                     $("#ETH_p").html(tempval.toFixed(2) + "%"+ "   (<img src='images/poloniex.png' width='80' height='19' style='padding-top:5px;'> <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
 	                     }
                      }
                      if(dash_c != null && pdash_c != null){
 	                     if(dash_c>pdash_c){
 	                     tempval = (dash_c - pdash_c)/dash_c*100;
-	                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+	                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "    (<img src='images/logo_bithumb.png' width='80' height='28' style='padding-top:5px;'> <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
 	                     }
 	                     else{
 	                     tempval = (pdash_c-dash_c)/dash_c*100;
-	                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+	                     $("#DASH_p").html(tempval.toFixed(2) + "%"+ "   (<img src='images/poloniex.png' width='80' height='19' style='padding-top:5px;'> <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
 	                     }
                      }
                      if(ltc_c != null && pltc_c != null){
 	                     if(ltc_c>pltc_c){
 	                     tempval = (ltc_c - pltc_c)/ltc_c*100;
-	                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+	                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "    (<img src='images/logo_bithumb.png' width='80' height='28' style='padding-top:5px;'> <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
 	                     }
 	                     else{
 	                     tempval = (pltc_c-ltc_c)/ltc_c*100;
-	                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+	                     $("#LTC_p").html(tempval.toFixed(2) + "%"+ "   (<img src='images/poloniex.png' width='80' height='19' style='padding-top:5px;'> <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
 	                     }
                      }
                      if(etc_c != null && petc_c != null){
 	                     if(etc_c>petc_c){
 	                   	 tempval = (etc_c - petc_c)/etc_c*100;
-	                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+	                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "    (<img src='images/logo_bithumb.png' width='80' height='28' style='padding-top:5px;'> <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
 	                     }
 	                     else{
 	                     tempval = (petc_c-etc_c)/etc_c*100;
-	                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+	                     $("#ETC_p").html(tempval.toFixed(2) + "%"+ "   (<img src='images/poloniex.png' width='80' height='19' style='padding-top:5px;'> <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
 	                     }
                      }
                      if(xrp_c != null && pxrp_c != null){
 	                     if(xrp_c>pxrp_c){
 	                     tempval = (xrp_c - pxrp_c)/xrp_c*100;
-	                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "    (bithumb <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
+	                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "    (<img src='images/logo_bithumb.png' width='80' height='28' style='padding-top:5px;'> <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");   
 	                     }
 	                     else{
 	                     tempval = (pxrp_c-xrp_c)/xrp_c*100;
-	                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "   (poloniex <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
+	                     $("#XRP_p").html(tempval.toFixed(2) + "%"+ "   (<img src='images/poloniex.png' width='80' height='19' style='padding-top:5px;'> <i class='fa fa-arrow-up' style='font-size:26px; color:#9beb97;'></i>)");
 	                     } 
                      }
                   }
