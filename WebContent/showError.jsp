@@ -84,7 +84,7 @@
 				<center>
 				<img src="images/warning.png" style="width:250px; height:250px; margin-bottom:50px;">
 					<h3>${requestScope.errorMsg}</h3>
-					<br> <a class="button special default" href="<%=url%>index.jsp">메인 화면으로 이동하기</a>
+					<br> <a class="button special default" href="<%=url%>login.jsp">로그인 화면으로 이동하기</a>
 					<br><br>
 				</center>
 			</div>

@@ -56,6 +56,10 @@ form .field.half {
        }
     });
    
+   function number_format(num){
+		return String(num).replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+	}
+   
    function coinInfo(c) {
       $.ajax({
          url : "coin",
@@ -71,9 +75,9 @@ form .field.half {
             price = data.price *1;
             avgPrice = (data.price / data.amount).toFixed(2) *1;
          
-            $("#amount").val(amount);
-            $("#price").val(price);
-            $("#avgPrice").val(avgPrice);
+            $("#amount").val(number_format(amount));
+            $("#price").val(number_format(price));
+            $("#avgPrice").val(number_format(avgPrice));
             if (c == 'BTC') {
                currentPrice_b = btc_c * amount *1;
                currentPrice_p = pbtc_c * amount *1;
@@ -93,15 +97,22 @@ form .field.half {
                currentPrice_b = xrp_c * amount *1;
                currentPrice_p = pxrp_c * amount *1;
             }
+            if(avgPrice == 'NaN' || avgPrice == 'Infinity') {
+            	 $("#avgPrice").val("보유한 코인이 없습니다.")
+            }
             if(currentPrice_b.toFixed(2) == 'NaN'){
-            	$("#currentPrice_b").val("서버에서 데이터를 받아오지 못했습니다.");
+            	$("#currentPrice_b").val("서버 통신 오류입니다. 코인을 다시 선택해주세요.");
             }else{
-            	$("#currentPrice_b").val(currentPrice_b.toFixed(2));
+            	$("#currentPrice_b").val(number_format(currentPrice_b.toFixed(2)));
             }
             if(currentPrice_p.toFixed(2) == 'NaN'){
             	$("#currentPrice_p").val("서버에서 데이터를 받아오지 못했습니다.");
             }else{
-            	$("#currentPrice_p").val(currentPrice_p.toFixed(2));
+            	$("#currentPrice_p").val(number_format(currentPrice_p.toFixed(2)));
+            }
+            if(amount == 0) {
+            	$("#currentPrice_b").val("보유한 코인이 없습니다.");
+            	$("#currentPrice_p").val("보유한 코인이 없습니다.");
             }
          }
       });
