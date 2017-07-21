@@ -13,6 +13,10 @@
 <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 <link href="https://cdn.rawgit.com/YJSoft/Webfonts/0.1/BM_HANNA.css"  rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link href="https://cdn.rawgit.com/singihae/Webfonts/master/style.css" rel="stylesheet" type="text/css" />
+<script>
+@import url('https://cdn.rawgit.com/singihae/Webfonts/master/style.css');
+</script> -->
 </head>
 <style type="text/css">
 /*  * {font-family:'BM HANNA','배달의민족 한나 ' !important, sans-serif; }  */
