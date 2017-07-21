@@ -156,7 +156,7 @@ public class CoinFrontController extends HttpServlet {
 			if(result){
 				request.setAttribute("member", member);
 				request.setAttribute("successMsg", "가입 완료");
-				url = "login.jsp";
+				url = "loginResult.jsp";
 			}else{
 				request.setAttribute("errorMsg", "다시 시도하세요");
 			}
