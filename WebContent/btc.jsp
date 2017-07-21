@@ -77,7 +77,8 @@
 					<span class="image main">
 						<p id="areaText"></p> <script>
 							$.ajax({
-								  url: "graph/btc_price.html",
+								url : "graph/all_graph.jsp",
+								data : {msg : "'./file/BTC_price.csv'"},
 								  cache: false
 								})
 								  .done(function( html ) {
@@ -102,7 +103,8 @@
 			
 			if (count == 1) {
 					$.ajax({
-						url : "graph/btc_volume.html",
+						url : "graph/all_graph.jsp",
+						data : {msg : "'./file/BTC_volume.csv'"},
 						cache : false
 					}).done(function(html) {
 						$("#areaText").html(html);
@@ -112,7 +114,8 @@
 					count = 0;
 				} else {
 					$.ajax({
-						url : "graph/btc_price.html",
+						url : "graph/all_graph.jsp",
+						data : {msg : "'./file/BTC_price.csv'"},
 						cache : false
 					}).done(function(html) {
 						$("#areaText").html(html);

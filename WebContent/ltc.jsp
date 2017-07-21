@@ -76,7 +76,8 @@
 					<span class="image main">
 						<p id="areaText"></p> <script>
 							$.ajax({
-								  url: "graph/ltc_price.html",
+								url : "graph/all_graph.jsp",
+								data : {msg : "'./file/LTC_price.csv'"},
 								  cache: false
 								})
 								  .done(function( html ) {
@@ -101,7 +102,8 @@
 			
 			if (count == 1) {
 					$.ajax({
-						url : "graph/ltc_volume.html",
+						url : "graph/all_graph.jsp",
+						data : {msg : "'./file/LTC_volume.csv'"},
 						cache : false
 					}).done(function(html) {
 						$("#areaText").html(html);
@@ -111,7 +113,8 @@
 					count = 0;
 				} else {
 					$.ajax({
-						url : "graph/ltc_price.html",
+						url : "graph/all_graph.jsp",
+						data : {msg : "'./file/LTC_price.csv'"},
 						cache : false
 					}).done(function(html) {
 						$("#areaText").html(html);

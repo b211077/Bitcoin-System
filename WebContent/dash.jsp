@@ -76,7 +76,8 @@
 					<span class="image main">
 						<p id="areaText"></p> <script>
 							$.ajax({
-								  url: "graph/dash_price.html",
+								url : "graph/all_graph.jsp",
+								data : {msg : "'./file/DASH_price.csv'"},
 								  cache: false
 								})
 								  .done(function( html ) {
@@ -101,7 +102,8 @@
 			
 			if (count == 1) {
 					$.ajax({
-						url : "graph/dash_volume.html",
+						url : "graph/all_graph.jsp",
+						data : {msg : "'./file/DASH_volume.csv'"},
 						cache : false
 					}).done(function(html) {
 						$("#areaText").html(html);
@@ -111,8 +113,8 @@
 					count = 0;
 				} else {
 					$.ajax({
-						url : "graph/dash_price.html",
-						cache : false
+						url : "graph/all_graph.jsp",
+						data : {msg : "'./file/DASH_price.csv'"},
 					}).done(function(html) {
 						$("#areaText").html(html);
 						$("#clickButton").css("display","block");
