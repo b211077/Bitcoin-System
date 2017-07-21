@@ -91,12 +91,20 @@ public class CoinFrontController extends HttpServlet {
 		try{
 			HttpSession session = request.getSession();
 			WalletCoinDTO coinInfo = MemberService.getCoinInfo((String)session.getAttribute("id"), coinName);
-			ArrayList<Integer> allCoinInfo =  MemberService.getAllCoinInfo((String)session.getAttribute("id"));
-		    String coinInfoJson = "{\"name\":\""+coinInfo.getCoinName()
-		                    +"\",\"amount\":\""+coinInfo.getAmount()
-		                    +"\",\"price\":\""+coinInfo.getPrice()
-		                    +"\"}";
-		    response.getWriter().print(coinInfoJson);
+			if(coinInfo == null){
+				String coinInfoJson = "{\"name\":\""+"empty"
+                +"\",\"amount\":\""+"0"
+                +"\",\"price\":\""+"0"
+                +"\"}";
+				  response.getWriter().print(coinInfoJson);
+			}else{
+				  String coinInfoJson = "{\"name\":\""+coinInfo.getCoinName()
+                  +"\",\"amount\":\""+coinInfo.getAmount()
+                  +"\",\"price\":\""+coinInfo.getPrice()
+                  +"\"}";
+				  response.getWriter().print(coinInfoJson);
+				
+			}
 		}catch(Exception s){
 			s.printStackTrace();
 			request.setAttribute("errorMsg", s.getMessage());

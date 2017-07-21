@@ -54,7 +54,7 @@ public class MemberService {
 				return coinInfo;
 			}
 		}
-		return coinInfo;
+		return null;
 	}
 	// 코인이름으로 내코인 모든 정보 조회
 	public static ArrayList<Integer> getAllCoinInfo(String memberId) throws SQLException{
