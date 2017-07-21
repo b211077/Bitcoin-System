@@ -69,9 +69,9 @@
 
 			<!-- One -->
 			<section id="one">
-				<div class="inner">
+				<div class="inner" style="padding-top:3em !important;">
 					<header class="major">
-						<h1>ETH _ 이더리움 클래식</h1>
+						<h1><img src="images/etc_logo.png" width="60" height="90"> ETC _ 이더리움 클래식</h1>
 					</header>
 					<span class="image main">
 						<p id="areaText"></p> <script>

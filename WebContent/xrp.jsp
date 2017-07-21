@@ -71,7 +71,7 @@
 			<section id="one">
 				<div class="inner">
 					<header class="major">
-						<h1>XRP _ 리플</h1>
+						<h1><img src="images/xrp_logo.png" width="70" height="70"> XRP _ 리플</h1>
 					</header>
 					<span class="image main">
 						<p id="areaText"></p> <script>

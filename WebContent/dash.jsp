@@ -71,7 +71,7 @@
 			<section id="one">
 				<div class="inner">
 					<header class="major">
-						<h1>DASH _ 대쉬</h1>
+						<h1><img src="images/dash_logo.png" width="70" height="70"> DASH _ 대쉬 코인</h1>
 					</header>
 					<span class="image main">
 						<p id="areaText"></p> <script>

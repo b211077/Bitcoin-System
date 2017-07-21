@@ -66,12 +66,11 @@
 
 		<!-- Main -->
 		<div id="main" class="alt">
-
 			<!-- One -->
 			<section id="one">
-				<div class="inner">
+				<div class="inner" style="padding-top:3em !important;">
 					<header class="major">
-						<h1>ETH _ 이더리움</h1>
+						<h1><img src="images/eth_logo.png" width="60" height="90"> ETH _ 이더리움</h1>
 					</header>
 					<span class="image main">
 						<p id="areaText"></p> <script>
