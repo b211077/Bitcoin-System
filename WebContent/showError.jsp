@@ -91,7 +91,7 @@
 								<li>¨Ï 2017. kData Bitcoin Viewer Team all rights reserved.</li>
 							</ul>
 						</div>
-						
+					</footer>
 
 			</div>
 
