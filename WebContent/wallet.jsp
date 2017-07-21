@@ -28,147 +28,172 @@ form .field.half {
 }
 </style>
 <script type="text/javascript">
-   var btc_c, eth_c, dash_c, ltc_c, etc_c, xrp_c, btc_c1, eth_c1, dash_c1, ltc_c1, etc_c1, xrp_c1;
-   var pbtc_c, peth_c, pdash_c, pltc_c, petc_c, pxrp_c, obj, tempval;
-   var amount, price, avgPrice, currentPrice_b, currentPrice_p;
-   var btc_data;
-   var eth_data;
-   var dash_data;
-   var ltc_data;
-   var etc_data;
-   var xrp_data;
 
-   $.ajax({
-       url : "coin",
-       data : {
-          command : "coinAmount",
-       },
-       method : "post",
-       dataType : "html",
-       success : function(responseData) {
-          var data = JSON.parse(responseData);
-          btc_data = data.amountBTC*1;
-         eth_data = data.amountETH*1;
-         dash_data = data.amountDASH*1;
-         ltc_data = data.amountLTC*1;
-         etc_data = data.amountETC*1;
-         xrp_data = data.amountXRP*1;
-       }
-    });
-   
-   function number_format(num){
+	var btc_c, eth_c, dash_c, ltc_c, etc_c, xrp_c, btc_c1, eth_c1, dash_c1, ltc_c1, etc_c1, xrp_c1;
+	var pbtc_c, peth_c, pdash_c, pltc_c, petc_c, pxrp_c, obj, tempval;
+	var amount, price, avgPrice, currentPrice_b, currentPrice_p;
+	var btc_data;
+	var eth_data;
+	var dash_data;
+	var ltc_data;
+	var etc_data;
+	var xrp_data;
+	var currency;
+	
+	window.onload = function() {
+		getCurrencyData();
+	}
+	function getCurrencyData() {
+		$.ajax({
+			url : "http://api.fixer.io/latest?base=USD",
+			dataType : "html",
+			method : "GET",
+			success : function(result) {
+				result = result.replace(/(\s*)/g, "");
+				obj = eval("(" + result + ")");
+				currency = obj.rates.KRW;
+			}
+		});
+	}
+
+	$.ajax({
+		url : "coin",
+		data : {
+			command : "coinAmount",
+		},
+		method : "post",
+		dataType : "html",
+		success : function(responseData) {
+			var data = JSON.parse(responseData);
+			btc_data = data.amountBTC * 1;
+			eth_data = data.amountETH * 1;
+			dash_data = data.amountDASH * 1;
+			ltc_data = data.amountLTC * 1;
+			etc_data = data.amountETC * 1;
+			xrp_data = data.amountXRP * 1;
+		}
+	});
+
+	function number_format(num) {
 		return String(num).replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 	}
-   
-   function coinInfo(c) {
-      $.ajax({
-         url : "coin",
-         data : {
-            command : "coinInfo",
-            coinName : c
-         },
-         method : "post",
-         dataType : "html",
-         success : function(responseData) {
-            var data = JSON.parse(responseData);
-            amount = data.amount *1;
-            price = data.price *1;
-            avgPrice = (data.price / data.amount).toFixed(2) *1;
-         
-            $("#amount").val(number_format(amount));
-            $("#price").val(number_format(price));
-            if (c == 'BTC') {
-               currentPrice_b = btc_c * amount *1;
-               currentPrice_p = pbtc_c * amount *1;
-            } else if (c == 'ETH') {
-               currentPrice_b = eth_c * amount *1;
-               currentPrice_p = peth_c * amount *1;
-            } else if (c == 'DASH') {
-               currentPrice_b = dash_c * amount *1;
-               currentPrice_p = pdash_c * amount *1;
-            } else if (c == 'LTC') {
-               currentPrice_b = ltc_c * amount *1;
-               currentPrice_p = pltc_c * amount *1;
-            } else if (c == 'ETC') {
-               currentPrice_b = etc_c * amount *1;
-               currentPrice_p = petc_c * amount *1;
-            } else if (c == 'XRP') {
-               currentPrice_b = xrp_c * amount *1;
-               currentPrice_p = pxrp_c * amount *1;
-            }
-            if(amount == 0) {
-            	 $("#avgPrice").val("보유한 코인이 없습니다.");
-            }
-            else if(avgPrice == 'Infinity') {
-            	$("#avgPrice").val("보유한 코인이 없습니다.");
-            } else {
-            	$("#avgPrice").val(number_format(avgPrice));
-            }
-            if(currentPrice_b.toFixed(2) == 'NaN'){
-            	$("#currentPrice_b").val("서버 통신 오류입니다. 코인을 다시 선택해주세요.");
-            }else{
-            	$("#currentPrice_b").val(number_format(currentPrice_b.toFixed(2)));
-            }
-            if(currentPrice_p.toFixed(2) == 'NaN'){
-            	$("#currentPrice_p").val("서버에서 데이터를 받아오지 못했습니다.");
-            }else{
-            	$("#currentPrice_p").val(number_format(currentPrice_p.toFixed(2)));
-            }
-            if(amount == 0) {
-            	$("#currentPrice_b").val("보유한 코인이 없습니다.");
-            	$("#currentPrice_p").val("보유한 코인이 없습니다.");
-            }
-         }
-      });
-   }
-   function myFun() {
-      $.ajax({
-         url : "bithumbUrl.jsp",
-         dataType : "html",
-         method : "GET",
-         success : function(result) {
-            result = result.replace(/(\s*)/g, "");
-            obj = eval("(" + result + ")");
-            if (obj.message == null) {
-               btc_c = obj.data.BTC.closing_price*1;
-               eth_c = obj.data.ETH.closing_price*1;
-               dash_c = obj.data.DASH.closing_price*1;
-               ltc_c = obj.data.LTC.closing_price*1;
-               etc_c = obj.data.ETC.closing_price*1;
-               xrp_c = obj.data.XRP.closing_price*1;
-               
-            }
-         }
-      });
-   }
-   //폴로닉스 api 받아오는 함수
-    function myFun2() {
-       $.ajax({
-          url : "poloniexUrl.jsp",
-          dataType : "html",
-          method : "GET",
-          success : function(result2) {
-             result2 = result2.replace(/(\s*)/g, "");               
-             obj = eval("(" + result2 + ")");
-             pbtc_c = parseInt(obj.USDT_BTC.last*1121);
-             peth_c = parseInt(obj.USDT_ETH.last*1121);
-             pdash_c = parseInt(obj.USDT_DASH.last*1121);
-             pltc_c = parseInt(obj.USDT_LTC.last*1121);
-             petc_c = parseInt(obj.USDT_ETC.last*1121);
-             pxrp_c = parseInt(obj.USDT_XRP.last*1121);
-             BTC_per = (obj.USDT_BTC.percentChange*100).toFixed(2);
-          }
-       });
-    }
-   function myFunction2() {
-      myVar = setInterval(myFun2, 1000);
 
-   }
-   function myFunction() {
-      myVar = setInterval(myFun, 1000);
-   }
-   myFunction();
-   myFunction2();
+	function coinInfo(c) {
+		$.ajax({
+			url : "coin",
+			data : {
+				command : "coinInfo",
+				coinName : c
+			},
+			method : "post",
+			dataType : "html",
+			success : function(responseData) {
+				var data = JSON.parse(responseData);
+				amount = data.amount * 1;
+				price = data.price * 1;
+				avgPrice = (data.price / data.amount).toFixed(2) * 1;
+
+				$("#amount").val(number_format(amount));
+				$("#price").val(number_format(price));
+				if (c == 'BTC') {
+					currentPrice_b = btc_c * amount * 1;
+					currentPrice_p = pbtc_c * amount * 1;
+				} else if (c == 'ETH') {
+					currentPrice_b = eth_c * amount * 1;
+					currentPrice_p = peth_c * amount * 1;
+				} else if (c == 'DASH') {
+					currentPrice_b = dash_c * amount * 1;
+					currentPrice_p = pdash_c * amount * 1;
+				} else if (c == 'LTC') {
+					currentPrice_b = ltc_c * amount * 1;
+					currentPrice_p = pltc_c * amount * 1;
+				} else if (c == 'ETC') {
+					currentPrice_b = etc_c * amount * 1;
+					currentPrice_p = petc_c * amount * 1;
+				} else if (c == 'XRP') {
+					currentPrice_b = xrp_c * amount * 1;
+					currentPrice_p = pxrp_c * amount * 1;
+				}
+				if (amount == 0) {
+					$("#avgPrice").val("보유한 코인이 없습니다.");
+				} else if (avgPrice == 'Infinity') {
+					$("#avgPrice").val("보유한 코인이 없습니다.");
+				} else {
+					$("#avgPrice").val(number_format(avgPrice));
+				}
+				if (currentPrice_b.toFixed(2) == 'NaN') {
+					$("#currentPrice_b").val("서버 통신 오류입니다. 코인을 다시 선택해주세요.");
+				} else {
+					$("#currentPrice_b").val(
+							number_format(currentPrice_b.toFixed(2)));
+				}
+				if (currentPrice_p.toFixed(2) == 'NaN') {
+					$("#currentPrice_p").val("서버에서 데이터를 받아오지 못했습니다.");
+				} else {
+					$("#currentPrice_p").val(
+							number_format(currentPrice_p.toFixed(2)));
+				}
+				if (amount == 0) {
+					$("#currentPrice_b").val("보유한 코인이 없습니다.");
+					$("#currentPrice_p").val("보유한 코인이 없습니다.");
+				}
+			}
+		});
+	}
+	
+	function myFun() {
+		$.ajax({
+			url : "bithumbUrl.jsp",
+			dataType : "html",
+			method : "GET",
+			success : function(result) {
+				result = result.replace(/(\s*)/g, "");
+				obj = eval("(" + result + ")");
+				if (obj.message == null) {
+					btc_c = obj.data.BTC.closing_price * 1;
+					eth_c = obj.data.ETH.closing_price * 1;
+					dash_c = obj.data.DASH.closing_price * 1;
+					ltc_c = obj.data.LTC.closing_price * 1;
+					etc_c = obj.data.ETC.closing_price * 1;
+					xrp_c = obj.data.XRP.closing_price * 1;
+
+				}
+			}
+		});
+	}
+	
+	//폴로닉스 api 받아오는 함수
+	function myFun2() {
+		$.ajax({
+			url : "poloniexUrl.jsp",
+			dataType : "html",
+			method : "GET",
+			success : function(result2) {
+				result2 = result2.replace(/(\s*)/g, "");
+				obj = eval("(" + result2 + ")");
+				pbtc_c = parseInt(obj.USDT_BTC.last * currency);
+				peth_c = parseInt(obj.USDT_ETH.last * currency);
+				pdash_c = parseInt(obj.USDT_DASH.last * currency);
+				pltc_c = parseInt(obj.USDT_LTC.last * currency);
+				petc_c = parseInt(obj.USDT_ETC.last * currency);
+				pxrp_c = parseInt(obj.USDT_XRP.last * currency);
+				BTC_per = (obj.USDT_BTC.percentChange * 100).toFixed(2);
+			}
+		});
+	}
+	
+	function myFunction2() {
+		myVar = setInterval(myFun2, 1000);
+
+	}
+	
+	function myFunction() {
+		myVar = setInterval(myFun, 1000);
+	}
+	
+	myFunction();
+	myFunction2();
+	
 </script>
 </head>
 <body>
@@ -376,8 +401,8 @@ form .field.half {
                             }]
                         });
                      </script>
-                     </div>
-                     <h2
+							</div>
+							<h2
                         style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 60px; margin-top: 50px !important;">
                         지&nbsp;갑&nbsp;정&nbsp;보&nbsp;수&nbsp;정</h2>
                      <div class="field half">
