@@ -91,7 +91,7 @@ form .field.half {
 				var data = JSON.parse(responseData);
 				amount = data.amount * 1;
 				price = data.price * 1;
-				avgPrice = (data.price / data.amount).toFixed(2) * 1;
+				avgPrice = (data.price / data.amount) * 1;
 
 				$("#amount").val(number_format(amount));
 				$("#price").val(number_format(price));
