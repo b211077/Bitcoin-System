@@ -77,7 +77,6 @@ form .field.half {
          
             $("#amount").val(number_format(amount));
             $("#price").val(number_format(price));
-            $("#avgPrice").val(number_format(avgPrice));
             if (c == 'BTC') {
                currentPrice_b = btc_c * amount *1;
                currentPrice_p = pbtc_c * amount *1;
@@ -97,8 +96,13 @@ form .field.half {
                currentPrice_b = xrp_c * amount *1;
                currentPrice_p = pxrp_c * amount *1;
             }
-            if(avgPrice == 'NaN' || avgPrice == 'Infinity') {
-            	 $("#avgPrice").val("보유한 코인이 없습니다.")
+            if(amount == 0) {
+            	 $("#avgPrice").val("보유한 코인이 없습니다.");
+            }
+            else if(avgPrice == 'Infinity') {
+            	$("#avgPrice").val("보유한 코인이 없습니다.");
+            } else {
+            	$("#avgPrice").val(number_format(avgPrice));
             }
             if(currentPrice_b.toFixed(2) == 'NaN'){
             	$("#currentPrice_b").val("서버 통신 오류입니다. 코인을 다시 선택해주세요.");
