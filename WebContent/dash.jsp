@@ -81,7 +81,8 @@
 								  cache: false
 								})
 								  .done(function( html ) {
-								    $("#areaText").append( html );
+									$("#areaText").append("<h3 style='text-align:center'> [ 시세 정보 (단위 : KRW) ]</h3>");
+									$("#areaText").append( html );
 								    $("#clickButton2").css("display","none");
 								  });
 						</script>
@@ -106,7 +107,8 @@
 						data : {msg : "'./file/DASH_volume.csv'"},
 						cache : false
 					}).done(function(html) {
-						$("#areaText").html(html);
+						$("#areaText").html("<h3 style='text-align:center'> [ 거래량 정보 (단위 : KRW) ]</h3>");
+						$("#areaText").append(html);
 						$("#clickButton2").css("display","block");
 						$("#clickButton").css("display","none");
 					});
@@ -116,7 +118,8 @@
 						url : "graph/all_graph.jsp",
 						data : {msg : "'./file/DASH_price.csv'"},
 					}).done(function(html) {
-						$("#areaText").html(html);
+						$("#areaText").html("<h3 style='text-align:center'> [ 시세 정보 (단위 : KRW) ]</h3>");
+						$("#areaText").append(html);
 						$("#clickButton").css("display","block");
 						$("#clickButton2").css("display","none");
 					});
