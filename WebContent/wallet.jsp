@@ -265,7 +265,7 @@ form .field.half {
 						<div id="part1"
 							style="width: 40%; float: left; margin-left: 80px;">
 							<h2
-								style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 80px; margin-top: 0px !important;">지&nbsp;&nbsp;&nbsp;갑&nbsp;&nbsp;&nbsp;관&nbsp;&nbsp;&nbsp;리</h2>
+								style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 50px; margin-top: 0px !important;">지&nbsp;&nbsp;&nbsp;갑&nbsp;&nbsp;&nbsp;관&nbsp;&nbsp;&nbsp;리</h2>
 							<div class="field half">
 								<label for="cname">코인 종류</label> <select name="cname" id="cname"
 									onChange="coinInfo(this.value)">
@@ -302,7 +302,7 @@ form .field.half {
 							</div>
 						</div>
 						<div id="part2"
-							style="width: 40%; float: right; margin-right: 80px;">
+							style="width: 40%; float: right; margin-right: 80px; margin-top:50px;">
 							<div id="areaText"
 								style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
 								<script>
@@ -374,7 +374,7 @@ form .field.half {
                      </script>
                      </div>
                      <h2
-                        style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 80px; margin-top: 0px !important;">
+                        style="text-align: center; border-bottom: 2px solid; border-bottom-color: white; margin-bottom: 60px; margin-top: 50px !important;">
                         지&nbsp;갑&nbsp;정&nbsp;보&nbsp;수&nbsp;정</h2>
                      <div class="field half">
                         <div style="width: 24%; float: left; margin-right: 21px;">
