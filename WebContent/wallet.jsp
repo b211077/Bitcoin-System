@@ -31,7 +31,7 @@ form .field.half {
 
 	var btc_c, eth_c, dash_c, ltc_c, etc_c, xrp_c, btc_c1, eth_c1, dash_c1, ltc_c1, etc_c1, xrp_c1;
 	var pbtc_c, peth_c, pdash_c, pltc_c, petc_c, pxrp_c, obj, tempval;
-	var amount, price, avgPrice, currentPrice_b, currentPrice_p;
+	var amount, price, avgPrice, currentPrice_b, currentPrice_p, subPrice_b, subPrice_p;
 	var btc_data;
 	var eth_data;
 	var dash_data;
@@ -98,21 +98,33 @@ form .field.half {
 				if (c == 'BTC') {
 					currentPrice_b = btc_c * amount * 1;
 					currentPrice_p = pbtc_c * amount * 1;
+					subPrice_b = currentPrice_b - price;
+					subPrice_p = currentPrice_p - price;
 				} else if (c == 'ETH') {
 					currentPrice_b = eth_c * amount * 1;
 					currentPrice_p = peth_c * amount * 1;
+					subPrice_b = currentPrice_b - price;
+					subPrice_p = currentPrice_p - price;
 				} else if (c == 'DASH') {
 					currentPrice_b = dash_c * amount * 1;
 					currentPrice_p = pdash_c * amount * 1;
+					subPrice_b = currentPrice_b - price;
+					subPrice_p = currentPrice_p - price;
 				} else if (c == 'LTC') {
 					currentPrice_b = ltc_c * amount * 1;
 					currentPrice_p = pltc_c * amount * 1;
+					subPrice_b = currentPrice_b - price;
+					subPrice_p = currentPrice_p - price;
 				} else if (c == 'ETC') {
 					currentPrice_b = etc_c * amount * 1;
 					currentPrice_p = petc_c * amount * 1;
+					subPrice_b = currentPrice_b - price;
+					subPrice_p = currentPrice_p - price;
 				} else if (c == 'XRP') {
 					currentPrice_b = xrp_c * amount * 1;
 					currentPrice_p = pxrp_c * amount * 1;
+					subPrice_b = currentPrice_b - price;
+					subPrice_p = currentPrice_p - price;
 				}
 				if (amount == 0) {
 					$("#avgPrice").val("보유한 코인이 없습니다.");
@@ -125,17 +137,23 @@ form .field.half {
 					$("#currentPrice_b").val("서버 통신 오류입니다. 코인을 다시 선택해주세요.");
 				} else {
 					$("#currentPrice_b").val(
-							number_format(currentPrice_b.toFixed(2)));
+							number_format(currentPrice_b));
+					$("#subPrice_b").val(
+							number_format(subPrice_b));
 				}
 				if (currentPrice_p.toFixed(2) == 'NaN') {
 					$("#currentPrice_p").val("서버에서 데이터를 받아오지 못했습니다.");
 				} else {
 					$("#currentPrice_p").val(
-							number_format(currentPrice_p.toFixed(2)));
+							number_format(currentPrice_p));
+					$("#subPrice_p").val(
+							number_format(subPrice_p));
 				}
 				if (amount == 0) {
 					$("#currentPrice_b").val("보유한 코인이 없습니다.");
 					$("#currentPrice_p").val("보유한 코인이 없습니다.");
+					$("#subPrice_b").val(0);
+					$("#subPrice_p").val(0);
 				}
 			}
 		});
@@ -318,16 +336,28 @@ form .field.half {
 									id="price" readonly />
 							</div>
 							<div class="field half">
-								<label for="pw">평균 코인 구매 단가[총구매금액/코인개수]</label> <input
-									type="text" name="avgPrice" id="avgPrice" readonly />
+								<label for="pw">평균 코인 구매 단가[총구매금액/코인개수]</label> 
+								<input type="text" name="avgPrice" id="avgPrice" readonly />
 							</div>
 							<div class="field half">
-								<label for="pw">현재 평가 금액[현재가(빗섬)*코인개수]</label> <input
-									type="text" name="currentPrice_b" id="currentPrice_b" readonly />
+								<div style="float: left; width:45%;">
+									<label for="pw" >현재 평가 금액[BITHUMB]</label> 
+									<input type="text" name="currentPrice_b" id="currentPrice_b" readonly />
+								</div>
+								<div style="float: left; width:45%; margin-left: 50px">
+									<label for="pw" >판매 차액</label> 
+									<input type="text" name="subPrice_b" id="subPrice_b" readonly /><br>
+								</div>
 							</div>
 							<div class="field half">
-								<label for="pw">현재 평가 금액[현재가(플로닉스)*코인개수]</label> <input
-									type="text" name="currentPrice_p" id="currentPrice_p" readonly />
+								<div style="float: left; width:45%;">
+									<label for="pw" >현재 평가 금액[POLONIEX]</label> 
+									<input type="text" name="currentPrice_p" id="currentPrice_p" readonly />
+								</div>
+								<div style="float: left; width:45%; margin-left: 50px">
+									<label for="pw" >판매 차액</label> 
+									<input type="text" name="subPrice_p" id="subPrice_p" readonly /><br>
+								</div>
 							</div>
 						</div>
 						<div id="part2"
