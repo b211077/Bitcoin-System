@@ -71,7 +71,11 @@ public class MemberService {
 			price += updatePrice;
 		}else if(updateType.equals("sell")){
 			amount -= updateAmount;
-			price -= updatePrice;
+			if(amount == 0){
+				price = 0;
+			}else{
+				price -= updatePrice;
+			}
 			if(price<0){
 				price = 0;
 			}
