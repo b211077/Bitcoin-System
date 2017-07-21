@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <meta charset="euc-kr" />
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -17,8 +19,8 @@ Highcharts.setOptions({
         thousandsSep: ','
     }
 });
-
-$.get('./file/LTC_price.csv', function(data) {
+var url = ${param.msg};
+$.get(url, function(data) {
  Highcharts.chart('container', {
 	 colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
 	      '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
